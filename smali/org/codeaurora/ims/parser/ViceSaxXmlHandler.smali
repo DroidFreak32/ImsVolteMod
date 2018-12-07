@@ -24,6 +24,8 @@
 
 .field private mDoesDialogLocalHaveSubElement:Z
 
+.field private mDoesRemoteDialogHaveSubElement:Z
+
 .field private mDoesRouteSetHaveSubElement:Z
 
 .field private mMediaAttribute:Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
@@ -104,6 +106,8 @@
     .end annotation
 .end field
 
+.field private mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
 .field private mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
 .field private mViceDialogRouteSubList:Ljava/util/List;
@@ -131,47 +135,50 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 52
+    .line 54
     invoke-direct {p0}, Lorg/xml/sax/helpers/DefaultHandler;-><init>()V
 
-    .line 42
+    .line 43
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
-    .line 43
+    .line 44
     iput-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 44
+    .line 45
     iput-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
 
     .line 46
+    iput-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    .line 48
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
-    .line 50
-    const-string v0, "ViceSaxxLHandler"
+    .line 52
+    const-string v0, "ViceSaxXmlHandler"
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->LOGTAG:Ljava/lang/String;
 
-    .line 53
-    const-string v0, "ViceSaxxLHandler"
+    .line 55
+    const-string v0, "ViceSaxXmlHandler"
 
     const-string v1, "ViceSaxxHandler: constructor"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 54
+    .line 56
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 55
+    .line 57
     return-void
 .end method
 
@@ -188,20 +195,20 @@
         }
     .end annotation
 
-    .line 317
+    .line 336
     invoke-super {p0, p1, p2, p3}, Lorg/xml/sax/helpers/DefaultHandler;->characters([CII)V
 
-    .line 318
+    .line 337
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
     invoke-virtual {v0, p1, p2, p3}, Ljava/lang/StringBuilder;->append([CII)Ljava/lang/StringBuilder;
 
-    .line 319
+    .line 338
     return-void
 .end method
 
 .method public dumpDialogInfo()Ljava/util/List;
-    .locals 8
+    .locals 9
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -211,7 +218,7 @@
         }
     .end annotation
 
-    .line 438
+    .line 468
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
     if-eqz v0, :cond_2
@@ -224,14 +231,14 @@
 
     if-nez v0, :cond_2
 
-    .line 439
+    .line 469
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
 
     move-result v0
 
-    .line 440
+    .line 470
     .local v0, "size":I
     const/4 v1, 0x0
 
@@ -241,146 +248,7 @@
     :goto_0
     if-ge v2, v0, :cond_1
 
-    .line 441
-    const-string v3, "ViceSaxxLHandler"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "dumpDialogInfo["
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    const-string v5, "] -> index , dialog ID = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 442
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->dialogId:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", exclusive = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 443
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->exclusive:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", direction = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 444
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->direction:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", state = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 445
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->state:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", param name = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 446
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramName:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", param val = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 447
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramVal:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v5, ", remote identity = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v5, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 448
-    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    check-cast v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v5, v5, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->remoteIdentity:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 441
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 449
+    .line 471
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
     invoke-interface {v3, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -389,166 +257,223 @@
 
     check-cast v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    iget-object v3, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+    .line 472
+    .local v3, "info":Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    const-string v4, "ViceSaxXmlHandler"
 
-    if-eqz v3, :cond_0
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 450
-    invoke-interface {v3, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    const-string v6, "dumpDialogInfo["
 
-    move-result-object v3
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    check-cast v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    iget-object v3, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+    const-string v6, "] -> index , dialog ID = "
 
-    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v3
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->dialogId:Ljava/lang/String;
 
-    if-nez v3, :cond_0
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 451
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
+    const-string v6, ", exclusive = "
 
-    invoke-interface {v3, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->exclusive:Ljava/lang/String;
 
-    check-cast v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v3, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+    const-string v6, ", direction = "
 
-    invoke-interface {v3}, Ljava/util/List;->size()I
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v3
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->direction:Ljava/lang/String;
 
-    .line 452
-    .local v3, "mediaattri":I
-    move v4, v1
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .local v4, "j":I
-    :goto_1
-    if-ge v4, v3, :cond_0
+    const-string v6, ", state = "
 
-    .line 453
-    const-string v5, "ViceSaxxLHandler"
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->state:Ljava/lang/String;
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v7, "dumpDialogInfo["
+    const-string v6, ", param name = "
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramName:Ljava/lang/String;
 
-    const-string v7, "] -> index , dialog media type = "
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v6, ", param val = "
 
-    iget-object v7, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 455
-    invoke-interface {v7, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramVal:Ljava/lang/String;
 
-    move-result-object v7
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    const-string v6, ", remote identity = "
 
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-interface {v7, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->remoteIdentity:Ljava/lang/String;
 
-    move-result-object v7
-
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
-
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaType:Ljava/lang/String;
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v7, ", dialog media direction = "
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v7, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 457
-    invoke-interface {v7, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
-
-    invoke-interface {v7, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
-
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v7, ", dialog media port = "
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v7, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
-
-    .line 459
-    invoke-interface {v7, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
-
-    invoke-interface {v7, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v7
-
-    check-cast v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
-
-    iget-object v7, v7, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaPort:Ljava/lang/String;
-
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 479
+    invoke-static {v6}, Lcom/qualcomm/ims/utils/Log;->pii(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v6
 
-    .line 453
-    invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 452
-    add-int/lit8 v4, v4, 0x1
+    const-string v6, ", local identity = "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v6, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->localIdentity:Ljava/lang/String;
+
+    .line 481
+    invoke-static {v6}, Lcom/qualcomm/ims/utils/Log;->pii(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 472
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 483
+    iget-object v4, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    if-eqz v4, :cond_0
+
+    iget-object v4, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    .line 484
+    invoke-interface {v4}, Ljava/util/List;->isEmpty()Z
+
+    move-result v4
+
+    if-nez v4, :cond_0
+
+    .line 485
+    iget-object v4, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    invoke-interface {v4}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    .line 486
+    .local v4, "mediaattri":I
+    move v5, v1
+
+    .local v5, "j":I
+    :goto_1
+    if-ge v5, v4, :cond_0
+
+    .line 487
+    const-string v6, "ViceSaxXmlHandler"
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "dumpDialogInfo["
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v7, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v8, "] -> index , dialog media type = "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v8, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    .line 489
+    invoke-interface {v8, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
+
+    iget-object v8, v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaType:Ljava/lang/String;
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v8, ", dialog media direction = "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v8, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    .line 491
+    invoke-interface {v8, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
+
+    iget-object v8, v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v8, ", dialog media port = "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v8, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
+
+    .line 493
+    invoke-interface {v8, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
+
+    iget-object v8, v8, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaPort:Ljava/lang/String;
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 487
+    invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 486
+    add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 440
-    .end local v3    # "mediaattri":I
-    .end local v4    # "j":I
+    .line 470
+    .end local v3    # "info":Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    .end local v4    # "mediaattri":I
+    .end local v5    # "j":I
     :cond_0
     add-int/lit8 v2, v2, 0x1
 
     goto/16 :goto_0
 
-    .line 464
+    .line 498
     .end local v2    # "i":I
     :cond_1
     iget-object v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
     return-object v1
 
-    .line 466
+    .line 500
     .end local v0    # "size":I
     :cond_2
     const/4 v0, 0x0
@@ -559,12 +484,12 @@
 .method public endDocument()V
     .locals 3
 
-    .line 430
+    .line 460
     :try_start_0
     invoke-super {p0}, Lorg/xml/sax/helpers/DefaultHandler;->endDocument()V
 
-    .line 431
-    const-string v0, "ViceSaxxLHandler"
+    .line 461
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -590,17 +515,17 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 434
+    .line 464
     nop
 
-    .line 435
+    .line 465
     return-void
 
-    .line 432
+    .line 462
     :catch_0
     move-exception v0
 
-    .line 433
+    .line 463
     .local v0, "ex":Ljava/lang/Exception;
     new-instance v1, Ljava/lang/RuntimeException;
 
@@ -620,29 +545,29 @@
         }
     .end annotation
 
-    .line 324
+    .line 343
     invoke-super {p0, p1, p2, p3}, Lorg/xml/sax/helpers/DefaultHandler;->endElement(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 325
+    .line 344
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
-    if-eqz v0, :cond_f
+    if-eqz v0, :cond_10
 
-    .line 326
-    const-string v0, "ViceSaxxLHandler"
+    .line 345
+    const-string v0, "ViceSaxXmlHandler"
 
     const-string v1, "endelment:inside"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 327
+    .line 346
     iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
     const/4 v1, 0x0
 
     if-eqz v0, :cond_5
 
-    .line 328
+    .line 347
     const-string v0, "sa:exclusive"
 
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
@@ -651,14 +576,14 @@
 
     if-eqz v0, :cond_0
 
-    .line 329
+    .line 348
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "sa:exclusive"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 330
+    .line 349
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -667,11 +592,11 @@
 
     move-result-object v3
 
-    .line 329
+    .line 348
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 331
-    const-string v0, "ViceSaxxLHandler"
+    .line 350
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -685,7 +610,7 @@
 
     const-string v4, "sa:exclusive"
 
-    .line 332
+    .line 351
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -696,17 +621,17 @@
 
     move-result-object v2
 
-    .line 331
+    .line 350
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 334
+    .line 353
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "sa:exclusive"
 
-    .line 335
+    .line 354
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -715,7 +640,7 @@
 
     goto/16 :goto_0
 
-    .line 336
+    .line 355
     :cond_0
     const-string v0, "state"
 
@@ -725,14 +650,14 @@
 
     if-eqz v0, :cond_1
 
-    .line 337
+    .line 356
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "state"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 338
+    .line 357
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -741,11 +666,11 @@
 
     move-result-object v3
 
-    .line 337
+    .line 356
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 339
-    const-string v0, "ViceSaxxLHandler"
+    .line 358
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -759,7 +684,7 @@
 
     const-string v4, "state"
 
-    .line 340
+    .line 359
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -770,17 +695,17 @@
 
     move-result-object v2
 
-    .line 339
+    .line 358
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 342
+    .line 361
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "state"
 
-    .line 343
+    .line 362
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -789,7 +714,7 @@
 
     goto/16 :goto_0
 
-    .line 344
+    .line 363
     :cond_1
     const-string v0, "duration"
 
@@ -799,14 +724,14 @@
 
     if-eqz v0, :cond_2
 
-    .line 345
+    .line 364
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "duration"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 346
+    .line 365
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -815,11 +740,11 @@
 
     move-result-object v3
 
-    .line 345
+    .line 364
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 347
-    const-string v0, "ViceSaxxLHandler"
+    .line 366
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -833,7 +758,7 @@
 
     const-string v4, "duration"
 
-    .line 348
+    .line 367
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -844,12 +769,12 @@
 
     move-result-object v2
 
-    .line 347
+    .line 366
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto/16 :goto_0
 
-    .line 349
+    .line 368
     :cond_2
     const-string v0, "identity"
 
@@ -859,14 +784,14 @@
 
     if-eqz v0, :cond_3
 
-    .line 350
+    .line 369
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "identity"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 351
+    .line 370
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -875,11 +800,11 @@
 
     move-result-object v3
 
-    .line 350
+    .line 369
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 352
-    const-string v0, "ViceSaxxLHandler"
+    .line 371
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -893,8 +818,13 @@
 
     const-string v4, "identity"
 
-    .line 353
+    .line 373
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 372
+    invoke-static {v3}, Lcom/qualcomm/ims/utils/Log;->pii(Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v3
 
@@ -904,17 +834,17 @@
 
     move-result-object v2
 
-    .line 352
+    .line 371
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 356
+    .line 376
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "identity"
 
-    .line 357
+    .line 377
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -923,7 +853,7 @@
 
     goto :goto_0
 
-    .line 359
+    .line 379
     :cond_3
     const-string v0, "referred-by"
 
@@ -933,145 +863,10 @@
 
     if-eqz v0, :cond_4
 
-    .line 360
+    .line 380
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "referred-by"
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
-
-    .line 361
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 360
-    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 362
-    const-string v0, "ViceSaxxLHandler"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "VICE_DIALOG_REFERRED_BY attribute vals = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v4, "referred-by"
-
-    .line 363
-    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 362
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 366
-    :cond_4
-    :goto_0
-    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
-
-    .line 368
-    :cond_5
-    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
-
-    if-eqz v0, :cond_7
-
-    .line 369
-    const-string v0, "hop"
-
-    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_6
-
-    .line 370
-    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v2, "hop"
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
-
-    .line 371
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 370
-    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 372
-    const-string v0, "ViceSaxxLHandler"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "VICE_DIALOG_ROUTE_SET_HOP attribute vals = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v4, "hop"
-
-    .line 373
-    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 372
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 376
-    :cond_6
-    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
-
-    .line 378
-    :cond_7
-    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
-
-    if-eqz v0, :cond_c
-
-    .line 379
-    const-string v0, "identity"
-
-    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_8
-
-    .line 380
-    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v2, "identity"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
@@ -1088,19 +883,19 @@
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 382
-    const-string v0, "ViceSaxxLHandler"
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "VICE_DIALOG_LOCAL_IDENTITY attribute vals = "
+    const-string v3, "VICE_DIALOG_REFERRED_BY attribute vals = "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v4, "identity"
+    const-string v4, "referred-by"
 
     .line 383
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1116,9 +911,163 @@
     .line 382
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
+    .line 386
+    :cond_4
+    :goto_0
+    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
+
+    .line 388
+    :cond_5
+    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
+
+    if-eqz v0, :cond_7
+
+    .line 389
+    const-string v0, "hop"
+
+    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_6
+
+    .line 390
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v2, "hop"
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
+
+    .line 391
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 390
+    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 392
+    const-string v0, "ViceSaxXmlHandler"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "VICE_DIALOG_ROUTE_SET_HOP attribute vals = "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v4, "hop"
+
+    .line 393
+    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 392
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 396
+    :cond_6
+    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
+
+    .line 398
+    :cond_7
+    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
+
+    if-eqz v0, :cond_c
+
+    .line 399
+    const-string v0, "identity"
+
+    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_8
+
+    .line 400
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v2, "identity"
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
+
+    .line 401
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 400
+    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 402
+    const-string v0, "ViceSaxXmlHandler"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "VICE_DIALOG_LOCAL_IDENTITY attribute vals = "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v4, "identity"
+
+    .line 404
+    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 403
+    invoke-static {v3}, Lcom/qualcomm/ims/utils/Log;->pii(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 402
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 406
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+
+    iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v3, "identity"
+
+    .line 407
+    invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    iput-object v2, v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->localIdentity:Ljava/lang/String;
+
     goto/16 :goto_1
 
-    .line 385
+    .line 409
     :cond_8
     const-string v0, "mediaType"
 
@@ -1128,14 +1077,14 @@
 
     if-eqz v0, :cond_9
 
-    .line 386
+    .line 410
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaType"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 387
+    .line 411
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -1144,11 +1093,11 @@
 
     move-result-object v3
 
-    .line 386
+    .line 410
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 388
-    const-string v0, "ViceSaxxLHandler"
+    .line 412
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1162,7 +1111,7 @@
 
     const-string v4, "mediaType"
 
-    .line 389
+    .line 413
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -1173,17 +1122,17 @@
 
     move-result-object v2
 
-    .line 388
+    .line 412
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 392
+    .line 416
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mMediaAttribute:Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "mediaType"
 
-    .line 393
+    .line 417
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -1192,7 +1141,7 @@
 
     goto/16 :goto_1
 
-    .line 394
+    .line 418
     :cond_9
     const-string v0, "mediaDirection"
 
@@ -1202,14 +1151,14 @@
 
     if-eqz v0, :cond_a
 
-    .line 395
+    .line 419
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaDirection"
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 396
+    .line 420
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -1218,11 +1167,11 @@
 
     move-result-object v3
 
-    .line 395
+    .line 419
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 397
-    const-string v0, "ViceSaxxLHandler"
+    .line 421
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1236,7 +1185,7 @@
 
     const-string v4, "mediaDirection"
 
-    .line 398
+    .line 422
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -1247,17 +1196,17 @@
 
     move-result-object v2
 
-    .line 397
+    .line 421
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 401
+    .line 425
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mMediaAttribute:Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "mediaDirection"
 
-    .line 402
+    .line 426
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -1266,7 +1215,7 @@
 
     goto :goto_1
 
-    .line 403
+    .line 427
     :cond_a
     const-string v0, "port0"
 
@@ -1276,23 +1225,23 @@
 
     if-eqz v0, :cond_b
 
-    .line 404
+    .line 428
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "port0"
 
     const/4 v3, 0x1
 
-    .line 405
+    .line 429
     invoke-static {v3}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 404
+    .line 428
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 406
-    const-string v0, "ViceSaxxLHandler"
+    .line 430
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1306,7 +1255,7 @@
 
     const-string v4, "port0"
 
-    .line 407
+    .line 431
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -1317,31 +1266,36 @@
 
     move-result-object v2
 
-    .line 406
+    .line 430
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 410
+    .line 434
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mMediaAttribute:Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v3, "port0"
 
-    .line 411
+    .line 435
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
     iput-object v2, v0, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaPort:Ljava/lang/String;
 
-    .line 413
+    .line 437
     :cond_b
     :goto_1
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 416
+    .line 440
     :cond_c
-    const-string v0, "mediaAttributes"
+    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    if-eqz v0, :cond_d
+
+    .line 441
+    const-string v0, "remote"
 
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
@@ -1349,7 +1303,20 @@
 
     if-eqz v0, :cond_d
 
-    .line 417
+    .line 442
+    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    .line 446
+    :cond_d
+    const-string v0, "mediaAttributes"
+
+    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_e
+
+    .line 447
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v0, v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
@@ -1358,38 +1325,38 @@
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 420
-    :cond_d
+    .line 450
+    :cond_e
     const-string v0, "dialog"
 
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_f
 
-    .line 421
+    .line 451
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfoList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 423
-    :cond_e
+    .line 453
+    :cond_f
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->setLength(I)V
 
-    .line 425
-    :cond_f
+    .line 455
+    :cond_10
     return-void
 .end method
 
 .method public getConferenceInfoLatestMessage()Lorg/codeaurora/ims/parser/Element;
     .locals 1
 
-    .line 58
+    .line 60
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     return-object v0
@@ -1403,17 +1370,17 @@
         }
     .end annotation
 
-    .line 63
+    .line 65
     invoke-super {p0}, Lorg/xml/sax/helpers/DefaultHandler;->startDocument()V
 
-    .line 64
+    .line 66
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->builder:Ljava/lang/StringBuilder;
 
-    .line 65
+    .line 67
     return-void
 .end method
 
@@ -1429,11 +1396,11 @@
         }
     .end annotation
 
-    .line 71
+    .line 73
     invoke-super {p0, p1, p2, p3, p4}, Lorg/xml/sax/helpers/DefaultHandler;->startElement(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V
 
-    .line 72
-    const-string v0, "ViceSaxxLHandler"
+    .line 74
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1469,7 +1436,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 74
+    .line 76
     const-string v0, "dialog-info"
 
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
@@ -1478,53 +1445,38 @@
 
     if-eqz v0, :cond_0
 
-    .line 75
+    .line 77
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 76
+    .line 78
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v1, "dialog-info"
 
     invoke-virtual {v0, v1}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 77
+    .line 79
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 78
+    .line 80
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 79
+    .line 81
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v1, "version"
 
     const-string v2, "version"
-
-    .line 80
-    invoke-interface {p4, v2}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 79
-    invoke-virtual {v0, v1, v2}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 81
-    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v1, "state"
-
-    const-string v2, "state"
 
     .line 82
     invoke-interface {p4, v2}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1537,9 +1489,9 @@
     .line 83
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v1, "entity"
+    const-string v1, "state"
 
-    const-string v2, "entity"
+    const-string v2, "state"
 
     .line 84
     invoke-interface {p4, v2}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1550,21 +1502,36 @@
     invoke-virtual {v0, v1, v2}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 85
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v1, "entity"
+
+    const-string v2, "entity"
+
+    .line 86
+    invoke-interface {p4, v2}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 85
+    invoke-virtual {v0, v1, v2}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 87
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoSubList:Ljava/util/List;
 
-    .line 86
+    .line 88
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoSubList:Ljava/util/List;
 
     invoke-virtual {v0, v1}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 87
-    const-string v0, "ViceSaxxLHandler"
+    .line 89
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1588,8 +1555,8 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 88
-    const-string v0, "ViceSaxxLHandler"
+    .line 90
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1603,7 +1570,7 @@
 
     const-string v3, "version"
 
-    .line 89
+    .line 91
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -1618,7 +1585,7 @@
 
     const-string v3, "state"
 
-    .line 90
+    .line 92
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -1633,7 +1600,7 @@
 
     const-string v3, "entity"
 
-    .line 91
+    .line 93
     invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
@@ -1644,10 +1611,10 @@
 
     move-result-object v1
 
-    .line 88
+    .line 90
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 93
+    .line 95
     :cond_0
     const-string v0, "dialog"
 
@@ -1659,81 +1626,66 @@
 
     if-eqz v0, :cond_1
 
-    .line 94
+    .line 96
     new-instance v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    .line 95
+    .line 97
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 96
+    .line 98
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 97
+    .line 99
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog-info"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 98
+    .line 100
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 99
+    .line 101
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogInfoSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 100
+    .line 102
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
-    .line 101
+    .line 103
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 102
+    .line 104
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "id"
 
     const-string v3, "id"
-
-    .line 103
-    invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 102
-    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 104
-    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v2, "call-id"
-
-    const-string v3, "call-id"
 
     .line 105
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1746,9 +1698,9 @@
     .line 106
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v2, "local-tag"
+    const-string v2, "call-id"
 
-    const-string v3, "local-tag"
+    const-string v3, "call-id"
 
     .line 107
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1761,9 +1713,9 @@
     .line 108
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v2, "remote-tag"
+    const-string v2, "local-tag"
 
-    const-string v3, "remote-tag"
+    const-string v3, "local-tag"
 
     .line 109
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1776,9 +1728,9 @@
     .line 110
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v2, "direction"
+    const-string v2, "remote-tag"
 
-    const-string v3, "direction"
+    const-string v3, "remote-tag"
 
     .line 111
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1789,10 +1741,25 @@
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 112
-    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v2, "direction"
+
+    const-string v3, "direction"
+
+    .line 113
+    invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 112
+    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 114
-    const-string v0, "ViceSaxxLHandler"
+    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
+
+    .line 116
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1816,8 +1783,8 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 115
-    const-string v0, "ViceSaxxLHandler"
+    .line 117
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1830,36 +1797,6 @@
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v4, "id"
-
-    .line 116
-    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v3, ", "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v4, "call-id"
-
-    .line 117
-    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    const-string v3, ", "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
-
-    const-string v4, "local-tag"
 
     .line 118
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1874,7 +1811,7 @@
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v4, "remote-tag"
+    const-string v4, "call-id"
 
     .line 119
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
@@ -1889,9 +1826,39 @@
 
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
 
-    const-string v4, "direction"
+    const-string v4, "local-tag"
+
+    .line 120
+    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v3, ", "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v4, "remote-tag"
 
     .line 121
+    invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v3, ", "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v3, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v4, "direction"
+
+    .line 123
     invoke-virtual {v3, v4}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
@@ -1902,17 +1869,17 @@
 
     move-result-object v2
 
-    .line 115
+    .line 117
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 123
+    .line 125
     new-instance v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    .line 124
+    .line 126
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
@@ -1925,7 +1892,7 @@
 
     iput-object v2, v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->dialogId:Ljava/lang/String;
 
-    .line 125
+    .line 127
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogElement:Lorg/codeaurora/ims/parser/Element;
@@ -1938,7 +1905,7 @@
 
     iput-object v2, v0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->direction:Ljava/lang/String;
 
-    .line 129
+    .line 131
     :cond_1
     const-string v0, "sa:exclusive"
 
@@ -1950,7 +1917,7 @@
 
     const-string v0, "state"
 
-    .line 130
+    .line 132
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
@@ -1959,18 +1926,18 @@
 
     const-string v0, "duration"
 
-    .line 131
+    .line 133
     invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v0
 
     if-eqz v0, :cond_3
 
-    .line 132
+    .line 134
     :cond_2
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
-    .line 135
+    .line 137
     :cond_3
     const-string v0, "replaces"
 
@@ -1980,47 +1947,34 @@
 
     if-eqz v0, :cond_4
 
-    .line 136
+    .line 138
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
-    .line 137
+    .line 139
     .local v0, "viceDialogReplacesElement":Lorg/codeaurora/ims/parser/Element;
     const-string v2, "replaces"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 138
+    .line 140
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 139
+    .line 141
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 140
+    .line 142
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     invoke-interface {v2, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 141
+    .line 143
     const-string v2, "call-id"
 
     const-string v3, "call-id"
-
-    .line 142
-    invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    .line 141
-    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 143
-    const-string v2, "local-tag"
-
-    const-string v3, "local-tag"
 
     .line 144
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -2031,9 +1985,9 @@
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 145
-    const-string v2, "remote-tag"
+    const-string v2, "local-tag"
 
-    const-string v3, "remote-tag"
+    const-string v3, "local-tag"
 
     .line 146
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
@@ -2044,7 +1998,20 @@
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 147
-    const-string v2, "ViceSaxxLHandler"
+    const-string v2, "remote-tag"
+
+    const-string v3, "remote-tag"
+
+    .line 148
+    invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 147
+    invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 149
+    const-string v2, "ViceSaxXmlHandler"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -2066,8 +2033,8 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 148
-    const-string v2, "ViceSaxxLHandler"
+    .line 150
+    const-string v2, "ViceSaxXmlHandler"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -2079,7 +2046,7 @@
 
     const-string v4, "call-id"
 
-    .line 149
+    .line 151
     invoke-interface {p4, v4}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
@@ -2092,7 +2059,7 @@
 
     const-string v4, "local-tag"
 
-    .line 150
+    .line 152
     invoke-interface {p4, v4}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
@@ -2105,7 +2072,7 @@
 
     const-string v4, "remote-tag"
 
-    .line 151
+    .line 153
     invoke-interface {p4, v4}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
@@ -2116,10 +2083,10 @@
 
     move-result-object v3
 
-    .line 148
+    .line 150
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 154
+    .line 156
     .end local v0    # "viceDialogReplacesElement":Lorg/codeaurora/ims/parser/Element;
     :cond_4
     const-string v0, "referred-by"
@@ -2130,44 +2097,44 @@
 
     if-eqz v0, :cond_5
 
-    .line 155
+    .line 157
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 156
+    .line 158
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "referred-by"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 157
+    .line 159
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 158
+    .line 160
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 159
+    .line 161
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogReferredElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 160
+    .line 162
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
-    .line 161
-    const-string v0, "ViceSaxxLHandler"
+    .line 163
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2191,7 +2158,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 164
+    .line 166
     :cond_5
     const-string v0, "route-set"
 
@@ -2201,55 +2168,55 @@
 
     if-eqz v0, :cond_6
 
-    .line 165
+    .line 167
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 166
+    .line 168
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "route-set"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 167
+    .line 169
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 168
+    .line 170
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 169
+    .line 171
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 170
+    .line 172
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteSubList:Ljava/util/List;
 
-    .line 171
+    .line 173
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 172
-    const-string v0, "ViceSaxxLHandler"
+    .line 174
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2273,7 +2240,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 175
+    .line 177
     :cond_6
     const-string v0, "hop"
 
@@ -2283,44 +2250,44 @@
 
     if-eqz v0, :cond_7
 
-    .line 176
+    .line 178
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 177
+    .line 179
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "hop"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 178
+    .line 180
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "route-set"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 179
+    .line 181
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 180
+    .line 182
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRouteSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogHopElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 181
+    .line 183
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRouteSetHaveSubElement:Z
 
-    .line 182
-    const-string v0, "ViceSaxxLHandler"
+    .line 184
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2344,7 +2311,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 185
+    .line 187
     :cond_7
     const-string v0, "local"
 
@@ -2354,55 +2321,55 @@
 
     if-eqz v0, :cond_8
 
-    .line 186
+    .line 188
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 187
+    .line 189
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "local"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 188
+    .line 190
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 189
+    .line 191
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 190
+    .line 192
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 191
+    .line 193
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalSubList:Ljava/util/List;
 
-    .line 192
+    .line 194
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 193
-    const-string v0, "ViceSaxxLHandler"
+    .line 195
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2426,10 +2393,10 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 194
+    .line 196
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 197
+    .line 199
     :cond_8
     const-string v0, "identity"
 
@@ -2443,41 +2410,41 @@
 
     if-eqz v0, :cond_9
 
-    .line 199
+    .line 201
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 200
+    .line 202
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "identity"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 201
+    .line 203
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "local"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 202
+    .line 204
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 203
+    .line 205
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 204
-    const-string v0, "ViceSaxxLHandler"
+    .line 206
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2501,10 +2468,10 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 205
+    .line 207
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 208
+    .line 210
     :cond_9
     const-string v0, "target"
 
@@ -2514,73 +2481,77 @@
 
     if-eqz v0, :cond_a
 
-    .line 209
+    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    if-nez v0, :cond_a
+
+    .line 212
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 210
+    .line 213
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "target"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 211
+    .line 214
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "local"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 212
+    .line 215
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 213
+    .line 216
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 214
+    .line 217
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetSubList:Ljava/util/List;
 
-    .line 215
+    .line 218
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 216
+    .line 219
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 217
+    .line 220
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "uri"
 
     const-string v3, "uri"
 
-    .line 219
+    .line 222
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 217
+    .line 220
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 220
-    const-string v0, "ViceSaxxLHandler"
+    .line 223
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2604,8 +2575,8 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 221
-    const-string v0, "ViceSaxxLHandler"
+    .line 224
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2631,7 +2602,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 225
+    .line 228
     :cond_a
     const-string v0, "param"
 
@@ -2641,61 +2612,61 @@
 
     if-eqz v0, :cond_b
 
-    .line 226
+    .line 229
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
-    .line 227
+    .line 230
     .local v0, "viceDialogLocalParamElement":Lorg/codeaurora/ims/parser/Element;
     const-string v2, "param"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 228
+    .line 231
     const-string v2, "target"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 229
+    .line 232
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 230
+    .line 233
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalTargetSubList:Ljava/util/List;
 
     invoke-interface {v2, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 231
+    .line 234
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 232
+    .line 235
     const-string v2, "pname"
 
     const-string v3, "pname"
 
-    .line 233
+    .line 236
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 232
+    .line 235
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 234
+    .line 237
     const-string v2, "pval"
 
     const-string v3, "pval"
 
-    .line 235
+    .line 238
     invoke-interface {p4, v3}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 234
+    .line 237
     invoke-virtual {v0, v2, v3}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 236
-    const-string v2, "ViceSaxxLHandler"
+    .line 239
+    const-string v2, "ViceSaxXmlHandler"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -2717,8 +2688,8 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 237
-    const-string v2, "ViceSaxxLHandler"
+    .line 240
+    const-string v2, "ViceSaxXmlHandler"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -2730,7 +2701,7 @@
 
     const-string v4, "pname"
 
-    .line 238
+    .line 241
     invoke-interface {p4, v4}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
@@ -2743,7 +2714,7 @@
 
     const-string v4, "pval"
 
-    .line 239
+    .line 242
     invoke-interface {p4, v4}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
@@ -2754,10 +2725,10 @@
 
     move-result-object v3
 
-    .line 237
+    .line 240
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 241
+    .line 244
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     const-string v3, "pname"
@@ -2768,7 +2739,7 @@
 
     iput-object v3, v2, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramName:Ljava/lang/String;
 
-    .line 243
+    .line 246
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDialogInfo:Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
     const-string v3, "pval"
@@ -2779,7 +2750,7 @@
 
     iput-object v3, v2, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramVal:Ljava/lang/String;
 
-    .line 247
+    .line 250
     .end local v0    # "viceDialogLocalParamElement":Lorg/codeaurora/ims/parser/Element;
     :cond_b
     const-string v0, "mediaAttributes"
@@ -2790,55 +2761,55 @@
 
     if-eqz v0, :cond_c
 
-    .line 248
+    .line 251
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 249
+    .line 252
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaAttributes"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 250
+    .line 253
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "local"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 251
+    .line 254
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 252
+    .line 255
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogLocalSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 253
+    .line 256
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriSubList:Ljava/util/List;
 
-    .line 254
+    .line 257
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 255
-    const-string v0, "ViceSaxxLHandler"
+    .line 258
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2862,17 +2833,17 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 256
+    .line 259
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 257
+    .line 260
     new-instance v0, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mMediaAttribute:Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
-    .line 260
+    .line 263
     :cond_c
     const-string v0, "mediaType"
 
@@ -2882,41 +2853,41 @@
 
     if-eqz v0, :cond_d
 
-    .line 261
+    .line 264
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 262
+    .line 265
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaType"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 263
+    .line 266
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaAttributes"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 264
+    .line 267
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 265
+    .line 268
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaTypeElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 266
-    const-string v0, "ViceSaxxLHandler"
+    .line 269
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2940,10 +2911,10 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 267
+    .line 270
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 270
+    .line 273
     :cond_d
     const-string v0, "mediaDirection"
 
@@ -2953,41 +2924,41 @@
 
     if-eqz v0, :cond_e
 
-    .line 271
+    .line 274
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 272
+    .line 275
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaDirection"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 273
+    .line 276
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaAttributes"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 274
+    .line 277
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 275
+    .line 278
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaDirElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 276
-    const-string v0, "ViceSaxxLHandler"
+    .line 279
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -3011,10 +2982,10 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 277
+    .line 280
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 280
+    .line 283
     :cond_e
     const-string v0, "port0"
 
@@ -3024,41 +2995,41 @@
 
     if-eqz v0, :cond_f
 
-    .line 281
+    .line 284
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 282
+    .line 285
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "port0"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 283
+    .line 286
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "mediaAttributes"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 284
+    .line 287
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 285
+    .line 288
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaAttriSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogMediaPortElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 286
-    const-string v0, "ViceSaxxLHandler"
+    .line 289
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -3082,10 +3053,10 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 287
+    .line 290
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogLocalHaveSubElement:Z
 
-    .line 290
+    .line 293
     :cond_f
     const-string v0, "remote"
 
@@ -3095,55 +3066,55 @@
 
     if-eqz v0, :cond_10
 
-    .line 291
+    .line 294
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 292
+    .line 295
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "remote"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 293
+    .line 296
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "dialog"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 294
+    .line 297
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 295
+    .line 298
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 296
+    .line 299
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteSubList:Ljava/util/List;
 
-    .line 297
+    .line 300
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteElement:Lorg/codeaurora/ims/parser/Element;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteSubList:Ljava/util/List;
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setSubElementList(Ljava/util/List;)V
 
-    .line 298
-    const-string v0, "ViceSaxxLHandler"
+    .line 301
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -3167,10 +3138,13 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 299
+    .line 302
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
-    .line 302
+    .line 303
+    iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    .line 306
     :cond_10
     const-string v0, "identity"
 
@@ -3184,41 +3158,41 @@
 
     if-nez v0, :cond_11
 
-    .line 304
+    .line 308
     new-instance v0, Lorg/codeaurora/ims/parser/Element;
 
     invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 305
+    .line 309
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "identity"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
 
-    .line 306
+    .line 310
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     const-string v2, "remote"
 
     invoke-virtual {v0, v2}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
 
-    .line 307
+    .line 311
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
 
-    .line 308
+    .line 312
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteSubList:Ljava/util/List;
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteIdentityElement:Lorg/codeaurora/ims/parser/Element;
 
     invoke-interface {v0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 309
-    const-string v0, "ViceSaxxLHandler"
+    .line 313
+    const-string v0, "ViceSaxXmlHandler"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -3242,10 +3216,124 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 310
+    .line 314
     iput-boolean v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesDialogHaveSubElement:Z
 
-    .line 312
+    .line 317
     :cond_11
+    const-string v0, "target"
+
+    invoke-virtual {p3, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_12
+
+    iget-boolean v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mDoesRemoteDialogHaveSubElement:Z
+
+    if-eqz v0, :cond_12
+
+    .line 319
+    new-instance v0, Lorg/codeaurora/ims/parser/Element;
+
+    invoke-direct {v0}, Lorg/codeaurora/ims/parser/Element;-><init>()V
+
+    iput-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    .line 320
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v1, "target"
+
+    invoke-virtual {v0, v1}, Lorg/codeaurora/ims/parser/Element;->setTagName(Ljava/lang/String;)V
+
+    .line 321
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v1, "remote"
+
+    invoke-virtual {v0, v1}, Lorg/codeaurora/ims/parser/Element;->setParentTag(Ljava/lang/String;)V
+
+    .line 322
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    invoke-virtual {v0}, Lorg/codeaurora/ims/parser/Element;->setMapAttribute()V
+
+    .line 323
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteSubList:Ljava/util/List;
+
+    iget-object v1, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 324
+    iget-object v0, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v1, "uri"
+
+    const-string v2, "uri"
+
+    .line 326
+    invoke-interface {p4, v2}, Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 324
+    invoke-virtual {v0, v1, v2}, Lorg/codeaurora/ims/parser/Element;->setAttributValue(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 327
+    const-string v0, "ViceSaxXmlHandler"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Root Tag Name:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    invoke-virtual {v2}, Lorg/codeaurora/ims/parser/Element;->getTagName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 328
+    const-string v0, "ViceSaxXmlHandler"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "attribute vals = "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;->mViceDialogRemoteTargetElement:Lorg/codeaurora/ims/parser/Element;
+
+    const-string v3, "uri"
+
+    invoke-virtual {v2, v3}, Lorg/codeaurora/ims/parser/Element;->getAttributeValue(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 331
+    :cond_12
     return-void
 .end method

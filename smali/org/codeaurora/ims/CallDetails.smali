@@ -106,6 +106,8 @@
 
 .field private mIsCallPull:Z
 
+.field private mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
 .field private mVideoPauseState:I
 
 .field public peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
@@ -119,95 +121,114 @@
 .method public constructor <init>()V
     .locals 2
 
-    .line 204
+    .line 206
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 192
+    .line 193
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
-    .line 193
+    .line 194
     const/4 v1, -0x1
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
-    .line 195
+    .line 196
     const/4 v1, 0x2
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->mVideoPauseState:I
 
-    .line 196
+    .line 197
     iput-boolean v0, p0, Lorg/codeaurora/ims/CallDetails;->mIsCallPull:Z
 
-    .line 200
+    .line 201
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
-    .line 201
+    .line 202
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 205
+    .line 207
     const/16 v0, 0xa
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
-    .line 206
+    .line 208
     const/4 v0, 0x4
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
-    .line 207
+    .line 209
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 208
+    .line 210
     return-void
 .end method
 
 .method public constructor <init>(II[Ljava/lang/String;)V
-    .locals 2
+    .locals 1
     .param p1, "callType"    # I
     .param p2, "callDomain"    # I
     .param p3, "extraparams"    # [Ljava/lang/String;
 
-    .line 210
+    .line 213
+    const/4 v0, 0x0
+
+    invoke-direct {p0, p1, p2, p3, v0}, Lorg/codeaurora/ims/CallDetails;-><init>(II[Ljava/lang/String;Lorg/codeaurora/ims/MultiIdentityLineInfo;)V
+
+    .line 214
+    return-void
+.end method
+
+.method public constructor <init>(II[Ljava/lang/String;Lorg/codeaurora/ims/MultiIdentityLineInfo;)V
+    .locals 2
+    .param p1, "callType"    # I
+    .param p2, "callDomain"    # I
+    .param p3, "extraparams"    # [Ljava/lang/String;
+    .param p4, "info"    # Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    .line 217
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 192
+    .line 193
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
-    .line 193
+    .line 194
     const/4 v1, -0x1
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
-    .line 195
+    .line 196
     const/4 v1, 0x2
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->mVideoPauseState:I
 
-    .line 196
+    .line 197
     iput-boolean v0, p0, Lorg/codeaurora/ims/CallDetails;->mIsCallPull:Z
 
-    .line 200
+    .line 201
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
-    .line 201
+    .line 202
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 211
+    .line 218
     iput p1, p0, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
-    .line 212
+    .line 219
     iput p2, p0, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
-    .line 213
+    .line 220
     iput-object p3, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 214
+    .line 221
+    iput-object p4, p0, Lorg/codeaurora/ims/CallDetails;->mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    .line 222
     return-void
 .end method
 
@@ -215,82 +236,87 @@
     .locals 2
     .param p1, "srcCall"    # Lorg/codeaurora/ims/CallDetails;
 
-    .line 216
+    .line 224
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 192
+    .line 193
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
-    .line 193
+    .line 194
     const/4 v1, -0x1
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
-    .line 195
+    .line 196
     const/4 v1, 0x2
 
     iput v1, p0, Lorg/codeaurora/ims/CallDetails;->mVideoPauseState:I
 
-    .line 196
+    .line 197
     iput-boolean v0, p0, Lorg/codeaurora/ims/CallDetails;->mIsCallPull:Z
 
-    .line 200
+    .line 201
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
-    .line 201
+    .line 202
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 217
+    .line 225
     if-eqz p1, :cond_0
 
-    .line 218
+    .line 226
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
-    .line 219
+    .line 227
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
-    .line 220
+    .line 228
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
-    .line 221
+    .line 229
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
-    .line 222
+    .line 230
     iget-object v0, p1, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 223
+    .line 231
     iget-object v0, p1, Lorg/codeaurora/ims/CallDetails;->localAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->localAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
-    .line 224
+    .line 232
     iget-object v0, p1, Lorg/codeaurora/ims/CallDetails;->peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
-    .line 225
+    .line 233
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
-    .line 226
+    .line 234
     iget v0, p1, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
     iput v0, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 228
+    .line 235
+    iget-object v0, p1, Lorg/codeaurora/ims/CallDetails;->mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    .line 237
     :cond_0
     return-void
 .end method
@@ -308,20 +334,20 @@
         }
     .end annotation
 
-    .line 301
+    .line 310
     .local p0, "newExtras":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const/4 v0, 0x0
 
-    .line 303
+    .line 312
     .local v0, "extras":[Ljava/lang/String;
     if-nez p0, :cond_0
 
-    .line 304
+    .line 313
     const/4 v1, 0x0
 
     return-object v1
 
-    .line 309
+    .line 318
     :cond_0
     invoke-interface {p0}, Ljava/util/Map;->size()I
 
@@ -329,13 +355,13 @@
 
     new-array v0, v1, [Ljava/lang/String;
 
-    .line 311
+    .line 320
     nop
 
-    .line 312
+    .line 321
     const/4 v1, 0x0
 
-    .line 313
+    .line 322
     .local v1, "i":I
     invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
 
@@ -358,7 +384,7 @@
 
     check-cast v3, Ljava/util/Map$Entry;
 
-    .line 314
+    .line 323
     .local v3, "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -394,11 +420,11 @@
 
     aput-object v4, v0, v1
 
-    .line 315
+    .line 324
     .end local v3    # "entry":Ljava/util/Map$Entry;, "Ljava/util/Map$Entry<Ljava/lang/String;Ljava/lang/String;>;"
     goto :goto_0
 
-    .line 317
+    .line 326
     .end local v1    # "i":I
     :cond_1
     return-object v0
@@ -410,12 +436,12 @@
     .locals 3
     .param p1, "extra"    # Ljava/lang/String;
 
-    .line 286
+    .line 295
     iget-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     if-eqz v0, :cond_0
 
-    .line 287
+    .line 296
     iget-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     iget-object v1, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
@@ -432,7 +458,7 @@
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 288
+    .line 297
     iget-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     iget-object v1, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
@@ -447,7 +473,7 @@
 
     aput-object v2, v0, v1
 
-    .line 290
+    .line 299
     :cond_0
     return-void
 .end method
@@ -455,16 +481,25 @@
 .method public getCallPull()Z
     .locals 1
 
-    .line 297
+    .line 306
     iget-boolean v0, p0, Lorg/codeaurora/ims/CallDetails;->mIsCallPull:Z
 
     return v0
 .end method
 
+.method public getMultiIdentityLineInfo()Lorg/codeaurora/ims/MultiIdentityLineInfo;
+    .locals 1
+
+    .line 389
+    iget-object v0, p0, Lorg/codeaurora/ims/CallDetails;->mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    return-object v0
+.end method
+
 .method public getRttMode()I
     .locals 1
 
-    .line 376
+    .line 385
     iget v0, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
     return v0
@@ -475,7 +510,7 @@
     .param p1, "extras"    # [Ljava/lang/String;
     .param p2, "key"    # Ljava/lang/String;
 
-    .line 338
+    .line 347
     const/4 v0, 0x0
 
     move v1, v0
@@ -488,12 +523,12 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 339
+    .line 348
     aget-object v2, p1, v1
 
     if-eqz v2, :cond_0
 
-    .line 340
+    .line 349
     aget-object v2, p1, v1
 
     const-string v3, "="
@@ -502,7 +537,7 @@
 
     move-result-object v2
 
-    .line 341
+    .line 350
     .local v2, "currKey":[Ljava/lang/String;
     array-length v3, v2
 
@@ -518,21 +553,21 @@
 
     if-eqz v3, :cond_0
 
-    .line 342
+    .line 351
     const/4 v0, 0x1
 
     aget-object v0, v2, v0
 
     return-object v0
 
-    .line 338
+    .line 347
     .end local v2    # "currKey":[Ljava/lang/String;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 346
+    .line 355
     .end local v1    # "i":I
     :cond_1
     const/4 v0, 0x0
@@ -543,7 +578,7 @@
 .method public getVideoPauseState()I
     .locals 1
 
-    .line 334
+    .line 343
     iget v0, p0, Lorg/codeaurora/ims/CallDetails;->mVideoPauseState:I
 
     return v0
@@ -552,7 +587,7 @@
 .method public hasMediaIdValid()Z
     .locals 2
 
-    .line 368
+    .line 377
     iget v0, p0, Lorg/codeaurora/ims/CallDetails;->callMediaId:I
 
     const/4 v1, -0x1
@@ -578,10 +613,10 @@
     .locals 0
     .param p1, "value"    # Z
 
-    .line 293
+    .line 302
     iput-boolean p1, p0, Lorg/codeaurora/ims/CallDetails;->mIsCallPull:Z
 
-    .line 294
+    .line 303
     return-void
 .end method
 
@@ -589,10 +624,10 @@
     .locals 0
     .param p1, "extraparams"    # [Ljava/lang/String;
 
-    .line 282
+    .line 291
     iput-object p1, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 283
+    .line 292
     return-void
 .end method
 
@@ -608,7 +643,7 @@
         }
     .end annotation
 
-    .line 321
+    .line 330
     .local p1, "newExtras":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-static {p1}, Lorg/codeaurora/ims/CallDetails;->getExtrasFromMap(Ljava/util/Map;)[Ljava/lang/String;
 
@@ -616,7 +651,7 @@
 
     iput-object v0, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 322
+    .line 331
     return-void
 .end method
 
@@ -624,10 +659,10 @@
     .locals 0
     .param p1, "mode"    # I
 
-    .line 372
+    .line 381
     iput p1, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 373
+    .line 382
     return-void
 .end method
 
@@ -637,10 +672,10 @@
     .param p2, "key"    # Ljava/lang/String;
     .param p3, "value"    # Ljava/lang/String;
 
-    .line 350
+    .line 359
     if-eqz p1, :cond_1
 
-    .line 351
+    .line 360
     const/4 v0, 0x0
 
     move v1, v0
@@ -653,12 +688,12 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 352
+    .line 361
     aget-object v2, p1, v1
 
     if-eqz v2, :cond_0
 
-    .line 353
+    .line 362
     aget-object v2, p1, v1
 
     const-string v3, "="
@@ -667,7 +702,7 @@
 
     move-result-object v2
 
-    .line 354
+    .line 363
     .local v2, "currKey":[Ljava/lang/String;
     array-length v3, v2
 
@@ -683,7 +718,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 355
+    .line 364
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -702,17 +737,17 @@
 
     aput-object v0, p1, v1
 
-    .line 356
+    .line 365
     goto :goto_1
 
-    .line 351
+    .line 360
     .end local v2    # "currKey":[Ljava/lang/String;
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 361
+    .line 370
     .end local v1    # "i":I
     :cond_1
     :goto_1
@@ -723,16 +758,16 @@
     .locals 0
     .param p1, "videoPauseState"    # I
 
-    .line 326
+    .line 335
     packed-switch p1, :pswitch_data_0
 
     goto :goto_0
 
-    .line 329
+    .line 338
     :pswitch_0
     iput p1, p0, Lorg/codeaurora/ims/CallDetails;->mVideoPauseState:I
 
-    .line 331
+    .line 340
     :goto_0
     return-void
 
@@ -748,7 +783,7 @@
 .method public toString()Ljava/lang/String;
     .locals 14
 
-    .line 384
+    .line 397
     const-string v0, ""
 
     .local v0, "extrasResult":Ljava/lang/String;
@@ -757,7 +792,7 @@
     .local v1, "localSrvAbility":Ljava/lang/String;
     const-string v2, ""
 
-    .line 385
+    .line 398
     .local v2, "peerSrvAbility":Ljava/lang/String;
     iget-object v3, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
@@ -765,7 +800,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 386
+    .line 399
     iget-object v3, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     array-length v5, v3
@@ -781,7 +816,7 @@
 
     aget-object v7, v3, v0
 
-    .line 387
+    .line 400
     .local v7, "s":Ljava/lang/String;
     new-instance v8, Ljava/lang/StringBuilder;
 
@@ -795,13 +830,13 @@
 
     move-result-object v6
 
-    .line 386
+    .line 399
     .end local v7    # "s":Ljava/lang/String;
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 391
+    .line 404
     :cond_0
     move-object v0, v6
 
@@ -812,7 +847,7 @@
 
     if-eqz v3, :cond_5
 
-    .line 392
+    .line 405
     iget-object v3, p0, Lorg/codeaurora/ims/CallDetails;->localAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     array-length v5, v3
@@ -828,11 +863,11 @@
 
     aget-object v7, v3, v1
 
-    .line 393
+    .line 406
     .local v7, "srv":Lorg/codeaurora/ims/ServiceStatus;
     if-eqz v7, :cond_3
 
-    .line 394
+    .line 407
     new-instance v8, Ljava/lang/StringBuilder;
 
     invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
@@ -875,12 +910,12 @@
 
     move-result-object v6
 
-    .line 396
+    .line 409
     iget-object v8, v7, Lorg/codeaurora/ims/ServiceStatus;->accessTechStatus:[Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
 
     if-eqz v8, :cond_3
 
-    .line 397
+    .line 410
     iget-object v8, v7, Lorg/codeaurora/ims/ServiceStatus;->accessTechStatus:[Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
 
     array-length v9, v8
@@ -896,7 +931,7 @@
 
     aget-object v11, v8, v6
 
-    .line 398
+    .line 411
     .local v11, "at":Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
     new-instance v12, Ljava/lang/StringBuilder;
 
@@ -914,13 +949,13 @@
 
     move-result-object v10
 
-    .line 397
+    .line 410
     .end local v11    # "at":Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_2
 
-    .line 392
+    .line 405
     .end local v7    # "srv":Lorg/codeaurora/ims/ServiceStatus;
     :cond_2
     move-object v6, v10
@@ -932,7 +967,7 @@
 
     goto :goto_1
 
-    .line 405
+    .line 418
     :cond_4
     move-object v1, v6
 
@@ -943,7 +978,7 @@
 
     if-eqz v3, :cond_9
 
-    .line 406
+    .line 419
     iget-object v3, p0, Lorg/codeaurora/ims/CallDetails;->peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     array-length v5, v3
@@ -959,11 +994,11 @@
 
     aget-object v7, v3, v2
 
-    .line 407
+    .line 420
     .restart local v7    # "srv":Lorg/codeaurora/ims/ServiceStatus;
     if-eqz v7, :cond_7
 
-    .line 408
+    .line 421
     new-instance v8, Ljava/lang/StringBuilder;
 
     invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
@@ -1006,12 +1041,12 @@
 
     move-result-object v6
 
-    .line 410
+    .line 423
     iget-object v8, v7, Lorg/codeaurora/ims/ServiceStatus;->accessTechStatus:[Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
 
     if-eqz v8, :cond_7
 
-    .line 411
+    .line 424
     iget-object v8, v7, Lorg/codeaurora/ims/ServiceStatus;->accessTechStatus:[Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
 
     array-length v9, v8
@@ -1027,7 +1062,7 @@
 
     aget-object v11, v8, v6
 
-    .line 412
+    .line 425
     .restart local v11    # "at":Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
     new-instance v12, Ljava/lang/StringBuilder;
 
@@ -1045,13 +1080,13 @@
 
     move-result-object v10
 
-    .line 411
+    .line 424
     .end local v11    # "at":Lorg/codeaurora/ims/ServiceStatus$StatusForAccessTech;
     add-int/lit8 v6, v6, 0x1
 
     goto :goto_4
 
-    .line 406
+    .line 419
     .end local v7    # "srv":Lorg/codeaurora/ims/ServiceStatus;
     :cond_6
     move-object v6, v10
@@ -1063,7 +1098,7 @@
 
     goto :goto_3
 
-    .line 419
+    .line 432
     :cond_8
     move-object v2, v6
 
@@ -1150,6 +1185,14 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    const-string v4, ", "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v4, p0, Lorg/codeaurora/ims/CallDetails;->mLineInfo:Lorg/codeaurora/ims/MultiIdentityLineInfo;
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v3
@@ -1161,19 +1204,19 @@
     .locals 8
     .param p1, "update"    # Lorg/codeaurora/ims/CallDetails;
 
-    .line 231
+    .line 240
     const/4 v0, 0x0
 
-    .line 232
+    .line 241
     .local v0, "hasChanged":Z
     const/4 v1, 0x0
 
     if-nez p1, :cond_0
 
-    .line 233
+    .line 242
     return v1
 
-    .line 235
+    .line 244
     :cond_0
     iget v2, p0, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
@@ -1181,20 +1224,20 @@
 
     if-eq v2, v3, :cond_1
 
-    .line 236
+    .line 245
     iget v2, p1, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
     iput v2, p0, Lorg/codeaurora/ims/CallDetails;->call_type:I
 
-    .line 237
+    .line 246
     iget v2, p1, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
     iput v2, p0, Lorg/codeaurora/ims/CallDetails;->causeCode:I
 
-    .line 238
+    .line 247
     const/4 v0, 0x1
 
-    .line 240
+    .line 249
     :cond_1
     iget v2, p0, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
@@ -1202,15 +1245,15 @@
 
     if-eq v2, v3, :cond_2
 
-    .line 241
+    .line 250
     iget v2, p1, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
     iput v2, p0, Lorg/codeaurora/ims/CallDetails;->call_domain:I
 
-    .line 242
+    .line 251
     const/4 v0, 0x1
 
-    .line 244
+    .line 253
     :cond_2
     iget v2, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
@@ -1218,15 +1261,15 @@
 
     if-eq v2, v3, :cond_3
 
-    .line 245
+    .line 254
     iget v2, p1, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
     iput v2, p0, Lorg/codeaurora/ims/CallDetails;->callsubstate:I
 
-    .line 246
+    .line 255
     const/4 v0, 0x1
 
-    .line 248
+    .line 257
     :cond_3
     iget v2, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
@@ -1234,15 +1277,15 @@
 
     if-eq v2, v3, :cond_4
 
-    .line 249
+    .line 258
     iget v2, p1, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
     iput v2, p0, Lorg/codeaurora/ims/CallDetails;->rttMode:I
 
-    .line 250
+    .line 259
     const/4 v0, 0x1
 
-    .line 253
+    .line 262
     :cond_4
     iget-object v2, p0, Lorg/codeaurora/ims/CallDetails;->sipAlternateUri:Ljava/lang/String;
 
@@ -1250,26 +1293,26 @@
 
     if-eq v2, v3, :cond_5
 
-    .line 254
+    .line 263
     iget-object v2, p1, Lorg/codeaurora/ims/CallDetails;->sipAlternateUri:Ljava/lang/String;
 
     iput-object v2, p0, Lorg/codeaurora/ims/CallDetails;->sipAlternateUri:Ljava/lang/String;
 
-    .line 255
+    .line 264
     const/4 v0, 0x1
 
-    .line 258
+    .line 267
     :cond_5
     iget-object v2, p1, Lorg/codeaurora/ims/CallDetails;->localAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     iput-object v2, p0, Lorg/codeaurora/ims/CallDetails;->localAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
-    .line 259
+    .line 268
     iget-object v2, p1, Lorg/codeaurora/ims/CallDetails;->peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
     iput-object v2, p0, Lorg/codeaurora/ims/CallDetails;->peerAbility:[Lorg/codeaurora/ims/ServiceStatus;
 
-    .line 261
+    .line 270
     move v2, v0
 
     move v0, v1
@@ -1287,7 +1330,7 @@
 
     if-ge v0, v3, :cond_8
 
-    .line 262
+    .line 271
     iget-object v3, p1, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     aget-object v3, v3, v0
@@ -1298,7 +1341,7 @@
 
     move-result-object v3
 
-    .line 263
+    .line 272
     .local v3, "currKeyValuePair":[Ljava/lang/String;
     array-length v4, v3
 
@@ -1306,7 +1349,7 @@
 
     if-ne v4, v5, :cond_7
 
-    .line 264
+    .line 273
     iget-object v4, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     aget-object v5, v3, v1
@@ -1315,11 +1358,11 @@
 
     move-result-object v4
 
-    .line 265
+    .line 274
     .local v4, "oldVal":Ljava/lang/String;
     if-eqz v4, :cond_6
 
-    .line 266
+    .line 275
     const/4 v5, 0x1
 
     aget-object v6, v3, v5
@@ -1330,7 +1373,7 @@
 
     if-nez v6, :cond_7
 
-    .line 267
+    .line 276
     iget-object v6, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     aget-object v7, v3, v1
@@ -1343,23 +1386,23 @@
 
     iput-object v5, p0, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
-    .line 269
+    .line 278
     const/4 v2, 0x1
 
     goto :goto_1
 
-    .line 272
+    .line 281
     :cond_6
     const/4 v2, 0x1
 
-    .line 273
+    .line 282
     iget-object v5, p1, Lorg/codeaurora/ims/CallDetails;->extras:[Ljava/lang/String;
 
     aget-object v5, v5, v0
 
     invoke-virtual {p0, v5}, Lorg/codeaurora/ims/CallDetails;->addExtra(Ljava/lang/String;)V
 
-    .line 261
+    .line 270
     .end local v3    # "currKeyValuePair":[Ljava/lang/String;
     .end local v4    # "oldVal":Ljava/lang/String;
     :cond_7
@@ -1368,7 +1411,7 @@
 
     goto :goto_0
 
-    .line 277
+    .line 286
     .end local v0    # "i":I
     :cond_8
     invoke-virtual {p1}, Lorg/codeaurora/ims/CallDetails;->getVideoPauseState()I
@@ -1377,6 +1420,6 @@
 
     invoke-virtual {p0, v0}, Lorg/codeaurora/ims/CallDetails;->setVideoPauseState(I)V
 
-    .line 278
+    .line 287
     return v2
 .end method

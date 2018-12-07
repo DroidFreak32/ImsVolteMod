@@ -20,39 +20,55 @@
 # instance fields
 .field private mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
+.field private mProvisionStatus:I
+
+.field private mServiceClassStatus:I
+
 .field private mStatus:I
 
 
 # direct methods
 .method public constructor <init>()V
-    .locals 2
+    .locals 4
 
-    .line 27
-    const/4 v0, 0x0
+    .line 29
+    const/4 v0, -0x1
 
-    const/4 v1, 0x0
+    const/4 v1, 0x2
 
-    invoke-direct {p0, v0, v1}, Lorg/codeaurora/ims/SuppService;-><init>(ILandroid/telephony/ims/ImsReasonInfo;)V
+    const/4 v2, 0x0
 
-    .line 28
+    const/4 v3, 0x0
+
+    invoke-direct {p0, v0, v1, v2, v3}, Lorg/codeaurora/ims/SuppService;-><init>(IIILandroid/telephony/ims/ImsReasonInfo;)V
+
+    .line 30
     return-void
 .end method
 
-.method public constructor <init>(ILandroid/telephony/ims/ImsReasonInfo;)V
+.method public constructor <init>(IIILandroid/telephony/ims/ImsReasonInfo;)V
     .locals 0
-    .param p1, "status"    # I
-    .param p2, "errorInfo"    # Landroid/telephony/ims/ImsReasonInfo;
-
-    .line 30
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 31
-    iput p1, p0, Lorg/codeaurora/ims/SuppService;->mStatus:I
-
-    .line 32
-    iput-object p2, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
+    .param p1, "serviceClassStatus"    # I
+    .param p2, "provisionStatus"    # I
+    .param p3, "status"    # I
+    .param p4, "errorInfo"    # Landroid/telephony/ims/ImsReasonInfo;
 
     .line 33
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 34
+    iput p1, p0, Lorg/codeaurora/ims/SuppService;->mServiceClassStatus:I
+
+    .line 35
+    iput p2, p0, Lorg/codeaurora/ims/SuppService;->mProvisionStatus:I
+
+    .line 36
+    iput p3, p0, Lorg/codeaurora/ims/SuppService;->mStatus:I
+
+    .line 37
+    iput-object p4, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
+
+    .line 38
     return-void
 .end method
 
@@ -61,16 +77,34 @@
 .method public getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
     .locals 1
 
-    .line 48
+    .line 69
     iget-object v0, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
     return-object v0
 .end method
 
+.method public getProvisionStatus()I
+    .locals 1
+
+    .line 53
+    iget v0, p0, Lorg/codeaurora/ims/SuppService;->mProvisionStatus:I
+
+    return v0
+.end method
+
+.method public getServiceClassStatus()I
+    .locals 1
+
+    .line 45
+    iget v0, p0, Lorg/codeaurora/ims/SuppService;->mServiceClassStatus:I
+
+    return v0
+.end method
+
 .method public getStatus()I
     .locals 1
 
-    .line 40
+    .line 61
     iget v0, p0, Lorg/codeaurora/ims/SuppService;->mStatus:I
 
     return v0
@@ -80,10 +114,32 @@
     .locals 0
     .param p1, "errorInfo"    # Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 44
+    .line 65
     iput-object p1, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 45
+    .line 66
+    return-void
+.end method
+
+.method public setProvisionStatus(I)V
+    .locals 0
+    .param p1, "status"    # I
+
+    .line 49
+    iput p1, p0, Lorg/codeaurora/ims/SuppService;->mProvisionStatus:I
+
+    .line 50
+    return-void
+.end method
+
+.method public setServiceClassStatus(I)V
+    .locals 0
+    .param p1, "status"    # I
+
+    .line 41
+    iput p1, p0, Lorg/codeaurora/ims/SuppService;->mServiceClassStatus:I
+
+    .line 42
     return-void
 .end method
 
@@ -91,17 +147,17 @@
     .locals 0
     .param p1, "status"    # I
 
-    .line 36
+    .line 57
     iput p1, p0, Lorg/codeaurora/ims/SuppService;->mStatus:I
 
-    .line 37
+    .line 58
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
-    .locals 2
+    .locals 3
 
-    .line 52
+    .line 73
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -114,36 +170,57 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    const-string v1, " errorCode: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     iget-object v1, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 53
-    invoke-virtual {v1}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
+    if-eqz v1, :cond_0
 
-    move-result v1
+    .line 75
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v1, " errorMessage: "
+    const-string v2, " errorCode: "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object v1, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
+    iget-object v2, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 54
-    invoke-virtual {v1}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
+    .line 74
+    invoke-virtual {v2}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
+
+    move-result v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v2, " errorMessage: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lorg/codeaurora/ims/SuppService;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
+
+    .line 75
+    invoke-virtual {v2}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
 
+    goto :goto_0
+
+    :cond_0
+    const-string v1, ""
+
+    :goto_0
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 52
+    .line 73
     return-object v0
 .end method

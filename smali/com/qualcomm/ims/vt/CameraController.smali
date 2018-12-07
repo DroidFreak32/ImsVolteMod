@@ -1366,6 +1366,24 @@
     return-object v1
 .end method
 
+.method public onCallModifyInitiated(Lorg/codeaurora/ims/ImsCallSessionImpl;Lorg/codeaurora/ims/CallModify;)V
+    .locals 0
+    .param p1, "session"    # Lorg/codeaurora/ims/ImsCallSessionImpl;
+    .param p2, "callModify"    # Lorg/codeaurora/ims/CallModify;
+
+    .line 485
+    return-void
+.end method
+
+.method public onCallTypeChanging(Lorg/codeaurora/ims/ImsCallSessionImpl;I)V
+    .locals 0
+    .param p1, "session"    # Lorg/codeaurora/ims/ImsCallSessionImpl;
+    .param p2, "newCallType"    # I
+
+    .line 489
+    return-void
+.end method
+
 .method public onCameraConfigChanged(IIILandroid/view/Surface;I)V
     .locals 2
     .param p1, "w"    # I

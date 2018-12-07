@@ -251,42 +251,40 @@
     .line 709
     iget v2, v1, Landroid/os/Message;->what:I
 
-    const/4 v3, -0x1
+    const/4 v3, 0x4
 
-    const/4 v4, 0x4
+    const/4 v4, 0x2
 
-    const/4 v5, 0x2
+    const/4 v5, 0x5
 
-    const/4 v6, 0x5
+    const/4 v6, 0x1
 
-    const/4 v7, 0x1
+    const/16 v7, 0x324
 
-    const/16 v8, 0x324
-
-    const/4 v9, 0x0
+    const/4 v8, 0x0
 
     packed-switch v2, :pswitch_data_0
 
     goto/16 :goto_f
 
-    .line 1300
+    .line 1309
     :pswitch_0
     iget-object v2, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v2, Landroid/os/AsyncResult;
 
-    .line 1301
+    .line 1310
     .local v2, "ar":Landroid/os/AsyncResult;
     iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
     if-nez v3, :cond_0
 
-    .line 1302
+    .line 1311
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
     check-cast v3, Landroid/telephony/ims/ImsSsData;
 
-    .line 1303
+    .line 1312
     .local v3, "ssData":Landroid/telephony/ims/ImsSsData;
     iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
@@ -296,11 +294,11 @@
 
     invoke-virtual {v4, v3}, Lorg/codeaurora/ims/ImsUtListenerImpl;->onSupplementaryServiceIndication(Landroid/telephony/ims/ImsSsData;)V
 
-    .line 1304
+    .line 1313
     .end local v3    # "ssData":Landroid/telephony/ims/ImsSsData;
     goto/16 :goto_f
 
-    .line 1305
+    .line 1314
     :cond_0
     const-string v3, "exception in handling UNSOL_ON_SS"
 
@@ -317,7 +315,7 @@
 
     .line 795
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 796
     iget v3, v1, Landroid/os/Message;->arg1:I
@@ -346,7 +344,7 @@
     .line 804
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 805
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -404,7 +402,7 @@
 
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
     .line 816
     invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
@@ -415,10 +413,10 @@
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
     .line 814
-    invoke-virtual {v5, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 817
     return-void
@@ -438,7 +436,7 @@
     .line 819
     new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v5, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     .line 821
     .local v5, "error":Landroid/telephony/ims/ImsReasonInfo;
@@ -522,12 +520,12 @@
 
     .line 713
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 714
-    iget v4, v1, Landroid/os/Message;->arg1:I
+    iget v3, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v4, :cond_6
+    if-gez v3, :cond_6
 
     .line 715
     const-string v3, "Invalid message id received in handleMessage."
@@ -539,9 +537,9 @@
 
     .line 719
     :cond_6
-    iget-object v4, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+    iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v4, :cond_7
+    if-eqz v3, :cond_7
 
     .line 720
     const-string v3, "Query CB error"
@@ -551,7 +549,7 @@
     .line 722
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 723
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -576,82 +574,82 @@
 
     .line 727
     :cond_7
-    iget-object v4, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v4, :cond_10
+    if-eqz v3, :cond_10
 
     .line 728
-    iget-object v4, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    check-cast v4, Lorg/codeaurora/ims/SuppSvcResponse;
+    check-cast v3, Lorg/codeaurora/ims/SuppSvcResponse;
 
     .line 729
-    .local v4, "response":Lorg/codeaurora/ims/SuppSvcResponse;
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
+    .restart local v3    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
+
+    move-result-object v4
+
+    .line 730
+    .restart local v4    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
+    if-eqz v4, :cond_8
+
+    .line 731
+    const-string v5, "SuppSvcResponse has failure for CB query."
+
+    invoke-static {v0, v5}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 732
+    iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+
+    invoke-static {v5}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
     move-result-object v5
 
-    .line 730
-    .local v5, "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v5, :cond_8
-
-    .line 731
-    const-string v3, "SuppSvcResponse has failure for CB query."
-
-    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 732
-    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
-
-    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
-
-    move-result-object v3
-
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
     .line 734
-    invoke-virtual {v5}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
+    invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
 
     move-result v9
 
-    invoke-virtual {v5}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
+    invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
     .line 732
-    invoke-virtual {v3, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 735
     return-void
 
     .line 736
     :cond_8
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-virtual {v6}, Ljava/lang/String;->length()I
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
 
-    move-result v6
+    move-result v5
 
-    if-lez v6, :cond_9
+    if-lez v5, :cond_9
 
     .line 737
-    new-instance v3, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v3, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     .line 739
-    .local v3, "error":Landroid/telephony/ims/ImsReasonInfo;
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
+    .restart local v5    # "error":Landroid/telephony/ims/ImsReasonInfo;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
     move-result-object v6
 
-    iput-object v6, v3, Landroid/telephony/ims/ImsReasonInfo;->mExtraMessage:Ljava/lang/String;
+    iput-object v6, v5, Landroid/telephony/ims/ImsReasonInfo;->mExtraMessage:Ljava/lang/String;
 
     .line 740
     const-string v6, "ImsUtImpl"
@@ -664,7 +662,7 @@
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -681,65 +679,67 @@
 
     iget v7, v1, Landroid/os/Message;->arg1:I
 
-    invoke-virtual {v6, v7, v3}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v6, v7, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 742
     return-void
 
     .line 744
-    .end local v3    # "error":Landroid/telephony/ims/ImsReasonInfo;
+    .end local v5    # "error":Landroid/telephony/ims/ImsReasonInfo;
     :cond_9
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
 
-    move-result v6
+    move-result v5
 
-    if-ne v6, v3, :cond_a
+    const/4 v9, -0x1
+
+    if-ne v5, v9, :cond_a
 
     .line 745
-    const-string v3, "No service status info in response for CB query."
+    const-string v5, "No service status info in response for CB query."
 
-    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v5}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 746
-    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v5}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v3
+    move-result-object v5
 
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v9, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v7, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v9, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
-    invoke-virtual {v3, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v9}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_3
 
     .line 750
     :cond_a
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getBarredLines()Ljava/util/List;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getBarredLines()Ljava/util/List;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
+    invoke-interface {v5}, Ljava/util/List;->isEmpty()Z
 
-    move-result v3
+    move-result v5
 
-    if-nez v3, :cond_d
+    if-nez v5, :cond_d
 
     .line 751
-    new-instance v3, Ljava/util/ArrayList;
+    new-instance v5, Ljava/util/ArrayList;
 
-    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
 
     .line 752
-    .local v3, "ssInfoArray":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/ims/ImsSsInfo;>;"
+    .local v5, "ssInfoArray":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/ims/ImsSsInfo;>;"
     nop
 
     .line 753
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getBarredLines()Ljava/util/List;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getBarredLines()Ljava/util/List;
 
     move-result-object v6
 
@@ -819,7 +819,7 @@
     iput v13, v12, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     .line 762
-    invoke-interface {v3, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v5, v12}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     .line 763
     .end local v11    # "lineStatus":Lorg/codeaurora/ims/SuppSvcResponse$LineStatus;
@@ -843,14 +843,14 @@
     iget v8, v1, Landroid/os/Message;->arg1:I
 
     .line 768
-    invoke-interface {v3}, Ljava/util/List;->size()I
+    invoke-interface {v5}, Ljava/util/List;->size()I
 
     move-result v9
 
     new-array v9, v9, [Landroid/telephony/ims/ImsSsInfo;
 
     .line 767
-    invoke-interface {v3, v9}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+    invoke-interface {v5, v9}, Ljava/util/List;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     move-result-object v9
 
@@ -860,84 +860,84 @@
     invoke-virtual {v7, v8, v9}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationCallBarringQueried(I[Landroid/telephony/ims/ImsSsInfo;)V
 
     .line 769
-    .end local v3    # "ssInfoArray":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/ims/ImsSsInfo;>;"
+    .end local v5    # "ssInfoArray":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/ims/ImsSsInfo;>;"
     .end local v6    # "barredLines":Ljava/util/List;, "Ljava/util/List<Lorg/codeaurora/ims/SuppSvcResponse$BarredLines;>;"
     goto :goto_3
 
     .line 770
     :cond_d
-    new-array v3, v7, [Landroid/telephony/ims/ImsSsInfo;
+    new-array v5, v6, [Landroid/telephony/ims/ImsSsInfo;
 
     .line 771
-    .local v3, "ssInfoStatus":[Landroid/telephony/ims/ImsSsInfo;
-    new-instance v6, Landroid/telephony/ims/ImsSsInfo;
+    .local v5, "ssInfoStatus":[Landroid/telephony/ims/ImsSsInfo;
+    new-instance v7, Landroid/telephony/ims/ImsSsInfo;
 
-    invoke-direct {v6}, Landroid/telephony/ims/ImsSsInfo;-><init>()V
+    invoke-direct {v7}, Landroid/telephony/ims/ImsSsInfo;-><init>()V
 
     .line 772
-    .local v6, "ssInfo":Landroid/telephony/ims/ImsSsInfo;
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
+    .local v7, "ssInfo":Landroid/telephony/ims/ImsSsInfo;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
 
-    move-result v8
+    move-result v9
 
-    if-nez v8, :cond_e
+    if-nez v9, :cond_e
 
     .line 773
-    iput v9, v6, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iput v8, v7, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     goto :goto_2
 
     .line 774
     :cond_e
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
 
-    move-result v8
+    move-result v9
 
-    if-ne v8, v7, :cond_f
+    if-ne v9, v6, :cond_f
 
     .line 775
-    iput v7, v6, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iput v6, v7, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     .line 777
     :cond_f
     :goto_2
-    aput-object v6, v3, v9
+    aput-object v7, v5, v8
 
     .line 778
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v8, "success callback Query Anonymous CB, status= "
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget v8, v6, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iget v8, v7, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-static {v0, v7}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v6}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 780
-    iget-object v7, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v7}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v7
+    move-result-object v6
 
     iget v8, v1, Landroid/os/Message;->arg1:I
 
-    invoke-virtual {v7, v8, v3}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationCallBarringQueried(I[Landroid/telephony/ims/ImsSsInfo;)V
+    invoke-virtual {v6, v8, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationCallBarringQueried(I[Landroid/telephony/ims/ImsSsInfo;)V
 
     .line 784
-    .end local v3    # "ssInfoStatus":[Landroid/telephony/ims/ImsSsInfo;
-    .end local v4    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
-    .end local v5    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    .end local v6    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
+    .end local v3    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
+    .end local v4    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
+    .end local v5    # "ssInfoStatus":[Landroid/telephony/ims/ImsSsInfo;
+    .end local v7    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
     :goto_3
     goto/16 :goto_f
 
@@ -958,53 +958,53 @@
 
     new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v5, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_f
 
-    .line 1173
+    .line 1180
     .end local v2    # "ar":Landroid/os/AsyncResult;
     :pswitch_3
     iget-object v2, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v2, Landroid/os/AsyncResult;
 
-    .line 1174
+    .line 1181
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
-    .line 1175
-    iget v4, v1, Landroid/os/Message;->arg1:I
+    .line 1182
+    iget v3, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v4, :cond_11
+    if-gez v3, :cond_11
 
-    .line 1176
+    .line 1183
     const-string v3, "Invalid message id received in handleMessage."
 
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1177
+    .line 1184
     return-void
 
-    .line 1179
+    .line 1186
     :cond_11
-    iget-object v4, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+    iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v4, :cond_12
+    if-eqz v3, :cond_12
 
-    .line 1180
+    .line 1187
     const-string v3, "Query COLP error"
 
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1182
+    .line 1189
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
-    .line 1183
+    .line 1190
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1015,95 +1015,95 @@
 
     iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    .line 1185
+    .line 1192
     invoke-static {v5, v2}, Lorg/codeaurora/ims/ImsUtImpl;->access$100(Lorg/codeaurora/ims/ImsUtImpl;Landroid/os/AsyncResult;)Landroid/telephony/ims/ImsReasonInfo;
 
     move-result-object v5
 
-    .line 1183
+    .line 1190
     invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_f
 
-    .line 1188
+    .line 1195
     :cond_12
-    iget-object v4, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v4, :cond_46
+    if-eqz v3, :cond_45
 
-    .line 1191
-    iget-object v4, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    .line 1198
+    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    check-cast v4, Lorg/codeaurora/ims/SuppSvcResponse;
+    check-cast v3, Lorg/codeaurora/ims/SuppSvcResponse;
 
-    .line 1192
-    .restart local v4    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
+    .line 1199
+    .restart local v3    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
+
+    move-result-object v4
+
+    .line 1200
+    .restart local v4    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
+    if-eqz v4, :cond_13
+
+    .line 1201
+    const-string v5, "SuppSvcResponse has failure for COLP query."
+
+    invoke-static {v0, v5}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1202
+    iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+
+    invoke-static {v5}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
     move-result-object v5
 
-    .line 1193
-    .restart local v5    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v5, :cond_13
-
-    .line 1194
-    const-string v3, "SuppSvcResponse has failure for COLP query."
-
-    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 1195
-    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
-
-    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
-
-    move-result-object v3
-
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 1197
-    invoke-virtual {v5}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
+    .line 1204
+    invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
 
     move-result v9
 
-    invoke-virtual {v5}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
+    invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
-    .line 1195
-    invoke-virtual {v3, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    .line 1202
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_4
 
-    .line 1198
+    .line 1205
     :cond_13
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/String;->length()I
+
+    move-result v5
+
+    if-lez v5, :cond_14
+
+    .line 1206
+    new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
+
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+
+    .line 1208
+    .local v5, "error":Landroid/telephony/ims/ImsReasonInfo;
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
     move-result-object v6
 
-    invoke-virtual {v6}, Ljava/lang/String;->length()I
+    iput-object v6, v5, Landroid/telephony/ims/ImsReasonInfo;->mExtraMessage:Ljava/lang/String;
 
-    move-result v6
-
-    if-lez v6, :cond_14
-
-    .line 1199
-    new-instance v3, Landroid/telephony/ims/ImsReasonInfo;
-
-    invoke-direct {v3, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
-
-    .line 1201
-    .local v3, "error":Landroid/telephony/ims/ImsReasonInfo;
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
-
-    move-result-object v6
-
-    iput-object v6, v3, Landroid/telephony/ims/ImsReasonInfo;->mExtraMessage:Ljava/lang/String;
-
-    .line 1202
+    .line 1209
     const-string v6, "ImsUtImpl"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -1114,7 +1114,7 @@
 
     invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -1122,7 +1122,7 @@
 
     invoke-static {v6, v7}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1203
+    .line 1210
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1131,100 +1131,126 @@
 
     iget v7, v1, Landroid/os/Message;->arg1:I
 
-    invoke-virtual {v6, v7, v3}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
-
-    .line 1206
-    .end local v3    # "error":Landroid/telephony/ims/ImsReasonInfo;
-    goto :goto_4
-
-    .line 1208
-    :cond_14
-    new-instance v6, Landroid/telephony/ims/ImsSsInfo;
-
-    invoke-direct {v6}, Landroid/telephony/ims/ImsSsInfo;-><init>()V
-
-    .line 1209
-    .restart local v6    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
-    new-instance v7, Landroid/os/Bundle;
-
-    invoke-direct {v7}, Landroid/os/Bundle;-><init>()V
-
-    .line 1210
-    .local v7, "clInfo":Landroid/os/Bundle;
-    iget-object v8, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
-
-    move-object v4, v8
-
-    check-cast v4, Lorg/codeaurora/ims/SuppSvcResponse;
-
-    .line 1211
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
-
-    move-result v8
-
-    if-ne v8, v3, :cond_15
-
-    .line 1212
-    invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
-
-    move-result v3
-
-    iput v3, v6, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    invoke-virtual {v6, v7, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 1213
-    new-instance v3, Ljava/lang/StringBuilder;
+    .end local v5    # "error":Landroid/telephony/ims/ImsReasonInfo;
+    goto :goto_4
 
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    .line 1215
+    :cond_14
+    new-instance v5, Landroid/telephony/ims/ImsSsInfo;
+
+    invoke-direct {v5}, Landroid/telephony/ims/ImsSsInfo;-><init>()V
+
+    .line 1216
+    .local v5, "ssInfo":Landroid/telephony/ims/ImsSsInfo;
+    new-instance v6, Landroid/os/Bundle;
+
+    invoke-direct {v6}, Landroid/os/Bundle;-><init>()V
+
+    .line 1217
+    .local v6, "clInfo":Landroid/os/Bundle;
+    iget-object v7, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+
+    move-object v3, v7
+
+    check-cast v3, Lorg/codeaurora/ims/SuppSvcResponse;
+
+    .line 1218
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getProvisionStatus()I
+
+    move-result v7
+
+    iput v7, v5, Landroid/telephony/ims/ImsSsInfo;->mProvisionStatus:I
+
+    .line 1219
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v8, "Service= "
 
-    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     iget v8, v1, Landroid/os/Message;->what:I
 
-    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v8, " provision Status= "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v8, v5, Landroid/telephony/ims/ImsSsInfo;->mProvisionStatus:I
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v0, v7}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1222
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getStatus()I
+
+    move-result v7
+
+    iput v7, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+
+    .line 1223
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "Service= "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v8, v1, Landroid/os/Message;->what:I
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     const-string v8, " status= "
 
-    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget v8, v6, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iget v8, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
-    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v7
 
-    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v7}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1215
-    const-string v3, "imsSsInfo"
+    .line 1226
+    const-string v7, "imsSsInfo"
 
-    invoke-virtual {v7, v3, v6}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
+    invoke-virtual {v6, v7, v5}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 1218
-    const-string v3, "Success callback called for Query COLP."
+    .line 1228
+    const-string v7, "Success callback called for Query COLP."
 
-    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v7}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1219
-    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    .line 1229
+    iget-object v7, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v7}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v3
+    move-result-object v7
 
     iget v8, v1, Landroid/os/Message;->arg1:I
 
-    invoke-virtual {v3, v8, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueried(ILandroid/os/Bundle;)V
+    invoke-virtual {v7, v8, v6}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueried(ILandroid/os/Bundle;)V
 
-    .line 1223
-    .end local v4    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
-    .end local v5    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    .end local v6    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
-    .end local v7    # "clInfo":Landroid/os/Bundle;
-    :cond_15
+    .line 1232
+    .end local v3    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
+    .end local v4    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
+    .end local v5    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
+    .end local v6    # "clInfo":Landroid/os/Bundle;
     :goto_4
     goto/16 :goto_f
 
@@ -1243,12 +1269,12 @@
 
     .line 1137
     .local v3, "colr":Lorg/codeaurora/ims/SuppService;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 1138
     iget v4, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v4, :cond_16
+    if-gez v4, :cond_15
 
     .line 1139
     const-string v4, "Invalid message id received in handleMessage."
@@ -1259,10 +1285,10 @@
     return-void
 
     .line 1142
-    :cond_16
+    :cond_15
     iget-object v4, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v4, :cond_18
+    if-eqz v4, :cond_17
 
     .line 1143
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1286,7 +1312,7 @@
     .line 1145
     iget-object v4, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v4, :cond_46
+    if-eqz v4, :cond_45
 
     .line 1146
     invoke-virtual {v3}, Lorg/codeaurora/ims/SuppService;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
@@ -1294,8 +1320,8 @@
     move-result-object v4
 
     .line 1147
-    .local v4, "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v4, :cond_17
+    .restart local v4    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
+    if-eqz v4, :cond_16
 
     .line 1148
     iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -1306,7 +1332,7 @@
 
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
     .line 1151
     invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
@@ -1318,15 +1344,15 @@
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
     .line 1148
-    invoke-virtual {v5, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto :goto_5
 
     .line 1154
-    :cond_17
+    :cond_16
     iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v5}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1351,8 +1377,8 @@
     goto/16 :goto_f
 
     .line 1159
-    :cond_18
-    if-eqz v3, :cond_46
+    :cond_17
+    if-eqz v3, :cond_45
 
     .line 1160
     new-instance v4, Landroid/telephony/ims/ImsSsInfo;
@@ -1368,17 +1394,78 @@
     iput v5, v4, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     .line 1162
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "Service= "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v6, v1, Landroid/os/Message;->what:I
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v6, " status= "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v6, v4, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v0, v5}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1165
+    invoke-virtual {v3}, Lorg/codeaurora/ims/SuppService;->getProvisionStatus()I
+
+    move-result v5
+
+    iput v5, v4, Landroid/telephony/ims/ImsSsInfo;->mProvisionStatus:I
+
+    .line 1166
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "Service= "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v6, v1, Landroid/os/Message;->what:I
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v6, " Provision Status= "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v6, v4, Landroid/telephony/ims/ImsSsInfo;->mProvisionStatus:I
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v0, v5}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1169
     new-instance v5, Landroid/os/Bundle;
 
     invoke-direct {v5}, Landroid/os/Bundle;-><init>()V
 
-    .line 1163
+    .line 1170
     .local v5, "clInfo":Landroid/os/Bundle;
     const-string v6, "imsSsInfo"
 
     invoke-virtual {v5, v6, v4}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 1165
+    .line 1172
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -1397,7 +1484,7 @@
 
     invoke-static {v0, v6}, Lcom/qualcomm/ims/utils/Log;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1166
+    .line 1173
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1408,7 +1495,7 @@
 
     invoke-virtual {v6, v7, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueried(ILandroid/os/Bundle;)V
 
-    .line 1168
+    .line 1175
     .end local v4    # "ssInfo":Landroid/telephony/ims/ImsSsInfo;
     .end local v5    # "clInfo":Landroid/os/Bundle;
     goto/16 :goto_f
@@ -1429,12 +1516,12 @@
 
     .line 1100
     .local v3, "clipStatus":Lorg/codeaurora/ims/SuppService;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 1101
     iget v4, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v4, :cond_19
+    if-gez v4, :cond_18
 
     .line 1102
     const-string v4, "Invalid message id received in handleMessage."
@@ -1445,10 +1532,10 @@
     return-void
 
     .line 1105
-    :cond_19
+    :cond_18
     iget-object v4, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v4, :cond_1b
+    if-eqz v4, :cond_1a
 
     .line 1106
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1472,7 +1559,7 @@
     .line 1107
     iget-object v4, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v4, :cond_46
+    if-eqz v4, :cond_45
 
     .line 1108
     invoke-virtual {v3}, Lorg/codeaurora/ims/SuppService;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
@@ -1481,7 +1568,7 @@
 
     .line 1109
     .local v4, "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v4, :cond_1a
+    if-eqz v4, :cond_19
 
     .line 1110
     iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -1492,7 +1579,7 @@
 
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
     .line 1113
     invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
@@ -1504,15 +1591,15 @@
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
     .line 1110
-    invoke-virtual {v5, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto :goto_6
 
     .line 1116
-    :cond_1a
+    :cond_19
     iget-object v5, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v5}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1537,8 +1624,8 @@
     goto/16 :goto_f
 
     .line 1121
-    :cond_1b
-    if-eqz v3, :cond_46
+    :cond_1a
+    if-eqz v3, :cond_45
 
     .line 1122
     new-instance v4, Landroid/telephony/ims/ImsSsInfo;
@@ -1599,139 +1686,139 @@
     .end local v5    # "clInfo":Landroid/os/Bundle;
     goto/16 :goto_f
 
-    .line 1232
+    .line 1241
     .end local v2    # "ar":Landroid/os/AsyncResult;
     .end local v3    # "clipStatus":Lorg/codeaurora/ims/SuppService;
     :pswitch_6
     new-instance v2, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v2, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v2, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
-    .line 1234
+    .line 1243
     .local v2, "error":Landroid/telephony/ims/ImsReasonInfo;
     iget-object v3, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v3, Landroid/os/AsyncResult;
 
-    .line 1235
+    .line 1244
     .local v3, "ar":Landroid/os/AsyncResult;
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
-    .line 1236
+    .line 1245
     iget v4, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v4, :cond_1c
+    if-gez v4, :cond_1b
 
-    .line 1237
+    .line 1246
     const-string v4, "Invalid message id received in handleMessage."
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1238
+    .line 1247
     return-void
 
-    .line 1240
-    :cond_1c
+    .line 1249
+    :cond_1b
     iget-object v4, v3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v4, :cond_25
+    if-eqz v4, :cond_24
 
-    .line 1241
+    .line 1250
     iget v4, v1, Landroid/os/Message;->what:I
 
     const/4 v5, 0x6
 
-    if-ne v4, v5, :cond_1d
+    if-ne v4, v5, :cond_1c
 
-    .line 1242
+    .line 1251
     const-string v4, "Update CLIR error"
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     goto :goto_7
 
-    .line 1244
-    :cond_1d
+    .line 1253
+    :cond_1c
     iget v4, v1, Landroid/os/Message;->what:I
 
     const/16 v5, 0x8
 
-    if-ne v4, v5, :cond_1e
+    if-ne v4, v5, :cond_1d
 
-    .line 1245
+    .line 1254
     const-string v4, "Update CLIP error"
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     goto :goto_7
 
-    .line 1247
-    :cond_1e
+    .line 1256
+    :cond_1d
     iget v4, v1, Landroid/os/Message;->what:I
 
     const/16 v5, 0xa
 
-    if-ne v4, v5, :cond_1f
+    if-ne v4, v5, :cond_1e
 
-    .line 1248
+    .line 1257
     const-string v4, "Update COLR error"
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     goto :goto_7
 
-    .line 1250
-    :cond_1f
+    .line 1259
+    :cond_1e
     iget v4, v1, Landroid/os/Message;->what:I
 
     const/16 v5, 0xc
 
-    if-ne v4, v5, :cond_20
+    if-ne v4, v5, :cond_1f
 
-    .line 1251
+    .line 1260
     const-string v4, "Update COLP error"
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1253
-    :cond_20
+    .line 1262
+    :cond_1f
     :goto_7
     iget-object v4, v3, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v4, :cond_23
+    if-eqz v4, :cond_22
 
-    .line 1256
+    .line 1265
     iget-object v4, v3, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
     check-cast v4, Lorg/codeaurora/ims/SuppSvcResponse;
 
-    .line 1258
+    .line 1267
     .local v4, "response":Lorg/codeaurora/ims/SuppSvcResponse;
     invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
 
     move-result-object v5
 
-    .line 1259
+    .line 1268
     .local v5, "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v5, :cond_21
+    if-eqz v5, :cond_20
 
-    .line 1260
+    .line 1269
     const-string v6, "SuppSvcResponse has failure for CLIP/COLP update"
 
     invoke-static {v0, v6}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1262
+    .line 1271
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
     move-result-object v6
 
-    iget v7, v1, Landroid/os/Message;->arg1:I
+    iget v8, v1, Landroid/os/Message;->arg1:I
 
     new-instance v9, Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 1265
+    .line 1274
     invoke-virtual {v5}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
 
     move-result v10
@@ -1740,15 +1827,15 @@
 
     move-result-object v11
 
-    invoke-direct {v9, v8, v10, v11}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v9, v7, v10, v11}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
-    .line 1262
-    invoke-virtual {v6, v7, v9}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    .line 1271
+    invoke-virtual {v6, v8, v9}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto :goto_8
 
-    .line 1266
-    :cond_21
+    .line 1275
+    :cond_20
     invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
     move-result-object v6
@@ -1757,16 +1844,16 @@
 
     move-result v6
 
-    if-nez v6, :cond_22
+    if-nez v6, :cond_21
 
-    .line 1267
+    .line 1276
     invoke-virtual {v4}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
     move-result-object v6
 
     iput-object v6, v2, Landroid/telephony/ims/ImsReasonInfo;->mExtraMessage:Ljava/lang/String;
 
-    .line 1268
+    .line 1277
     const-string v6, "ImsUtImpl"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -1793,7 +1880,7 @@
 
     invoke-static {v6, v7}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1270
+    .line 1279
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1806,15 +1893,15 @@
 
     goto :goto_8
 
-    .line 1273
-    :cond_22
+    .line 1282
+    :cond_21
     const-string v6, "ImsUtImpl"
 
     const-string v7, "SuppSvcResponse failure with neither errordetails nor failurecause"
 
     invoke-static {v6, v7}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1275
+    .line 1284
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v6}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1825,33 +1912,33 @@
 
     iget-object v8, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    .line 1277
+    .line 1286
     invoke-static {v8, v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$100(Lorg/codeaurora/ims/ImsUtImpl;Landroid/os/AsyncResult;)Landroid/telephony/ims/ImsReasonInfo;
 
     move-result-object v8
 
-    .line 1275
+    .line 1284
     invoke-virtual {v6, v7, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
-    .line 1279
+    .line 1288
     .end local v4    # "response":Lorg/codeaurora/ims/SuppSvcResponse;
     .end local v5    # "sipError":Landroid/telephony/ims/ImsReasonInfo;
     :goto_8
     goto/16 :goto_f
 
-    :cond_23
+    :cond_22
     iget-object v4, v3, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v4, :cond_24
+    if-eqz v4, :cond_23
 
-    .line 1280
+    .line 1289
     const-string v4, "ImsUtImpl"
 
     const-string v5, "SuppSvcResponse failure with valid userObj"
 
     invoke-static {v4, v5}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1281
+    .line 1290
     iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1862,25 +1949,25 @@
 
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    .line 1283
+    .line 1292
     invoke-static {v6, v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$100(Lorg/codeaurora/ims/ImsUtImpl;Landroid/os/AsyncResult;)Landroid/telephony/ims/ImsReasonInfo;
 
     move-result-object v6
 
-    .line 1281
+    .line 1290
     invoke-virtual {v4, v5, v6}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_f
 
-    .line 1286
-    :cond_24
+    .line 1295
+    :cond_23
     const-string v4, "ImsUtImpl"
 
     const-string v5, "SuppSvcResponse failure with neither ar.result nor userObj"
 
     invoke-static {v4, v5}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1288
+    .line 1297
     iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1891,18 +1978,18 @@
 
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    .line 1290
+    .line 1299
     invoke-static {v6, v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$100(Lorg/codeaurora/ims/ImsUtImpl;Landroid/os/AsyncResult;)Landroid/telephony/ims/ImsReasonInfo;
 
     move-result-object v6
 
-    .line 1288
+    .line 1297
     invoke-virtual {v4, v5, v6}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto/16 :goto_f
 
-    .line 1293
-    :cond_25
+    .line 1302
+    :cond_24
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -1921,7 +2008,7 @@
 
     invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 1295
+    .line 1304
     iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
     invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
@@ -1944,12 +2031,12 @@
 
     .line 1070
     .local v2, "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 1071
     iget v3, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v3, :cond_26
+    if-gez v3, :cond_25
 
     .line 1072
     const-string v3, "Invalid message id received in handleMessage."
@@ -1960,15 +2047,15 @@
     return-void
 
     .line 1075
-    :cond_26
+    :cond_25
     iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v3, :cond_28
+    if-eqz v3, :cond_27
 
     .line 1076
     iget v3, v1, Landroid/os/Message;->what:I
 
-    if-ne v3, v6, :cond_27
+    if-ne v3, v5, :cond_26
 
     .line 1077
     const-string v3, "Query CLIR error"
@@ -1976,10 +2063,10 @@
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1080
-    :cond_27
+    :cond_26
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 1081
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -2003,10 +2090,10 @@
     goto/16 :goto_f
 
     .line 1086
-    :cond_28
+    :cond_27
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 1087
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
@@ -2055,12 +2142,12 @@
 
     .line 1014
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 1015
     iget v3, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v3, :cond_29
+    if-gez v3, :cond_28
 
     .line 1016
     const-string v3, "Invalid message id received in handleMessage."
@@ -2071,10 +2158,10 @@
     return-void
 
     .line 1019
-    :cond_29
+    :cond_28
     iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v3, :cond_2a
+    if-eqz v3, :cond_29
 
     .line 1020
     const-string v3, "Query CW error"
@@ -2084,7 +2171,7 @@
     .line 1021
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 1022
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -2108,10 +2195,10 @@
     goto/16 :goto_f
 
     .line 1027
-    :cond_2a
+    :cond_29
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v3, :cond_2e
+    if-eqz v3, :cond_2d
 
     .line 1028
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
@@ -2120,7 +2207,7 @@
 
     .line 1030
     .local v3, "cwResponse":[I
-    new-array v4, v7, [Landroid/telephony/ims/ImsSsInfo;
+    new-array v4, v6, [Landroid/telephony/ims/ImsSsInfo;
 
     .line 1031
     .local v4, "callWaitingInfoList":[Landroid/telephony/ims/ImsSsInfo;
@@ -2130,40 +2217,40 @@
 
     .line 1033
     .local v5, "callWaitingInfo":Landroid/telephony/ims/ImsSsInfo;
-    aget v6, v3, v9
+    aget v9, v3, v8
 
-    if-ne v6, v7, :cond_2c
+    if-ne v9, v6, :cond_2b
 
     .line 1034
-    aget v6, v3, v7
+    aget v7, v3, v6
 
-    and-int/2addr v6, v7
+    and-int/2addr v7, v6
 
-    if-ne v6, v7, :cond_2b
+    if-ne v7, v6, :cond_2a
 
     .line 1035
-    iput v7, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iput v6, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     goto :goto_9
 
     .line 1037
-    :cond_2b
-    iput v9, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    :cond_2a
+    iput v8, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     goto :goto_9
 
     .line 1040
-    :cond_2c
-    aget v6, v3, v9
+    :cond_2b
+    aget v6, v3, v8
 
-    if-nez v6, :cond_2d
+    if-nez v6, :cond_2c
 
     .line 1041
-    iput v9, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
+    iput v8, v5, Landroid/telephony/ims/ImsSsInfo;->mStatus:I
 
     .line 1053
     :goto_9
-    aput-object v5, v4, v9
+    aput-object v5, v4, v8
 
     .line 1055
     iget-object v6, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -2186,7 +2273,7 @@
     .restart local v3    # "cwResponse":[I
     .restart local v4    # "callWaitingInfoList":[Landroid/telephony/ims/ImsSsInfo;
     .restart local v5    # "callWaitingInfo":Landroid/telephony/ims/ImsSsInfo;
-    :cond_2d
+    :cond_2c
     const-string v6, "No service status received for CallWaitingInfo."
 
     invoke-static {v0, v6}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
@@ -2198,13 +2285,13 @@
 
     move-result-object v6
 
-    iget v7, v1, Landroid/os/Message;->arg1:I
+    iget v9, v1, Landroid/os/Message;->arg1:I
 
     new-instance v10, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v10, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v10, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
-    invoke-virtual {v6, v7, v10}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v6, v9, v10}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 1048
     return-void
@@ -2213,7 +2300,7 @@
     .end local v3    # "cwResponse":[I
     .end local v4    # "callWaitingInfoList":[Landroid/telephony/ims/ImsSsInfo;
     .end local v5    # "callWaitingInfo":Landroid/telephony/ims/ImsSsInfo;
-    :cond_2e
+    :cond_2d
     const-string v3, "Null response received for Query CW!"
 
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
@@ -2229,7 +2316,7 @@
 
     new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v5, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
@@ -2244,12 +2331,12 @@
 
     .line 839
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 840
-    iget v3, v1, Landroid/os/Message;->arg1:I
+    iget v5, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v3, :cond_2f
+    if-gez v5, :cond_2e
 
     .line 841
     const-string v3, "Invalid message id received in handleMessage."
@@ -2260,15 +2347,15 @@
     return-void
 
     .line 844
-    :cond_2f
-    iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+    :cond_2e
+    iget-object v5, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v3, :cond_36
+    if-eqz v5, :cond_35
 
     .line 845
-    iget v3, v1, Landroid/os/Message;->what:I
+    iget v5, v1, Landroid/os/Message;->what:I
 
-    if-ne v3, v5, :cond_30
+    if-ne v5, v4, :cond_2f
 
     .line 846
     const-string v3, "Update CF error"
@@ -2278,10 +2365,10 @@
     goto :goto_a
 
     .line 848
-    :cond_30
-    iget v3, v1, Landroid/os/Message;->what:I
+    :cond_2f
+    iget v4, v1, Landroid/os/Message;->what:I
 
-    if-ne v3, v4, :cond_31
+    if-ne v4, v3, :cond_30
 
     .line 849
     const-string v3, "Update CW error"
@@ -2289,11 +2376,11 @@
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 852
-    :cond_31
+    :cond_30
     :goto_a
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v3, :cond_34
+    if-eqz v3, :cond_33
 
     .line 855
     iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
@@ -2308,7 +2395,7 @@
 
     .line 858
     .local v4, "sipError":Landroid/telephony/ims/ImsReasonInfo;
-    if-eqz v4, :cond_32
+    if-eqz v4, :cond_31
 
     .line 859
     new-instance v5, Ljava/lang/StringBuilder;
@@ -2338,7 +2425,7 @@
 
     iget v6, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v7, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v8, Landroid/telephony/ims/ImsReasonInfo;
 
     .line 863
     invoke-virtual {v4}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
@@ -2349,15 +2436,15 @@
 
     move-result-object v10
 
-    invoke-direct {v7, v8, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
+    invoke-direct {v8, v7, v9, v10}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
     .line 861
-    invoke-virtual {v5, v6, v7}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v5, v6, v8}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationUpdateFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     goto :goto_b
 
     .line 864
-    :cond_32
+    :cond_31
     invoke-virtual {v3}, Lorg/codeaurora/ims/SuppSvcResponse;->getFailureCause()Ljava/lang/String;
 
     move-result-object v5
@@ -2366,12 +2453,12 @@
 
     move-result v5
 
-    if-lez v5, :cond_33
+    if-lez v5, :cond_32
 
     .line 865
     new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v5, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     .line 868
     .local v5, "error":Landroid/telephony/ims/ImsReasonInfo;
@@ -2424,7 +2511,7 @@
     goto :goto_b
 
     .line 874
-    :cond_33
+    :cond_32
     const-string v5, "ImsUtImpl"
 
     const-string v6, "SuppSvcResponse failure with neither errordetails nor failurecause"
@@ -2457,10 +2544,10 @@
     goto/16 :goto_f
 
     .line 880
-    :cond_34
+    :cond_33
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_35
+    if-eqz v3, :cond_34
 
     .line 881
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -2484,7 +2571,7 @@
     goto/16 :goto_f
 
     .line 885
-    :cond_35
+    :cond_34
     const-string v3, "ImsUtImpl"
 
     const-string v4, "SuppSvcResponse failure with neither ar.result nor userObj"
@@ -2513,7 +2600,7 @@
     goto/16 :goto_f
 
     .line 892
-    :cond_36
+    :cond_35
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -2554,12 +2641,12 @@
 
     .line 901
     .restart local v2    # "ar":Landroid/os/AsyncResult;
-    if-eqz v2, :cond_46
+    if-eqz v2, :cond_45
 
     .line 902
-    iget v3, v1, Landroid/os/Message;->arg1:I
+    iget v9, v1, Landroid/os/Message;->arg1:I
 
-    if-gez v3, :cond_37
+    if-gez v9, :cond_36
 
     .line 903
     const-string v3, "Invalid message id received in handleMessage."
@@ -2570,10 +2657,10 @@
     return-void
 
     .line 906
-    :cond_37
-    iget-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
+    :cond_36
+    iget-object v9, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    if-eqz v3, :cond_38
+    if-eqz v9, :cond_37
 
     .line 907
     const-string v3, "Query CF error"
@@ -2583,7 +2670,7 @@
     .line 908
     iget-object v3, v2, Landroid/os/AsyncResult;->userObj:Ljava/lang/Object;
 
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 909
     iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
@@ -2607,17 +2694,17 @@
     goto/16 :goto_f
 
     .line 913
-    :cond_38
-    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    :cond_37
+    iget-object v9, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    if-eqz v3, :cond_45
+    if-eqz v9, :cond_44
 
     .line 914
-    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    iget-object v9, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    instance-of v3, v3, [Lorg/codeaurora/ims/ImsCallForwardTimerInfo;
+    instance-of v9, v9, [Lorg/codeaurora/ims/ImsCallForwardTimerInfo;
 
-    if-eqz v3, :cond_39
+    if-eqz v9, :cond_38
 
     .line 915
     const-string v3, "Handle CFUT response"
@@ -2631,47 +2718,47 @@
     return-void
 
     .line 919
-    :cond_39
-    iget-object v3, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
+    :cond_38
+    iget-object v9, v2, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
-    check-cast v3, [Lcom/android/internal/telephony/CallForwardInfo;
+    check-cast v9, [Lcom/android/internal/telephony/CallForwardInfo;
 
     .line 921
-    .local v3, "cfInfoList":[Lcom/android/internal/telephony/CallForwardInfo;
-    array-length v10, v3
+    .local v9, "cfInfoList":[Lcom/android/internal/telephony/CallForwardInfo;
+    array-length v10, v9
 
-    if-ge v10, v7, :cond_3a
+    if-ge v10, v6, :cond_39
 
     .line 922
-    const-string v4, "CallForwardInfo[] has no elements!"
+    const-string v3, "CallForwardInfo[] has no elements!"
 
-    invoke-static {v0, v4}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 923
-    iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget v5, v1, Landroid/os/Message;->arg1:I
+    iget v4, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v6, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v6, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
-    invoke-virtual {v4, v5, v6}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 925
     return-void
 
     .line 928
-    :cond_3a
+    :cond_39
     const/4 v10, 0x0
 
     .line 931
     .local v10, "badCfResponse":Z
-    array-length v11, v3
+    array-length v11, v9
 
     new-array v11, v11, [Landroid/telephony/ims/ImsCallForwardInfo;
 
@@ -2679,17 +2766,17 @@
     .local v11, "callForwardInfoList":[Landroid/telephony/ims/ImsCallForwardInfo;
     move v12, v10
 
-    move v10, v9
+    move v10, v8
 
     .local v10, "i":I
     .local v12, "badCfResponse":Z
     :goto_c
-    array-length v13, v3
+    array-length v13, v9
 
-    if-ge v10, v13, :cond_44
+    if-ge v10, v13, :cond_43
 
     .line 935
-    aget-object v13, v3, v10
+    aget-object v13, v9, v10
 
     .line 936
     .local v13, "cfInfo":Lcom/android/internal/telephony/CallForwardInfo;
@@ -2701,26 +2788,26 @@
     .local v14, "callForwardInfo":Landroid/telephony/ims/ImsCallForwardInfo;
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->status:I
 
-    if-ne v15, v7, :cond_3b
+    if-ne v15, v6, :cond_3a
 
     .line 939
-    iput v7, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mStatus:I
+    iput v6, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mStatus:I
 
     goto :goto_d
 
     .line 941
-    :cond_3b
+    :cond_3a
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->status:I
 
-    if-nez v15, :cond_3c
+    if-nez v15, :cond_3b
 
     .line 942
-    iput v9, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mStatus:I
+    iput v8, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mStatus:I
 
     goto :goto_d
 
     .line 945
-    :cond_3c
+    :cond_3b
     const/4 v12, 0x1
 
     .line 946
@@ -2732,32 +2819,32 @@
     :goto_d
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
-    if-nez v15, :cond_3d
+    if-nez v15, :cond_3c
 
     .line 950
-    iput v9, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
+    iput v8, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
 
     goto :goto_e
 
     .line 952
-    :cond_3d
+    :cond_3c
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
-    if-ne v15, v7, :cond_3e
+    if-ne v15, v6, :cond_3d
 
     .line 953
-    iput v7, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
+    iput v6, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
 
     goto :goto_e
 
     .line 955
-    :cond_3e
+    :cond_3d
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
-    if-ne v15, v5, :cond_3f
+    if-ne v15, v4, :cond_3e
 
     .line 956
-    iput v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
+    iput v4, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
 
     .line 958
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->timeSeconds:I
@@ -2767,96 +2854,96 @@
     goto :goto_e
 
     .line 960
-    :cond_3f
+    :cond_3e
     iget v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
-    const/4 v5, 0x3
+    const/4 v4, 0x3
 
-    if-ne v15, v5, :cond_40
+    if-ne v15, v4, :cond_3f
 
     .line 961
-    iput v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
-
-    goto :goto_e
-
-    .line 963
-    :cond_40
-    iget v5, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
-
-    if-ne v5, v4, :cond_41
-
-    .line 964
     iput v4, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
 
     goto :goto_e
 
-    .line 966
-    :cond_41
-    iget v5, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
+    .line 963
+    :cond_3f
+    iget v4, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
 
-    if-ne v5, v6, :cond_42
+    if-ne v4, v3, :cond_40
+
+    .line 964
+    iput v3, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
+
+    goto :goto_e
+
+    .line 966
+    :cond_40
+    iget v4, v13, Lcom/android/internal/telephony/CallForwardInfo;->reason:I
+
+    if-ne v4, v5, :cond_41
 
     .line 967
-    iput v6, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
+    iput v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mCondition:I
 
     goto :goto_e
 
     .line 970
-    :cond_42
-    const/4 v5, 0x1
+    :cond_41
+    const/4 v4, 0x1
 
     .line 971
     .end local v12    # "badCfResponse":Z
-    .local v5, "badCfResponse":Z
+    .local v4, "badCfResponse":Z
     const-string v12, "Bad reason in Query CF response."
 
     invoke-static {v0, v12}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 985
-    move v12, v5
+    move v12, v4
 
-    .end local v5    # "badCfResponse":Z
+    .end local v4    # "badCfResponse":Z
     .restart local v12    # "badCfResponse":Z
     :goto_e
-    if-eqz v12, :cond_43
+    if-eqz v12, :cond_42
 
     .line 986
-    iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget v5, v1, Landroid/os/Message;->arg1:I
+    iget v4, v1, Landroid/os/Message;->arg1:I
 
-    new-instance v6, Landroid/telephony/ims/ImsReasonInfo;
+    new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v6, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
-    invoke-virtual {v4, v5, v6}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
+    invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
     .line 989
     return-void
 
     .line 992
-    :cond_43
-    iget v5, v13, Lcom/android/internal/telephony/CallForwardInfo;->toa:I
+    :cond_42
+    iget v4, v13, Lcom/android/internal/telephony/CallForwardInfo;->toa:I
 
-    iput v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mToA:I
+    iput v4, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mToA:I
 
     .line 993
-    new-instance v5, Ljava/lang/String;
+    new-instance v4, Ljava/lang/String;
 
     iget-object v15, v13, Lcom/android/internal/telephony/CallForwardInfo;->number:Ljava/lang/String;
 
-    invoke-direct {v5, v15}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
+    invoke-direct {v4, v15}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
 
-    iput-object v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mNumber:Ljava/lang/String;
+    iput-object v4, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mNumber:Ljava/lang/String;
 
     .line 994
-    iget v5, v13, Lcom/android/internal/telephony/CallForwardInfo;->serviceClass:I
+    iget v4, v13, Lcom/android/internal/telephony/CallForwardInfo;->serviceClass:I
 
-    iput v5, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mServiceClass:I
+    iput v4, v14, Landroid/telephony/ims/ImsCallForwardInfo;->mServiceClass:I
 
     .line 996
     aput-object v14, v11, v10
@@ -2864,7 +2951,7 @@
     .line 934
     add-int/lit8 v10, v10, 0x1
 
-    const/4 v5, 0x2
+    const/4 v4, 0x2
 
     goto :goto_c
 
@@ -2872,25 +2959,25 @@
     .end local v10    # "i":I
     .end local v13    # "cfInfo":Lcom/android/internal/telephony/CallForwardInfo;
     .end local v14    # "callForwardInfo":Landroid/telephony/ims/ImsCallForwardInfo;
-    :cond_44
-    iget-object v4, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
+    :cond_43
+    iget-object v3, v0, Lorg/codeaurora/ims/ImsUtImpl$ImsUtImplHandler;->this$0:Lorg/codeaurora/ims/ImsUtImpl;
 
-    invoke-static {v4}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
+    invoke-static {v3}, Lorg/codeaurora/ims/ImsUtImpl;->access$000(Lorg/codeaurora/ims/ImsUtImpl;)Lorg/codeaurora/ims/ImsUtListenerImpl;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget v5, v1, Landroid/os/Message;->arg1:I
+    iget v4, v1, Landroid/os/Message;->arg1:I
 
-    invoke-virtual {v4, v5, v11}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationCallForwardQueried(I[Landroid/telephony/ims/ImsCallForwardInfo;)V
+    invoke-virtual {v3, v4, v11}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationCallForwardQueried(I[Landroid/telephony/ims/ImsCallForwardInfo;)V
 
     .line 1002
-    .end local v3    # "cfInfoList":[Lcom/android/internal/telephony/CallForwardInfo;
+    .end local v9    # "cfInfoList":[Lcom/android/internal/telephony/CallForwardInfo;
     .end local v11    # "callForwardInfoList":[Landroid/telephony/ims/ImsCallForwardInfo;
     .end local v12    # "badCfResponse":Z
     goto :goto_f
 
     .line 1004
-    :cond_45
+    :cond_44
     const-string v3, "Null response received for Query CF!"
 
     invoke-static {v0, v3}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
@@ -2906,13 +2993,13 @@
 
     new-instance v5, Landroid/telephony/ims/ImsReasonInfo;
 
-    invoke-direct {v5, v8, v9}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+    invoke-direct {v5, v7, v8}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
 
     invoke-virtual {v3, v4, v5}, Lorg/codeaurora/ims/ImsUtListenerImpl;->utConfigurationQueryFailed(ILandroid/telephony/ims/ImsReasonInfo;)V
 
-    .line 1310
+    .line 1319
     .end local v2    # "ar":Landroid/os/AsyncResult;
-    :cond_46
+    :cond_45
     :goto_f
     return-void
 

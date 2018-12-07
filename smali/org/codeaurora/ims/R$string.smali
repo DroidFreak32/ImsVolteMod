@@ -37,14 +37,6 @@
 
 .field public static final incoming_call_failed_low_battery:I = 0x7f040000
 
-.field public static final rtt_downgrade_sent:I = 0x7f040014
-
-.field public static final rtt_modify_response:I = 0x7f040012
-
-.field public static final rtt_upgrade_received:I = 0x7f040011
-
-.field public static final rtt_upgrade_sent:I = 0x7f040013
-
 .field public static final wifi_calling_enable_dialog_cancel:I = 0x7f04000e
 
 .field public static final wifi_calling_enable_dialog_enable:I = 0x7f04000f
@@ -62,7 +54,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 90
+    .line 92
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -1,9 +1,12 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: whyred.apk
+apkFileName: daisy.apk
 compressionType: false
 doNotCompress:
+- dex
 - arsc
 - png
+- res/drawable-hdpi-v4/volte_icon
+- res/drawable-mdpi-v4/volte_icon
 - res/drawable-xhdpi-v4/volte_icon
 isFrameworkApk: false
 packageInfo:

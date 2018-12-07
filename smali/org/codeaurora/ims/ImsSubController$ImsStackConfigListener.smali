@@ -15,5 +15,5 @@
 
 
 # virtual methods
-.method public abstract onStackConfigChanged([Z)V
+.method public abstract onStackConfigChanged([ZI)V
 .end method

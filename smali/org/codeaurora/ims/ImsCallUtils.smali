@@ -82,6 +82,19 @@
     return v0
 .end method
 
+.method public static clearBits(II)I
+    .locals 1
+    .param p0, "property"    # I
+    .param p1, "mask"    # I
+
+    .line 627
+    not-int v0, p1
+
+    and-int/2addr v0, p0
+
+    return v0
+.end method
+
 .method public static convertCallTypeToVideoState(I)I
     .locals 2
     .param p0, "callType"    # I
@@ -150,425 +163,425 @@
     .locals 1
     .param p0, "config"    # I
 
-    .line 352
+    .line 353
     packed-switch p0, :pswitch_data_0
 
-    .line 493
+    .line 494
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v0}, Ljava/lang/IllegalArgumentException;-><init>()V
 
     throw v0
 
-    .line 488
+    .line 489
     :pswitch_0
     const/16 v0, 0x48
 
     return v0
 
-    .line 486
+    .line 487
     :pswitch_1
     const/16 v0, 0x47
 
     return v0
 
-    .line 484
+    .line 485
     :pswitch_2
     const/16 v0, 0x46
 
     return v0
 
-    .line 482
+    .line 483
     :pswitch_3
     const/16 v0, 0x45
 
     return v0
 
-    .line 480
+    .line 481
     :pswitch_4
     const/16 v0, 0x43
 
     return v0
 
-    .line 478
+    .line 479
     :pswitch_5
     const/16 v0, 0x42
 
     return v0
 
-    .line 476
+    .line 477
     :pswitch_6
     const/16 v0, 0x41
 
     return v0
 
-    .line 474
+    .line 475
     :pswitch_7
     const/16 v0, 0x40
 
     return v0
 
-    .line 472
+    .line 473
     :pswitch_8
     const/16 v0, 0x3f
 
     return v0
 
-    .line 470
+    .line 471
     :pswitch_9
     const/16 v0, 0x3e
 
     return v0
 
-    .line 468
+    .line 469
     :pswitch_a
     const/16 v0, 0x3d
 
     return v0
 
-    .line 466
+    .line 467
     :pswitch_b
     const/16 v0, 0x3c
 
     return v0
 
-    .line 464
+    .line 465
     :pswitch_c
     const/16 v0, 0x3b
 
     return v0
 
-    .line 462
+    .line 463
     :pswitch_d
     const/16 v0, 0x3a
 
     return v0
 
-    .line 460
+    .line 461
     :pswitch_e
     const/16 v0, 0x39
 
     return v0
 
-    .line 458
+    .line 459
     :pswitch_f
     const/16 v0, 0x38
 
     return v0
 
-    .line 456
+    .line 457
     :pswitch_10
     const/16 v0, 0x37
 
     return v0
 
-    .line 454
+    .line 455
     :pswitch_11
     const/16 v0, 0x36
 
     return v0
 
-    .line 452
+    .line 453
     :pswitch_12
     const/16 v0, 0x35
 
     return v0
 
-    .line 450
+    .line 451
     :pswitch_13
     const/16 v0, 0x34
 
     return v0
 
-    .line 448
+    .line 449
     :pswitch_14
     const/16 v0, 0x33
 
     return v0
 
-    .line 446
+    .line 447
     :pswitch_15
     const/16 v0, 0x32
 
     return v0
 
-    .line 444
+    .line 445
     :pswitch_16
     const/16 v0, 0x31
 
     return v0
 
-    .line 442
+    .line 443
     :pswitch_17
     const/16 v0, 0x30
 
     return v0
 
-    .line 440
+    .line 441
     :pswitch_18
     const/16 v0, 0x2f
 
     return v0
 
-    .line 438
+    .line 439
     :pswitch_19
     const/16 v0, 0x2e
 
     return v0
 
-    .line 436
+    .line 437
     :pswitch_1a
     const/16 v0, 0x2d
 
     return v0
 
-    .line 434
+    .line 435
     :pswitch_1b
     const/16 v0, 0x2c
 
     return v0
 
-    .line 432
+    .line 433
     :pswitch_1c
     const/16 v0, 0x2b
 
     return v0
 
-    .line 430
+    .line 431
     :pswitch_1d
     const/16 v0, 0x2a
 
     return v0
 
-    .line 428
+    .line 429
     :pswitch_1e
     const/16 v0, 0x29
 
     return v0
 
-    .line 426
+    .line 427
     :pswitch_1f
     const/16 v0, 0x28
 
     return v0
 
-    .line 424
+    .line 425
     :pswitch_20
     const/16 v0, 0x27
 
     return v0
 
-    .line 422
+    .line 423
     :pswitch_21
     const/16 v0, 0x26
 
     return v0
 
-    .line 420
+    .line 421
     :pswitch_22
     const/16 v0, 0x25
 
     return v0
 
-    .line 418
+    .line 419
     :pswitch_23
     const/16 v0, 0x24
 
     return v0
 
-    .line 416
+    .line 417
     :pswitch_24
     const/16 v0, 0x23
 
     return v0
 
-    .line 410
+    .line 411
     :pswitch_25
     const/16 v0, 0x22
 
     return v0
 
-    .line 414
+    .line 415
     :pswitch_26
     const/16 v0, 0x21
 
     return v0
 
-    .line 412
+    .line 413
     :pswitch_27
     const/16 v0, 0x1a
 
     return v0
 
-    .line 408
+    .line 409
     :pswitch_28
     const/16 v0, 0x44
 
     return v0
 
-    .line 406
+    .line 407
     :pswitch_29
     const/16 v0, 0x1d
 
     return v0
 
-    .line 404
+    .line 405
     :pswitch_2a
     const/16 v0, 0x1c
 
     return v0
 
-    .line 402
+    .line 403
     :pswitch_2b
     const/16 v0, 0x19
 
     return v0
 
-    .line 400
+    .line 401
     :pswitch_2c
     const/16 v0, 0x18
 
     return v0
 
-    .line 398
+    .line 399
     :pswitch_2d
     const/16 v0, 0x17
 
     return v0
 
-    .line 396
+    .line 397
     :pswitch_2e
     const/16 v0, 0x16
 
     return v0
 
-    .line 394
+    .line 395
     :pswitch_2f
     const/16 v0, 0x15
 
     return v0
 
-    .line 392
+    .line 393
     :pswitch_30
     const/16 v0, 0x14
 
     return v0
 
-    .line 390
+    .line 391
     :pswitch_31
     const/16 v0, 0x13
 
     return v0
 
-    .line 388
+    .line 389
     :pswitch_32
     const/16 v0, 0x12
 
     return v0
 
-    .line 490
+    .line 491
     :pswitch_33
     const/16 v0, 0x1e
 
     return v0
 
-    .line 386
+    .line 387
     :pswitch_34
     const/16 v0, 0x11
 
     return v0
 
-    .line 384
+    .line 385
     :pswitch_35
     const/16 v0, 0x10
 
     return v0
 
-    .line 382
+    .line 383
     :pswitch_36
     const/16 v0, 0xf
 
     return v0
 
-    .line 380
+    .line 381
     :pswitch_37
     const/16 v0, 0xe
 
     return v0
 
-    .line 378
+    .line 379
     :pswitch_38
     const/16 v0, 0xd
 
     return v0
 
-    .line 376
+    .line 377
     :pswitch_39
     const/16 v0, 0xc
 
     return v0
 
-    .line 374
+    .line 375
     :pswitch_3a
     const/16 v0, 0xb
 
     return v0
 
-    .line 372
+    .line 373
     :pswitch_3b
     const/16 v0, 0xa
 
     return v0
 
-    .line 370
+    .line 371
     :pswitch_3c
     const/16 v0, 0x9
 
     return v0
 
-    .line 368
+    .line 369
     :pswitch_3d
     const/16 v0, 0x8
 
     return v0
 
-    .line 366
+    .line 367
     :pswitch_3e
     const/4 v0, 0x7
 
     return v0
 
-    .line 364
+    .line 365
     :pswitch_3f
     const/4 v0, 0x6
 
     return v0
 
-    .line 362
+    .line 363
     :pswitch_40
     const/4 v0, 0x5
 
     return v0
 
-    .line 360
+    .line 361
     :pswitch_41
     const/4 v0, 0x4
 
     return v0
 
-    .line 358
+    .line 359
     :pswitch_42
     const/4 v0, 0x3
 
     return v0
 
-    .line 356
+    .line 357
     :pswitch_43
     const/4 v0, 0x2
 
     return v0
 
-    .line 354
+    .line 355
     :pswitch_44
     const/4 v0, 0x1
 
@@ -708,14 +721,6 @@
 
     .line 233
     .local v0, "internalCallType":I
-    const/4 v1, 0x7
-
-    if-eq p0, v1, :cond_1
-
-    const/16 v1, 0xa
-
-    if-eq p0, v1, :cond_0
-
     packed-switch p0, :pswitch_data_0
 
     .line 252
@@ -739,50 +744,54 @@
 
     goto :goto_0
 
-    .line 246
+    .line 243
     :pswitch_0
+    const/4 v0, 0x4
+
+    .line 244
+    goto :goto_0
+
+    .line 249
+    :pswitch_1
+    const/4 v0, 0x2
+
+    .line 250
+    goto :goto_0
+
+    .line 246
+    :pswitch_2
     const/4 v0, 0x1
 
     .line 247
     goto :goto_0
 
     .line 240
-    :pswitch_1
+    :pswitch_3
     const/4 v0, 0x3
 
     .line 241
     goto :goto_0
 
     .line 236
-    :pswitch_2
+    :pswitch_4
     const/4 v0, 0x0
 
     .line 237
-    goto :goto_0
-
-    .line 249
-    :cond_0
-    const/4 v0, 0x2
-
-    .line 250
-    goto :goto_0
-
-    .line 243
-    :cond_1
-    const/4 v0, 0x4
-
-    .line 244
     nop
 
     .line 255
     :goto_0
     return v0
 
+    nop
+
     :pswitch_data_0
     .packed-switch 0x1
+        :pswitch_4
+        :pswitch_4
+        :pswitch_3
+        :pswitch_3
         :pswitch_2
-        :pswitch_2
-        :pswitch_1
         :pswitch_1
         :pswitch_0
     .end packed-switch
@@ -873,30 +882,30 @@
     .locals 5
     .param p0, "ar"    # Landroid/os/AsyncResult;
 
-    .line 576
+    .line 577
     const/4 v0, 0x0
 
-    .line 577
+    .line 578
     .local v0, "sipErrorInfo":Landroid/telephony/ims/ImsReasonInfo;
     const/4 v1, 0x0
 
-    .line 579
+    .line 580
     .local v1, "code":I
     if-eqz p0, :cond_0
 
-    .line 580
+    .line 581
     iget-object v2, p0, Landroid/os/AsyncResult;->result:Ljava/lang/Object;
 
     move-object v0, v2
 
     check-cast v0, Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 581
+    .line 582
     iget-object v2, p0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
     if-eqz v2, :cond_0
 
-    .line 582
+    .line 583
     iget-object v2, p0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
     check-cast v2, Lorg/codeaurora/ims/ImsRilException;
@@ -905,22 +914,70 @@
 
     move-result v1
 
-    .line 585
+    .line 586
     :cond_0
+    if-nez v0, :cond_1
+
+    .line 587
+    new-instance v2, Landroid/telephony/ims/ImsReasonInfo;
+
+    const/4 v3, 0x0
+
+    invoke-direct {v2, v1, v3}, Landroid/telephony/ims/ImsReasonInfo;-><init>(II)V
+
+    return-object v2
+
+    .line 589
+    :cond_1
+    sget-object v2, Lorg/codeaurora/ims/ImsCallUtils;->TAG:Ljava/lang/String;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Sip error code:"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
+
+    move-result v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v4, " error string :"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 590
+    invoke-virtual {v0}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 589
+    invoke-static {v2, v3}, Lcom/qualcomm/ims/utils/Log;->d(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 591
     new-instance v2, Landroid/telephony/ims/ImsReasonInfo;
 
     invoke-virtual {v0}, Landroid/telephony/ims/ImsReasonInfo;->getExtraCode()I
 
     move-result v3
 
-    .line 586
+    .line 592
     invoke-virtual {v0}, Landroid/telephony/ims/ImsReasonInfo;->getExtraMessage()Ljava/lang/String;
 
     move-result-object v4
 
     invoke-direct {v2, v1, v3, v4}, Landroid/telephony/ims/ImsReasonInfo;-><init>(IILjava/lang/String;)V
 
-    .line 585
+    .line 591
     return-object v2
 .end method
 
@@ -928,10 +985,10 @@
     .locals 2
     .param p0, "imsErrorCode"    # I
 
-    .line 306
+    .line 307
     const/4 v0, 0x1
 
-    .line 307
+    .line 308
     .local v0, "status":I
     if-eqz p0, :cond_2
 
@@ -949,47 +1006,47 @@
 
     packed-switch p0, :pswitch_data_0
 
-    .line 325
+    .line 326
     const/4 v0, 0x2
 
     goto :goto_0
 
-    .line 316
+    .line 317
     :pswitch_0
     const/4 v0, 0x5
 
-    .line 317
+    .line 318
     goto :goto_0
 
-    .line 319
+    .line 320
     :pswitch_1
     const/4 v0, 0x3
 
-    .line 320
+    .line 321
     goto :goto_0
 
-    .line 322
+    .line 323
     :cond_0
     const/16 v0, 0x32
 
-    .line 323
+    .line 324
     goto :goto_0
 
-    .line 313
+    .line 314
     :cond_1
     const/4 v0, 0x4
 
-    .line 314
+    .line 315
     goto :goto_0
 
-    .line 310
+    .line 311
     :cond_2
     const/4 v0, 0x1
 
-    .line 311
+    .line 312
     nop
 
-    .line 327
+    .line 328
     :goto_0
     return v0
 
@@ -1006,21 +1063,21 @@
     .locals 3
     .param p0, "ex"    # Ljava/lang/Throwable;
 
-    .line 297
+    .line 298
     const/4 v0, 0x2
 
-    .line 298
+    .line 299
     .local v0, "status":I
     instance-of v1, p0, Lorg/codeaurora/ims/ImsRilException;
 
     if-eqz v1, :cond_0
 
-    .line 299
+    .line 300
     move-object v1, p0
 
     check-cast v1, Lorg/codeaurora/ims/ImsRilException;
 
-    .line 300
+    .line 301
     .local v1, "imsRilException":Lorg/codeaurora/ims/ImsRilException;
     invoke-virtual {v1}, Lorg/codeaurora/ims/ImsRilException;->getErrorCode()I
 
@@ -1030,7 +1087,7 @@
 
     move-result v0
 
-    .line 302
+    .line 303
     .end local v1    # "imsRilException":Lorg/codeaurora/ims/ImsRilException;
     :cond_0
     return v0
@@ -1045,6 +1102,14 @@
     if-eqz p0, :cond_0
 
     if-eqz p1, :cond_0
+
+    iget-object v0, p0, Lorg/codeaurora/ims/DriverCallIms;->callDetails:Lorg/codeaurora/ims/CallDetails;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p1, Lorg/codeaurora/ims/DriverCallIms;->callDetails:Lorg/codeaurora/ims/CallDetails;
+
+    if-eqz v0, :cond_0
 
     iget-object v0, p0, Lorg/codeaurora/ims/DriverCallIms;->callDetails:Lorg/codeaurora/ims/CallDetails;
 
@@ -1071,7 +1136,7 @@
     .locals 2
     .param p0, "dc"    # Lorg/codeaurora/ims/DriverCallIms;
 
-    .line 498
+    .line 499
     if-eqz p0, :cond_0
 
     iget-object v0, p0, Lorg/codeaurora/ims/DriverCallIms;->state:Lorg/codeaurora/ims/DriverCallIms$State;
@@ -1261,14 +1326,14 @@
 .method public static isCarrierOneSupported()Z
     .locals 2
 
-    .line 537
+    .line 538
     const-string v0, "persist.vendor.radio.atel.carrier"
 
     invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 538
+    .line 539
     .local v0, "property":Ljava/lang/String;
     const-string v1, "405854"
 
@@ -1284,10 +1349,10 @@
     .param p0, "item"    # I
     .param p1, "requestType"    # I
 
-    .line 331
+    .line 332
     const/4 v0, -0x1
 
-    .line 334
+    .line 335
     .local v0, "configType":I
     if-ltz p0, :cond_1
 
@@ -1295,7 +1360,7 @@
 
     if-gt p0, v1, :cond_1
 
-    .line 336
+    .line 337
     const/16 v1, 0xc
 
     if-eq p0, v1, :cond_0
@@ -1310,20 +1375,20 @@
 
     packed-switch p0, :pswitch_data_0
 
-    .line 345
+    .line 346
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 342
+    .line 343
     :cond_0
     :pswitch_0
     const/4 v0, 0x2
 
-    .line 343
+    .line 344
     nop
 
-    .line 348
+    .line 349
     :cond_1
     :goto_0
     if-ne v0, p1, :cond_2
@@ -1533,11 +1598,73 @@
     return v0
 .end method
 
+.method public static isVideoCall(Lorg/codeaurora/ims/CallModify;)Z
+    .locals 1
+    .param p0, "callModify"    # Lorg/codeaurora/ims/CallModify;
+
+    .line 600
+    if-eqz p0, :cond_0
+
+    iget-object v0, p0, Lorg/codeaurora/ims/CallModify;->call_details:Lorg/codeaurora/ims/CallDetails;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lorg/codeaurora/ims/CallModify;->call_details:Lorg/codeaurora/ims/CallDetails;
+
+    iget v0, v0, Lorg/codeaurora/ims/CallDetails;->call_type:I
+
+    .line 601
+    invoke-static {v0}, Lorg/codeaurora/ims/ImsCallUtils;->isVideoCall(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 600
+    :goto_0
+    return v0
+.end method
+
+.method public static isVideoCall(Lorg/codeaurora/ims/ImsCallSessionImpl;)Z
+    .locals 1
+    .param p0, "session"    # Lorg/codeaurora/ims/ImsCallSessionImpl;
+
+    .line 596
+    if-eqz p0, :cond_0
+
+    invoke-virtual {p0}, Lorg/codeaurora/ims/ImsCallSessionImpl;->getInternalCallType()I
+
+    move-result v0
+
+    invoke-static {v0}, Lorg/codeaurora/ims/ImsCallUtils;->isVideoCall(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+.end method
+
 .method public static isVideoCallNumValid(Ljava/lang/String;)Z
     .locals 3
     .param p0, "number"    # Ljava/lang/String;
 
-    .line 550
+    .line 551
     const/4 v0, 0x0
 
     if-eqz p0, :cond_4
@@ -1548,7 +1675,7 @@
 
     if-nez v1, :cond_4
 
-    .line 551
+    .line 552
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v1
@@ -1559,7 +1686,7 @@
 
     goto :goto_1
 
-    .line 559
+    .line 560
     :cond_0
     const-string v1, "+"
 
@@ -1571,7 +1698,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 560
+    .line 561
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v1
@@ -1580,7 +1707,7 @@
 
     move-result-object p0
 
-    .line 563
+    .line 564
     :cond_1
     const-string v1, "#"
 
@@ -1600,7 +1727,7 @@
 
     const-string v1, ","
 
-    .line 564
+    .line 565
     invoke-virtual {p0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     move-result v1
@@ -1617,7 +1744,7 @@
 
     const-string v1, "*"
 
-    .line 565
+    .line 566
     invoke-virtual {p0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     move-result v1
@@ -1626,16 +1753,16 @@
 
     goto :goto_0
 
-    .line 568
+    .line 569
     :cond_2
     return v2
 
-    .line 566
+    .line 567
     :cond_3
     :goto_0
     return v0
 
-    .line 552
+    .line 553
     :cond_4
     :goto_1
     sget-object v1, Lorg/codeaurora/ims/ImsCallUtils;->TAG:Ljava/lang/String;
@@ -1644,7 +1771,7 @@
 
     invoke-static {v1, v2}, Lcom/qualcomm/ims/utils/Log;->w(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 553
+    .line 554
     return v0
 .end method
 
@@ -1887,35 +2014,46 @@
     return v0
 .end method
 
+.method public static setBits(II)I
+    .locals 1
+    .param p0, "property"    # I
+    .param p1, "mask"    # I
+
+    .line 614
+    or-int v0, p0, p1
+
+    return v0
+.end method
+
 .method public static toImsErrorCode(Lorg/codeaurora/ims/ImsRilException;)I
     .locals 1
     .param p0, "ex"    # Lorg/codeaurora/ims/ImsRilException;
 
-    .line 521
+    .line 522
     invoke-virtual {p0}, Lorg/codeaurora/ims/ImsRilException;->getErrorCode()I
 
     move-result v0
 
     packed-switch v0, :pswitch_data_0
 
-    .line 529
+    .line 530
     const/4 v0, 0x0
 
     return v0
 
-    .line 527
+    .line 528
     :pswitch_0
     const/16 v0, 0x4b3
 
     return v0
 
-    .line 525
+    .line 526
     :pswitch_1
     const/16 v0, 0x4b2
 
     return v0
 
-    .line 523
+    .line 524
     :pswitch_2
     const/16 v0, 0x4b1
 
@@ -1933,31 +2071,31 @@
     .locals 1
     .param p0, "ex"    # Lorg/codeaurora/ims/ImsRilException;
 
-    .line 505
+    .line 506
     invoke-virtual {p0}, Lorg/codeaurora/ims/ImsRilException;->getErrorCode()I
 
     move-result v0
 
     packed-switch v0, :pswitch_data_0
 
-    .line 513
+    .line 514
     const/4 v0, -0x1
 
     return v0
 
-    .line 511
+    .line 512
     :pswitch_0
     const/4 v0, 0x3
 
     return v0
 
-    .line 509
+    .line 510
     :pswitch_1
     const/4 v0, 0x2
 
     return v0
 
-    .line 507
+    .line 508
     :pswitch_2
     const/4 v0, 0x1
 

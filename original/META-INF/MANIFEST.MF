@@ -2,10 +2,28 @@ Manifest-Version: 1.0
 Created-By: 9 (Oracle Corporation)
 
 Name: AndroidManifest.xml
-SHA-256-Digest: e8npVmmj1MkH4t2n+NXgdHvdMvuKCWrfY6U3YfEuMzk=
+SHA-256-Digest: KBVS3vtokQPLiTnBWjWc2fjF9CUdvAa0jQSZ9O/cMOg=
 
 Name: classes.dex
-SHA-256-Digest: t0gnYbmZ8YI4hvtObyrTaMEpywXb0J4qZIFd6P1TrTw=
+SHA-256-Digest: 5GqL9nvuA9gXlAhv/biM2QnlnFLa3CUlMSHN4oaEuNA=
+
+Name: res/drawable-hdpi-v4/img_no_image.png
+SHA-256-Digest: d1vgdcA4jt9eI1fcj/DMa6VpC6Y9UAVwK6WFrDUXgks=
+
+Name: res/drawable-hdpi-v4/ims_state.png
+SHA-256-Digest: iyNN1VLYU99n8l1Odmapkf4GfYXoUCuNf/j8l7FsAXw=
+
+Name: res/drawable-hdpi-v4/volte_icon
+SHA-256-Digest: 77ShxqC3BSr0aKTbtiId3dce5vdcXPFCtpF1e7DS6d4=
+
+Name: res/drawable-mdpi-v4/img_no_image.png
+SHA-256-Digest: i96Hy7qfZmGnWA+5Fa36jzNOoUnfb9+ZUzl9cOkqK4E=
+
+Name: res/drawable-mdpi-v4/ims_state.png
+SHA-256-Digest: CTIbMPneCDfOIhdo2mhpFtSXtOX7ktpJbmsjqLJImrE=
+
+Name: res/drawable-mdpi-v4/volte_icon
+SHA-256-Digest: TFAyiu9owve/VUKmrq8KIo4GkfIbHQvkbqikfypfTKs=
 
 Name: res/drawable-xhdpi-v4/img_no_image.png
 SHA-256-Digest: O729uX6bgIy/ltKyAIZFfD5eTkogPQ0xfQ9PlZppJIU=
@@ -26,5 +44,5 @@ Name: res/drawable/img_no_image.png
 SHA-256-Digest: d1vgdcA4jt9eI1fcj/DMa6VpC6Y9UAVwK6WFrDUXgks=
 
 Name: resources.arsc
-SHA-256-Digest: J9lJGhCGDQCwYfe6hUyzfRg/YdlvafAtY3Sr0lyBO7g=
+SHA-256-Digest: d6at27LE9w8ZVNySq3JyojLwd84PQl2F2jOVeyzMDm8=
 

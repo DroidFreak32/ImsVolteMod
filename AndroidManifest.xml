@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="28" android:compileSdkVersionCodename="9" android:sharedUserId="android.uid.phone" coreApp="true" package="org.codeaurora.ims" platformBuildVersionCode="28" platformBuildVersionName="9">
+    <protected-broadcast android:name="org.codeaurora.VOIP_VOPS_SSAC_STATUS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_PRECISE_PHONE_STATE"/>
@@ -13,7 +14,6 @@
     <permission android:name="com.qti.permission.AUDIO" android:protectionLevel="signatureOrSystem"/>
     <uses-permission android:name="android.permission.STATUS_BAR_SERVICE"/>
     <application android:directBootAware="true">
-        <uses-library android:name="com.qti.vzw.ims.internal"/>
         <service android:enabled="true" android:exported="true" android:name=".ImsService" android:permission="android.permission.BIND_IMS_SERVICE" android:persistent="true" android:process="com.android.phone" android:singleUser="true">
             <meta-data android:name="android.telephony.ims.MMTEL_FEATURE" android:value="true"/>
             <meta-data android:name="android.telephony.ims.EMERGENCY_MMTEL_FEATURE" android:value="true"/>

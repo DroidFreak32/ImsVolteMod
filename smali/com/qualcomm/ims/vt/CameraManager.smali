@@ -233,26 +233,26 @@
     .local v0, "camera1":I
     const/4 v1, 0x2
 
-    .line 88
+    .line 89
     .local v1, "camera2":I
     const-string v2, "persist.vendor.qti.telephony.vt_cam_interface"
 
-    const/4 v3, 0x2
+    const/4 v3, 0x1
 
     invoke-static {v2, v3}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
 
     move-result v2
 
-    .line 90
+    .line 91
     .local v2, "cameraInterface":I
-    const/4 v4, 0x1
-
-    if-eq v2, v3, :cond_0
+    const/4 v4, 0x2
 
     if-eq v2, v4, :cond_0
 
-    .line 91
-    const-string v3, "CameraManager"
+    if-eq v2, v3, :cond_0
+
+    .line 92
+    const-string v4, "CameraManager"
 
     new-instance v5, Ljava/lang/StringBuilder;
 
@@ -268,19 +268,19 @@
 
     move-result-object v5
 
-    invoke-static {v3, v5}, Lcom/qualcomm/ims/utils/Log;->w(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v4, v5}, Lcom/qualcomm/ims/utils/Log;->w(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 93
+    .line 94
     :cond_0
-    if-eq v2, v4, :cond_1
+    if-eq v2, v3, :cond_1
 
     goto :goto_0
 
     :cond_1
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
     :goto_0
-    return v4
+    return v3
 .end method
 
 

@@ -33,31 +33,31 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 81
+    .line 88
     const/4 v0, 0x0
 
     sput v0, Lorg/codeaurora/ims/IFRequest;->sNextSerial:I
 
-    .line 82
+    .line 89
     new-instance v1, Ljava/lang/Object;
 
     invoke-direct {v1}, Ljava/lang/Object;-><init>()V
 
     sput-object v1, Lorg/codeaurora/ims/IFRequest;->sSerialMonitor:Ljava/lang/Object;
 
-    .line 83
+    .line 90
     new-instance v1, Ljava/lang/Object;
 
     invoke-direct {v1}, Ljava/lang/Object;-><init>()V
 
     sput-object v1, Lorg/codeaurora/ims/IFRequest;->sPoolSync:Ljava/lang/Object;
 
-    .line 84
+    .line 91
     const/4 v1, 0x0
 
     sput-object v1, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
-    .line 85
+    .line 92
     sput v0, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
     return-void
@@ -66,10 +66,10 @@
 .method private constructor <init>()V
     .locals 0
 
-    .line 148
+    .line 155
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 149
+    .line 156
     return-void
 .end method
 
@@ -78,60 +78,60 @@
     .param p0, "request"    # I
     .param p1, "result"    # Landroid/os/Message;
 
-    .line 105
+    .line 112
     const/4 v0, 0x0
 
-    .line 107
+    .line 114
     .local v0, "rr":Lorg/codeaurora/ims/IFRequest;
     sget-object v1, Lorg/codeaurora/ims/IFRequest;->sPoolSync:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 108
+    .line 115
     :try_start_0
     sget-object v2, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
     if-eqz v2, :cond_0
 
-    .line 109
+    .line 116
     sget-object v2, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
     move-object v0, v2
 
-    .line 110
+    .line 117
     iget-object v2, v0, Lorg/codeaurora/ims/IFRequest;->mNext:Lorg/codeaurora/ims/IFRequest;
 
     sput-object v2, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
-    .line 111
+    .line 118
     const/4 v2, 0x0
 
     iput-object v2, v0, Lorg/codeaurora/ims/IFRequest;->mNext:Lorg/codeaurora/ims/IFRequest;
 
-    .line 112
+    .line 119
     sget v2, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
     add-int/lit8 v2, v2, -0x1
 
     sput v2, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
-    .line 114
+    .line 121
     :cond_0
     monitor-exit v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 116
+    .line 123
     if-nez v0, :cond_1
 
-    .line 117
+    .line 124
     new-instance v1, Lorg/codeaurora/ims/IFRequest;
 
     invoke-direct {v1}, Lorg/codeaurora/ims/IFRequest;-><init>()V
 
     move-object v0, v1
 
-    .line 120
+    .line 127
     .end local v0    # "rr":Lorg/codeaurora/ims/IFRequest;
     .local v2, "rr":Lorg/codeaurora/ims/IFRequest;
     :cond_1
@@ -141,7 +141,7 @@
 
     monitor-enter v3
 
-    .line 121
+    .line 128
     :try_start_1
     sget v0, Lorg/codeaurora/ims/IFRequest;->sNextSerial:I
 
@@ -151,18 +151,18 @@
 
     iput v0, v2, Lorg/codeaurora/ims/IFRequest;->mSerial:I
 
-    .line 122
+    .line 129
     monitor-exit v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 123
+    .line 130
     iput p0, v2, Lorg/codeaurora/ims/IFRequest;->mRequest:I
 
-    .line 124
+    .line 131
     iput-object p1, v2, Lorg/codeaurora/ims/IFRequest;->mResult:Landroid/os/Message;
 
-    .line 126
+    .line 133
     if-eqz p1, :cond_3
 
     invoke-virtual {p1}, Landroid/os/Message;->getTarget()Landroid/os/Handler;
@@ -173,7 +173,7 @@
 
     goto :goto_0
 
-    .line 127
+    .line 134
     :cond_2
     new-instance v0, Ljava/lang/NullPointerException;
 
@@ -183,12 +183,12 @@
 
     throw v0
 
-    .line 130
+    .line 137
     :cond_3
     :goto_0
     return-object v2
 
-    .line 122
+    .line 129
     :catchall_0
     move-exception v0
 
@@ -199,7 +199,7 @@
 
     throw v0
 
-    .line 114
+    .line 121
     .end local v2    # "rr":Lorg/codeaurora/ims/IFRequest;
     .restart local v0    # "rr":Lorg/codeaurora/ims/IFRequest;
     :catchall_1
@@ -216,24 +216,24 @@
 .method static resetSerial()V
     .locals 2
 
-    .line 152
+    .line 159
     sget-object v0, Lorg/codeaurora/ims/IFRequest;->sSerialMonitor:Ljava/lang/Object;
 
     monitor-enter v0
 
-    .line 153
+    .line 160
     const/4 v1, 0x0
 
     :try_start_0
     sput v1, Lorg/codeaurora/ims/IFRequest;->sNextSerial:I
 
-    .line 154
+    .line 161
     monitor-exit v0
 
-    .line 155
+    .line 162
     return-void
 
-    .line 154
+    .line 161
     :catchall_0
     move-exception v1
 
@@ -251,23 +251,23 @@
     .param p1, "error"    # I
     .param p2, "ret"    # Ljava/lang/Object;
 
-    .line 179
+    .line 186
     if-nez p1, :cond_0
 
-    .line 180
+    .line 187
     const/4 v0, 0x0
 
     .local v0, "ex":Ljava/lang/RuntimeException;
     goto :goto_0
 
-    .line 182
+    .line 189
     .end local v0    # "ex":Ljava/lang/RuntimeException;
     :cond_0
     invoke-static {p1}, Lorg/codeaurora/ims/ImsSenderRxr;->errorIdToString(I)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 183
+    .line 190
     .local v0, "errorMsg":Ljava/lang/String;
     new-instance v1, Lorg/codeaurora/ims/ImsRilException;
 
@@ -276,7 +276,7 @@
     .end local v0    # "errorMsg":Ljava/lang/String;
     move-object v0, v1
 
-    .line 186
+    .line 193
     .local v0, "ex":Ljava/lang/RuntimeException;
     :goto_0
     new-instance v1, Ljava/lang/StringBuilder;
@@ -295,7 +295,7 @@
 
     iget v2, p0, Lorg/codeaurora/ims/IFRequest;->mRequest:I
 
-    .line 187
+    .line 194
     invoke-static {v2}, Lorg/codeaurora/ims/ImsSenderRxr;->msgIdToString(I)Ljava/lang/String;
 
     move-result-object v2
@@ -312,25 +312,25 @@
 
     move-result-object v1
 
-    .line 186
+    .line 193
     invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 190
+    .line 197
     iget-object v1, p0, Lorg/codeaurora/ims/IFRequest;->mResult:Landroid/os/Message;
 
     if-eqz v1, :cond_1
 
-    .line 191
+    .line 198
     iget-object v1, p0, Lorg/codeaurora/ims/IFRequest;->mResult:Landroid/os/Message;
 
     invoke-static {v1, p2, v0}, Landroid/os/AsyncResult;->forMessage(Landroid/os/Message;Ljava/lang/Object;Ljava/lang/Throwable;)Landroid/os/AsyncResult;
 
-    .line 192
+    .line 199
     iget-object v1, p0, Lorg/codeaurora/ims/IFRequest;->mResult:Landroid/os/Message;
 
     invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
 
-    .line 194
+    .line 201
     :cond_1
     return-void
 .end method
@@ -338,12 +338,12 @@
 .method release()V
     .locals 3
 
-    .line 138
+    .line 145
     sget-object v0, Lorg/codeaurora/ims/IFRequest;->sPoolSync:Ljava/lang/Object;
 
     monitor-enter v0
 
-    .line 139
+    .line 146
     :try_start_0
     sget v1, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
@@ -351,34 +351,34 @@
 
     if-ge v1, v2, :cond_0
 
-    .line 140
+    .line 147
     sget-object v1, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
     iput-object v1, p0, Lorg/codeaurora/ims/IFRequest;->mNext:Lorg/codeaurora/ims/IFRequest;
 
-    .line 141
+    .line 148
     sput-object p0, Lorg/codeaurora/ims/IFRequest;->sPool:Lorg/codeaurora/ims/IFRequest;
 
-    .line 142
+    .line 149
     sget v1, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
     add-int/lit8 v1, v1, 0x1
 
     sput v1, Lorg/codeaurora/ims/IFRequest;->sPoolSize:I
 
-    .line 143
+    .line 150
     const/4 v1, 0x0
 
     iput-object v1, p0, Lorg/codeaurora/ims/IFRequest;->mResult:Landroid/os/Message;
 
-    .line 145
+    .line 152
     :cond_0
     monitor-exit v0
 
-    .line 146
+    .line 153
     return-void
 
-    .line 145
+    .line 152
     :catchall_0
     move-exception v1
 
@@ -392,14 +392,14 @@
 .method serialString()Ljava/lang/String;
     .locals 5
 
-    .line 159
+    .line 166
     new-instance v0, Ljava/lang/StringBuilder;
 
     const/16 v1, 0x8
 
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 162
+    .line 169
     .local v0, "sb":Ljava/lang/StringBuilder;
     iget v1, p0, Lorg/codeaurora/ims/IFRequest;->mSerial:I
 
@@ -407,13 +407,13 @@
 
     move-result-object v1
 
-    .line 165
+    .line 172
     .local v1, "sn":Ljava/lang/String;
     const/16 v2, 0x5b
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 166
+    .line 173
     const/4 v2, 0x0
 
     .local v2, "i":I
@@ -427,28 +427,28 @@
 
     if-ge v2, v4, :cond_0
 
-    .line 167
+    .line 174
     const/16 v4, 0x30
 
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 166
+    .line 173
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 170
+    .line 177
     .end local v2    # "i":I
     .end local v3    # "s":I
     :cond_0
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 171
+    .line 178
     const/16 v2, 0x5d
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 172
+    .line 179
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2

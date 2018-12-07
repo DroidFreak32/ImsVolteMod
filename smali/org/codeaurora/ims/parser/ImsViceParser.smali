@@ -94,7 +94,7 @@
     .locals 1
     .param p1, "context"    # Landroid/content/Context;
 
-    .line 86
+    .line 87
     invoke-direct {p0}, Lorg/codeaurora/ims/parser/ConfInfo;-><init>()V
 
     .line 37
@@ -102,13 +102,13 @@
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceDialogStr:Ljava/lang/String;
 
-    .line 87
+    .line 88
     iput-object p1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mContext:Landroid/content/Context;
 
-    .line 88
+    .line 89
     invoke-direct {p0}, Lorg/codeaurora/ims/parser/ImsViceParser;->preparePartialList()V
 
-    .line 89
+    .line 90
     return-void
 .end method
 
@@ -116,10 +116,10 @@
     .locals 4
     .param p1, "element"    # Lorg/codeaurora/ims/parser/Element;
 
-    .line 117
+    .line 119
     const-string v0, "full"
 
-    .line 119
+    .line 121
     .local v0, "resultantState":Ljava/lang/String;
     const-string v1, "state"
 
@@ -127,14 +127,14 @@
 
     move-result-object v1
 
-    .line 120
+    .line 122
     .local v1, "elementState":Ljava/lang/String;
     if-eqz v1, :cond_0
 
-    .line 121
+    .line 123
     move-object v0, v1
 
-    .line 123
+    .line 125
     :cond_0
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -158,7 +158,7 @@
 
     invoke-virtual {p0, v2}, Lorg/codeaurora/ims/parser/ImsViceParser;->debugLog(Ljava/lang/String;)V
 
-    .line 124
+    .line 126
     return-object v0
 .end method
 
@@ -166,12 +166,12 @@
     .locals 3
     .param p0, "dialog"    # Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    .line 143
+    .line 145
     const/4 v0, 0x2
 
     if-eqz p0, :cond_1
 
-    .line 144
+    .line 146
     iget-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->state:Ljava/lang/String;
 
     const-string v2, "confirmed"
@@ -182,12 +182,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 145
+    .line 147
     const/4 v0, 0x1
 
     return v0
 
-    .line 146
+    .line 148
     :cond_0
     iget-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->state:Ljava/lang/String;
 
@@ -199,10 +199,10 @@
 
     if-eqz v1, :cond_2
 
-    .line 147
+    .line 149
     return v0
 
-    .line 150
+    .line 152
     :cond_1
     sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
@@ -210,7 +210,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 152
+    .line 154
     :cond_2
     return v0
 .end method
@@ -219,22 +219,22 @@
     .locals 10
     .param p0, "dialog"    # Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    .line 172
+    .line 174
     const/4 v0, 0x0
 
-    .line 173
+    .line 175
     .local v0, "value":Ljava/lang/String;
     const/4 v1, 0x0
 
-    .line 174
+    .line 176
     .local v1, "audioState":Ljava/lang/String;
     const/4 v2, 0x0
 
-    .line 175
+    .line 177
     .local v2, "videoState":Ljava/lang/String;
     const/4 v3, 0x0
 
-    .line 177
+    .line 179
     .local v3, "portPresent":Z
     if-eqz p0, :cond_13
 
@@ -248,14 +248,14 @@
 
     if-eqz v4, :cond_13
 
-    .line 178
+    .line 180
     iget-object v4, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
 
     invoke-interface {v4}, Ljava/util/List;->size()I
 
     move-result v4
 
-    .line 179
+    .line 181
     .local v4, "size":I
     const/4 v5, 0x0
 
@@ -263,7 +263,7 @@
     :goto_0
     if-ge v5, v4, :cond_9
 
-    .line 180
+    .line 182
     iget-object v6, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->mediaAttributes:Ljava/util/List;
 
     invoke-interface {v6, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -272,7 +272,7 @@
 
     check-cast v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
 
-    .line 181
+    .line 183
     .local v6, "media":Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
     if-eqz v6, :cond_7
 
@@ -284,7 +284,7 @@
 
     if-eqz v7, :cond_7
 
-    .line 183
+    .line 185
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaType:Ljava/lang/String;
 
     const-string v8, "audio"
@@ -295,7 +295,7 @@
 
     if-eqz v7, :cond_2
 
-    .line 184
+    .line 186
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
     const-string v8, "sendrecv"
@@ -306,12 +306,12 @@
 
     if-eqz v7, :cond_0
 
-    .line 186
+    .line 188
     const-string v1, "volteactive"
 
     goto/16 :goto_2
 
-    .line 187
+    .line 189
     :cond_0
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
@@ -327,7 +327,7 @@
 
     const-string v8, "recvonly"
 
-    .line 189
+    .line 191
     invoke-virtual {v7, v8}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v7
@@ -338,20 +338,20 @@
 
     const-string v8, "inactive"
 
-    .line 191
+    .line 193
     invoke-virtual {v7, v8}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v7
 
     if-eqz v7, :cond_8
 
-    .line 193
+    .line 195
     :cond_1
     const-string v1, "volteheld"
 
     goto :goto_2
 
-    .line 195
+    .line 197
     :cond_2
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaType:Ljava/lang/String;
 
@@ -363,7 +363,7 @@
 
     if-eqz v7, :cond_8
 
-    .line 196
+    .line 198
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
     const-string v8, "sendrecv"
@@ -374,12 +374,12 @@
 
     if-eqz v7, :cond_3
 
-    .line 198
+    .line 200
     const-string v2, "vttxrx"
 
     goto :goto_1
 
-    .line 199
+    .line 201
     :cond_3
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
@@ -391,12 +391,12 @@
 
     if-eqz v7, :cond_4
 
-    .line 201
+    .line 203
     const-string v2, "vttx"
 
     goto :goto_1
 
-    .line 202
+    .line 204
     :cond_4
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
@@ -408,12 +408,12 @@
 
     if-eqz v7, :cond_5
 
-    .line 204
+    .line 206
     const-string v2, "vtrx"
 
     goto :goto_1
 
-    .line 205
+    .line 207
     :cond_5
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaDirection:Ljava/lang/String;
 
@@ -425,10 +425,10 @@
 
     if-eqz v7, :cond_6
 
-    .line 207
+    .line 209
     const-string v2, "vtheld"
 
-    .line 209
+    .line 211
     :cond_6
     :goto_1
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaType:Ljava/lang/String;
@@ -447,19 +447,19 @@
 
     iget-object v7, v6, Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;->mediaPort:Ljava/lang/String;
 
-    .line 211
+    .line 213
     invoke-virtual {v7}, Ljava/lang/String;->isEmpty()Z
 
     move-result v7
 
     if-nez v7, :cond_8
 
-    .line 212
+    .line 214
     const/4 v3, 0x1
 
     goto :goto_2
 
-    .line 216
+    .line 218
     :cond_7
     sget-object v7, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
@@ -467,7 +467,7 @@
 
     invoke-static {v7, v8}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 218
+    .line 220
     :cond_8
     :goto_2
     sget-object v7, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
@@ -500,18 +500,18 @@
 
     invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 179
+    .line 181
     .end local v6    # "media":Lorg/codeaurora/ims/parser/ImsViceParser$MediaAttribute;
     add-int/lit8 v5, v5, 0x1
 
     goto/16 :goto_0
 
-    .line 222
+    .line 224
     .end local v5    # "i":I
     :cond_9
     if-eqz v1, :cond_12
 
-    .line 223
+    .line 225
     const-string v5, "volteactive"
 
     invoke-virtual {v1, v5}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
@@ -520,7 +520,7 @@
 
     if-eqz v5, :cond_f
 
-    .line 224
+    .line 226
     if-eqz v2, :cond_e
 
     if-eqz v2, :cond_a
@@ -529,7 +529,7 @@
 
     goto :goto_3
 
-    .line 226
+    .line 228
     :cond_a
     const-string v5, "vttxrx"
 
@@ -539,12 +539,12 @@
 
     if-eqz v5, :cond_b
 
-    .line 227
+    .line 229
     const-string v5, "vttxrx"
 
     return-object v5
 
-    .line 228
+    .line 230
     :cond_b
     const-string v5, "vttx"
 
@@ -554,12 +554,12 @@
 
     if-eqz v5, :cond_c
 
-    .line 229
+    .line 231
     const-string v5, "vttx"
 
     return-object v5
 
-    .line 230
+    .line 232
     :cond_c
     const-string v5, "vtrx"
 
@@ -569,12 +569,12 @@
 
     if-eqz v5, :cond_d
 
-    .line 231
+    .line 233
     const-string v5, "vtrx"
 
     return-object v5
 
-    .line 232
+    .line 234
     :cond_d
     const-string v5, "vtheld"
 
@@ -584,19 +584,19 @@
 
     if-eqz v5, :cond_13
 
-    .line 233
+    .line 235
     const-string v5, "vtheld"
 
     return-object v5
 
-    .line 225
+    .line 227
     :cond_e
     :goto_3
     const-string v5, "volteactive"
 
     return-object v5
 
-    .line 235
+    .line 237
     :cond_f
     const-string v5, "volteheld"
 
@@ -606,7 +606,7 @@
 
     if-eqz v5, :cond_13
 
-    .line 236
+    .line 238
     if-eqz v2, :cond_11
 
     if-eqz v2, :cond_10
@@ -615,25 +615,25 @@
 
     goto :goto_4
 
-    .line 238
+    .line 240
     :cond_10
     if-eqz v2, :cond_13
 
     if-nez v3, :cond_13
 
-    .line 239
+    .line 241
     const-string v5, "vtheld"
 
     return-object v5
 
-    .line 237
+    .line 239
     :cond_11
     :goto_4
     const-string v5, "volteheld"
 
     return-object v5
 
-    .line 243
+    .line 245
     :cond_12
     sget-object v5, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
@@ -641,7 +641,7 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 246
+    .line 248
     .end local v4    # "size":I
     :cond_13
     const/4 v4, 0x0
@@ -653,22 +653,22 @@
     .locals 5
     .param p0, "callType"    # Ljava/lang/String;
 
-    .line 277
+    .line 279
     const/4 v0, 0x0
 
     if-nez p0, :cond_0
 
-    .line 278
+    .line 280
     sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
     const-string v2, "mapViceCallToImsCallProfileCallType callType null"
 
     invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 279
+    .line 281
     return v0
 
-    .line 282
+    .line 284
     :cond_0
     const/4 v1, -0x1
 
@@ -716,10 +716,10 @@
     :goto_0
     packed-switch v1, :pswitch_data_0
 
-    .line 288
+    .line 290
     return v0
 
-    .line 285
+    .line 287
     :pswitch_0
     return v4
 
@@ -736,32 +736,32 @@
     .param p1, "isVideoSupported"    # Z
     .param p2, "isVolteSupported"    # Z
 
-    .line 304
+    .line 306
     const/4 v0, 0x0
 
-    .line 305
+    .line 307
     .local v0, "pullable":Z
     const/4 v1, 0x0
 
     if-nez p0, :cond_0
 
-    .line 306
+    .line 308
     return v1
 
-    .line 308
+    .line 310
     :cond_0
     invoke-static {p0}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
 
     move-result-object v2
 
-    .line 309
+    .line 311
     .local v2, "callType":Ljava/lang/String;
     if-nez v2, :cond_1
 
-    .line 310
+    .line 312
     return v1
 
-    .line 313
+    .line 315
     :cond_1
     const-string v3, "vttxrx"
 
@@ -773,7 +773,7 @@
 
     const-string v3, "vttx"
 
-    .line 314
+    .line 316
     invoke-virtual {v2, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v3
@@ -782,7 +782,7 @@
 
     const-string v3, "vtrx"
 
-    .line 315
+    .line 317
     invoke-virtual {v2, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v3
@@ -798,7 +798,7 @@
     :goto_0
     const/4 v1, 0x1
 
-    .line 317
+    .line 319
     .local v1, "canVtBePulled":Z
     :goto_1
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->exclusive:Ljava/lang/String;
@@ -811,7 +811,7 @@
 
     if-eqz v3, :cond_6
 
-    .line 318
+    .line 320
     invoke-static {p0}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
 
     move-result-object v3
@@ -831,11 +831,11 @@
 
     if-eqz p1, :cond_6
 
-    .line 321
+    .line 323
     :cond_5
     const/4 v0, 0x1
 
-    .line 323
+    .line 325
     iget-object v3, p0, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->paramName:Ljava/lang/String;
 
     if-eqz v3, :cond_6
@@ -844,7 +844,7 @@
 
     const-string v4, "+sip.rendering"
 
-    .line 324
+    .line 326
     invoke-virtual {v3, v4}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v3
@@ -859,17 +859,17 @@
 
     const-string v4, "no"
 
-    .line 326
+    .line 328
     invoke-virtual {v3, v4}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
     move-result v3
 
     if-eqz v3, :cond_6
 
-    .line 327
+    .line 329
     const/4 v0, 0x0
 
-    .line 330
+    .line 332
     :cond_6
     return v0
 .end method
@@ -877,7 +877,7 @@
 .method private isDialogIdsEmpty()Z
     .locals 1
 
-    .line 363
+    .line 367
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
 
     if-eqz v0, :cond_1
@@ -909,22 +909,22 @@
     .locals 5
     .param p0, "callType"    # Ljava/lang/String;
 
-    .line 250
+    .line 252
     const/4 v0, 0x2
 
     if-nez p0, :cond_0
 
-    .line 251
+    .line 253
     sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
     const-string v2, "mapViceCallToImsCallProfileCallType callType null"
 
     invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 252
+    .line 254
     return v0
 
-    .line 255
+    .line 257
     :cond_0
     const/4 v1, -0x1
 
@@ -1020,7 +1020,7 @@
     :goto_0
     packed-switch v1, :pswitch_data_0
 
-    .line 271
+    .line 273
     sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -1039,24 +1039,24 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 272
+    .line 274
     return v0
 
-    .line 268
+    .line 270
     :pswitch_0
     const/4 v0, 0x6
 
     return v0
 
-    .line 265
+    .line 267
     :pswitch_1
     return v3
 
-    .line 262
+    .line 264
     :pswitch_2
     return v4
 
-    .line 258
+    .line 260
     :pswitch_3
     return v0
 
@@ -1084,14 +1084,14 @@
 .method private preparePartialList()V
     .locals 2
 
-    .line 131
+    .line 133
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->allowedPartial:Ljava/util/ArrayList;
 
     const-string v1, "state"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 132
+    .line 134
     return-void
 .end method
 
@@ -1099,17 +1099,17 @@
     .locals 0
     .param p0, "handler"    # Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;
 
-    .line 92
+    .line 93
     sput-object p0, Lorg/codeaurora/ims/parser/ImsViceParser;->sHandler:Lorg/codeaurora/ims/parser/ViceSaxXmlHandler;
 
-    .line 93
+    .line 94
     return-void
 .end method
 
 
 # virtual methods
 .method public getCallPullInfo(ZZ)Ljava/util/List;
-    .locals 19
+    .locals 21
     .param p1, "isVideoSupported"    # Z
     .param p2, "isVolteSupported"    # Z
     .annotation system Ldalvik/annotation/Signature;
@@ -1123,32 +1123,32 @@
 
     move-object/from16 v0, p0
 
-    .line 335
+    .line 337
     invoke-direct/range {p0 .. p0}, Lorg/codeaurora/ims/parser/ImsViceParser;->isDialogIdsEmpty()Z
 
     move-result v1
 
     if-eqz v1, :cond_0
 
-    .line 336
+    .line 338
     sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
 
     const-string v2, "getCallPullInfo mDialogIds null"
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 337
+    .line 339
     const/4 v1, 0x0
 
     return-object v1
 
-    .line 341
+    .line 343
     :cond_0
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
-    .line 343
+    .line 345
     .local v1, "extCallStateList":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/ims/ImsExternalCallState;>;"
     const/4 v2, 0x0
 
@@ -1162,7 +1162,7 @@
 
     if-ge v2, v3, :cond_1
 
-    .line 345
+    .line 347
     iget-object v3, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
 
     invoke-interface {v3, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1171,140 +1171,114 @@
 
     check-cast v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
 
-    iget-object v3, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->dialogId:Ljava/lang/String;
+    .line 348
+    .local v3, "info":Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    iget-object v4, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->dialogId:Ljava/lang/String;
 
-    invoke-static {v3}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    move-result v3
-
-    .line 346
-    .local v3, "callId":I
-    iget-object v4, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
-
-    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    iget-object v4, v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->remoteIdentity:Ljava/lang/String;
-
-    invoke-static {v4}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
-
-    move-result-object v11
-
-    .line 347
-    .local v11, "address":Landroid/net/Uri;
-    iget-object v4, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
-
-    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    move/from16 v12, p1
-
-    move/from16 v13, p2
-
-    invoke-static {v4, v12, v13}, Lorg/codeaurora/ims/parser/ImsViceParser;->isCallPullable(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;ZZ)Z
-
-    move-result v14
+    move-result v4
 
     .line 349
-    .local v14, "isPullable":Z
-    iget-object v4, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
+    .local v4, "callId":I
+    iget-object v5, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->remoteIdentity:Ljava/lang/String;
 
-    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-static {v5}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
-    move-result-object v4
-
-    check-cast v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    invoke-static {v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallState(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)I
-
-    move-result v15
+    move-result-object v13
 
     .line 350
-    .local v15, "callState":I
-    iget-object v4, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
+    .local v13, "remoteAddress":Landroid/net/Uri;
+    iget-object v5, v3, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;->localIdentity:Ljava/lang/String;
+
+    invoke-static {v5}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v14
 
     .line 351
-    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    .local v14, "localAddress":Landroid/net/Uri;
+    move/from16 v15, p1
 
-    move-result-object v4
+    move/from16 v12, p2
 
-    check-cast v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    invoke-static {v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
-
-    move-result-object v4
-
-    .line 350
-    invoke-static {v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->mapViceCallTypeToImsCallProfileCallType(Ljava/lang/String;)I
+    invoke-static {v3, v15, v12}, Lorg/codeaurora/ims/parser/ImsViceParser;->isCallPullable(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;ZZ)Z
 
     move-result v16
 
-    .line 352
-    .local v16, "callType":I
-    iget-object v4, v0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
-
-    invoke-interface {v4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
-
-    invoke-static {v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->isCallHeld(Ljava/lang/String;)Z
+    .line 353
+    .local v16, "isPullable":Z
+    invoke-static {v3}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallState(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)I
 
     move-result v17
 
     .line 354
-    .local v17, "isHeld":Z
-    new-instance v18, Landroid/telephony/ims/ImsExternalCallState;
+    .local v17, "callState":I
+    nop
 
-    move-object/from16 v4, v18
+    .line 355
+    invoke-static {v3}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
 
-    move v5, v3
+    move-result-object v5
 
-    move-object v6, v11
+    .line 354
+    invoke-static {v5}, Lorg/codeaurora/ims/parser/ImsViceParser;->mapViceCallTypeToImsCallProfileCallType(Ljava/lang/String;)I
 
-    move v7, v14
+    move-result v18
 
-    move v8, v15
+    .line 356
+    .local v18, "callType":I
+    invoke-static {v3}, Lorg/codeaurora/ims/parser/ImsViceParser;->getCallType(Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;)Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v5}, Lorg/codeaurora/ims/parser/ImsViceParser;->isCallHeld(Ljava/lang/String;)Z
+
+    move-result v19
+
+    .line 358
+    .local v19, "isHeld":Z
+    new-instance v20, Landroid/telephony/ims/ImsExternalCallState;
+
+    move-object/from16 v5, v20
+
+    move v6, v4
+
+    move-object v7, v13
+
+    move-object v8, v14
 
     move/from16 v9, v16
 
     move/from16 v10, v17
 
-    invoke-direct/range {v4 .. v10}, Landroid/telephony/ims/ImsExternalCallState;-><init>(ILandroid/net/Uri;ZIIZ)V
+    move/from16 v11, v18
 
-    .line 357
-    .local v4, "extCallState":Landroid/telephony/ims/ImsExternalCallState;
-    invoke-interface {v1, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    move/from16 v12, v19
 
-    .line 343
-    .end local v3    # "callId":I
-    .end local v11    # "address":Landroid/net/Uri;
-    .end local v14    # "isPullable":Z
-    .end local v15    # "callState":I
-    .end local v16    # "callType":I
-    .end local v17    # "isHeld":Z
+    invoke-direct/range {v5 .. v12}, Landroid/telephony/ims/ImsExternalCallState;-><init>(ILandroid/net/Uri;Landroid/net/Uri;ZIIZ)V
+
+    .line 361
+    .local v5, "extCallState":Landroid/telephony/ims/ImsExternalCallState;
+    invoke-interface {v1, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 345
+    .end local v3    # "info":Lorg/codeaurora/ims/parser/ImsViceParser$DialogInfo;
+    .end local v4    # "callId":I
+    .end local v13    # "remoteAddress":Landroid/net/Uri;
+    .end local v14    # "localAddress":Landroid/net/Uri;
+    .end local v16    # "isPullable":Z
+    .end local v17    # "callState":I
+    .end local v18    # "callType":I
+    .end local v19    # "isHeld":Z
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 359
+    .line 363
     .end local v2    # "i":I
-    .end local v4    # "extCallState":Landroid/telephony/ims/ImsExternalCallState;
+    .end local v5    # "extCallState":Landroid/telephony/ims/ImsExternalCallState;
     :cond_1
-    move/from16 v12, p1
-
-    move/from16 v13, p2
+    move/from16 v15, p1
 
     return-object v1
 .end method
@@ -1320,7 +1294,7 @@
         }
     .end annotation
 
-    .line 135
+    .line 137
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceparser:Lorg/codeaurora/ims/parser/ViceSaxXmlParser;
 
     invoke-virtual {v0}, Lorg/codeaurora/ims/parser/ViceSaxXmlParser;->getDialogInfo()Ljava/util/List;
@@ -1333,7 +1307,7 @@
 .method public getViceDialogInfoAsString()Ljava/lang/String;
     .locals 1
 
-    .line 139
+    .line 141
     iget-object v0, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceDialogStr:Ljava/lang/String;
 
     return-object v0
@@ -1343,12 +1317,12 @@
     .locals 5
     .param p1, "vicexml"    # [B
 
-    .line 96
+    .line 97
     new-instance v0, Ljava/io/ByteArrayInputStream;
 
     invoke-direct {v0, p1}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
-    .line 97
+    .line 98
     .local v0, "is":Ljava/io/InputStream;
     new-instance v1, Ljava/util/ArrayList;
 
@@ -1356,7 +1330,7 @@
 
     iput-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mDialogIds:Ljava/util/List;
 
-    .line 99
+    .line 100
     :try_start_0
     new-instance v1, Ljava/lang/String;
 
@@ -1366,35 +1340,33 @@
 
     iput-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceDialogStr:Ljava/lang/String;
 
-    .line 100
-    sget-object v1, Lorg/codeaurora/ims/parser/ImsViceParser;->LOGTAG:Ljava/lang/String;
+    .line 102
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    const-string v2, "VICE XML in string :- \n"
 
-    const-string v3, "VICE XML in string = "
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v2, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceDialogStr:Ljava/lang/String;
 
-    iget-object v3, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceDialogStr:Ljava/lang/String;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
 
-    move-result-object v2
+    invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->v(Ljava/lang/Object;Ljava/lang/String;)V
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 101
+    .line 103
     invoke-static {}, Lorg/codeaurora/ims/parser/ViceSaxXmlParser;->getInstance()Lorg/codeaurora/ims/parser/ViceSaxXmlParser;
 
     move-result-object v1
 
     iput-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceparser:Lorg/codeaurora/ims/parser/ViceSaxXmlParser;
 
-    .line 102
+    .line 104
     iget-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mViceparser:Lorg/codeaurora/ims/parser/ViceSaxXmlParser;
 
     invoke-static {v0}, Lorg/codeaurora/ims/parser/ViceSaxXmlParser;->parse(Ljava/io/InputStream;)Lorg/codeaurora/ims/parser/Element;
@@ -1403,12 +1375,12 @@
 
     iput-object v1, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mNewElement:Lorg/codeaurora/ims/parser/Element;
 
-    .line 103
+    .line 105
     const-string v1, "*************New Vice Notification*****************"
 
     invoke-virtual {p0, v1}, Lorg/codeaurora/ims/parser/ImsViceParser;->debugLog(Ljava/lang/String;)V
 
-    .line 104
+    .line 106
     const/4 v1, 0x0
 
     iget-object v2, p0, Lorg/codeaurora/ims/parser/ImsViceParser;->mCachedElement:Lorg/codeaurora/ims/parser/Element;
@@ -1419,7 +1391,7 @@
 
     invoke-virtual {p0, v1, v2, v3, v4}, Lorg/codeaurora/ims/parser/ImsViceParser;->updateNotification(Ljava/util/List;Lorg/codeaurora/ims/parser/Element;Lorg/codeaurora/ims/parser/Element;I)V
 
-    .line 105
+    .line 107
     invoke-virtual {p0}, Lorg/codeaurora/ims/parser/ImsViceParser;->getDialogInfo()Ljava/util/List;
 
     move-result-object v1
@@ -1428,18 +1400,18 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 108
+    .line 110
     goto :goto_0
 
-    .line 106
+    .line 108
     :catch_0
     move-exception v1
 
-    .line 107
+    .line 109
     .local v1, "ex":Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 109
+    .line 111
     .end local v1    # "ex":Ljava/lang/Exception;
     :goto_0
     return-void

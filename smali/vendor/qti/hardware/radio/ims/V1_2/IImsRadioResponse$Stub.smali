@@ -21,7 +21,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 918
+    .line 930
     invoke-direct {p0}, Landroid/os/HwBinder;-><init>()V
 
     return-void
@@ -32,19 +32,19 @@
 .method public asBinder()Landroid/os/IHwBinder;
     .locals 0
 
-    .line 921
+    .line 933
     return-object p0
 .end method
 
 .method public final getDebugInfo()Landroid/hidl/base/V1_0/DebugInfo;
     .locals 3
 
-    .line 965
+    .line 977
     new-instance v0, Landroid/hidl/base/V1_0/DebugInfo;
 
     invoke-direct {v0}, Landroid/hidl/base/V1_0/DebugInfo;-><init>()V
 
-    .line 966
+    .line 978
     .local v0, "info":Landroid/hidl/base/V1_0/DebugInfo;
     invoke-static {}, Landroid/os/HidlSupport;->getPidIfSharable()I
 
@@ -52,17 +52,17 @@
 
     iput v1, v0, Landroid/hidl/base/V1_0/DebugInfo;->pid:I
 
-    .line 967
+    .line 979
     const-wide/16 v1, 0x0
 
     iput-wide v1, v0, Landroid/hidl/base/V1_0/DebugInfo;->ptr:J
 
-    .line 968
+    .line 980
     const/4 v1, 0x0
 
     iput v1, v0, Landroid/hidl/base/V1_0/DebugInfo;->arch:I
 
-    .line 969
+    .line 981
     return-object v0
 .end method
 
@@ -76,7 +76,7 @@
         }
     .end annotation
 
-    .line 940
+    .line 952
     new-instance v0, Ljava/util/ArrayList;
 
     const/4 v1, 0x3
@@ -121,38 +121,38 @@
 
     :array_0
     .array-data 1
+        -0x4at
+        0x3ct
+        0x39t
+        0x7ft
+        -0x3bt
+        0x21t
+        0x65t
+        0x18t
+        -0x18t
+        0x15t
+        0x53t
+        -0x6dt
+        -0x38t
+        -0x58t
+        0x4t
+        0xdt
+        0x21t
+        0x4et
+        -0x60t
+        0x5t
+        -0x51t
+        0x49t
+        -0x46t
         0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
-        0x0t
+        -0x5dt
+        -0x61t
+        -0x17t
+        -0x35t
+        0x67t
+        0x27t
+        0x62t
+        0x22t
     .end array-data
 
     :array_1
@@ -239,7 +239,7 @@
         }
     .end annotation
 
-    .line 926
+    .line 938
     new-instance v0, Ljava/util/ArrayList;
 
     const-string v1, "vendor.qti.hardware.radio.ims@1.2::IImsRadioResponse"
@@ -264,7 +264,7 @@
 .method public final interfaceDescriptor()Ljava/lang/String;
     .locals 1
 
-    .line 934
+    .line 946
     const-string v0, "vendor.qti.hardware.radio.ims@1.2::IImsRadioResponse"
 
     return-object v0
@@ -275,7 +275,7 @@
     .param p1, "recipient"    # Landroid/os/IHwBinder$DeathRecipient;
     .param p2, "cookie"    # J
 
-    .line 954
+    .line 966
     const/4 v0, 0x1
 
     return v0
@@ -284,10 +284,10 @@
 .method public final notifySyspropsChanged()V
     .locals 0
 
-    .line 974
+    .line 986
     invoke-static {}, Landroid/os/HwBinder;->enableInstrumentation()V
 
-    .line 975
+    .line 987
     return-void
 .end method
 
@@ -309,7 +309,7 @@
 
     move-object/from16 v8, p3
 
-    .line 1003
+    .line 1015
     const/high16 v0, -0x80000000
 
     const/4 v1, 0x0
@@ -322,7 +322,7 @@
 
     goto/16 :goto_7
 
-    .line 1743
+    .line 1755
     :sswitch_0
     and-int/lit8 v3, p4, 0x1
 
@@ -332,21 +332,21 @@
 
     nop
 
-    .line 1744
+    .line 1756
     .local v1, "_hidl_is_oneway":Z
     :cond_0
     if-eqz v1, :cond_5d
 
-    .line 1745
+    .line 1757
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1746
+    .line 1758
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1747
+    .line 1759
     goto/16 :goto_7
 
-    .line 1730
+    .line 1742
     .end local v1    # "_hidl_is_oneway":Z
     :sswitch_1
     and-int/lit8 v3, p4, 0x1
@@ -357,33 +357,33 @@
 
     nop
 
-    .line 1731
+    .line 1743
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_1
     if-eq v1, v2, :cond_2
 
-    .line 1732
+    .line 1744
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1733
+    .line 1745
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1734
+    .line 1746
     goto/16 :goto_7
 
-    .line 1735
+    .line 1747
     :cond_2
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1737
+    .line 1749
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->notifySyspropsChanged()V
 
-    .line 1738
+    .line 1750
     goto/16 :goto_7
 
-    .line 1714
+    .line 1726
     .end local v1    # "_hidl_is_oneway":Z
     :sswitch_2
     and-int/lit8 v3, p4, 0x1
@@ -395,45 +395,45 @@
     :cond_3
     move v2, v1
 
-    .line 1715
+    .line 1727
     .local v2, "_hidl_is_oneway":Z
     :goto_0
     if-eqz v2, :cond_4
 
-    .line 1716
+    .line 1728
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1717
+    .line 1729
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1718
+    .line 1730
     goto/16 :goto_7
 
-    .line 1719
+    .line 1731
     :cond_4
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1721
+    .line 1733
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getDebugInfo()Landroid/hidl/base/V1_0/DebugInfo;
 
     move-result-object v0
 
-    .line 1722
+    .line 1734
     .local v0, "_hidl_out_info":Landroid/hidl/base/V1_0/DebugInfo;
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1723
+    .line 1735
     invoke-virtual {v0, v8}, Landroid/hidl/base/V1_0/DebugInfo;->writeToParcel(Landroid/os/HwParcel;)V
 
-    .line 1724
+    .line 1736
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1725
+    .line 1737
     goto/16 :goto_7
 
-    .line 1699
+    .line 1711
     .end local v0    # "_hidl_out_info":Landroid/hidl/base/V1_0/DebugInfo;
     .end local v2    # "_hidl_is_oneway":Z
     :sswitch_3
@@ -446,39 +446,39 @@
     :cond_5
     move v2, v1
 
-    .line 1700
+    .line 1712
     .restart local v2    # "_hidl_is_oneway":Z
     :goto_1
     if-eqz v2, :cond_6
 
-    .line 1701
+    .line 1713
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1702
+    .line 1714
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1703
+    .line 1715
     goto/16 :goto_7
 
-    .line 1704
+    .line 1716
     :cond_6
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1706
+    .line 1718
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->ping()V
 
-    .line 1707
+    .line 1719
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1708
+    .line 1720
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1709
+    .line 1721
     goto/16 :goto_7
 
-    .line 1689
+    .line 1701
     .end local v2    # "_hidl_is_oneway":Z
     :sswitch_4
     and-int/lit8 v3, p4, 0x1
@@ -489,21 +489,21 @@
 
     nop
 
-    .line 1690
+    .line 1702
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_7
     if-eqz v1, :cond_5d
 
-    .line 1691
+    .line 1703
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1692
+    .line 1704
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1693
+    .line 1705
     goto/16 :goto_7
 
-    .line 1676
+    .line 1688
     .end local v1    # "_hidl_is_oneway":Z
     :sswitch_5
     and-int/lit8 v3, p4, 0x1
@@ -514,33 +514,33 @@
 
     nop
 
-    .line 1677
+    .line 1689
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_8
     if-eq v1, v2, :cond_9
 
-    .line 1678
+    .line 1690
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1679
+    .line 1691
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1680
+    .line 1692
     goto/16 :goto_7
 
-    .line 1681
+    .line 1693
     :cond_9
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1683
+    .line 1695
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setHALInstrumentation()V
 
-    .line 1684
+    .line 1696
     goto/16 :goto_7
 
-    .line 1643
+    .line 1655
     .end local v1    # "_hidl_is_oneway":Z
     :sswitch_6
     and-int/lit8 v3, p4, 0x1
@@ -552,67 +552,67 @@
     :cond_a
     move v2, v1
 
-    .line 1644
+    .line 1656
     .restart local v2    # "_hidl_is_oneway":Z
     :goto_2
     if-eqz v2, :cond_b
 
-    .line 1645
+    .line 1657
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1646
+    .line 1658
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1647
+    .line 1659
     goto/16 :goto_7
 
-    .line 1648
+    .line 1660
     :cond_b
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1650
+    .line 1662
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getHashChain()Ljava/util/ArrayList;
 
     move-result-object v0
 
-    .line 1651
+    .line 1663
     .local v0, "_hidl_out_hashchain":Ljava/util/ArrayList;, "Ljava/util/ArrayList<[B>;"
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1653
+    .line 1665
     new-instance v3, Landroid/os/HwBlob;
 
     const/16 v4, 0x10
 
     invoke-direct {v3, v4}, Landroid/os/HwBlob;-><init>(I)V
 
-    .line 1655
+    .line 1667
     .local v3, "_hidl_blob":Landroid/os/HwBlob;
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     move-result v4
 
-    .line 1656
+    .line 1668
     .local v4, "_hidl_vec_size":I
     const-wide/16 v9, 0x8
 
     invoke-virtual {v3, v9, v10, v4}, Landroid/os/HwBlob;->putInt32(JI)V
 
-    .line 1657
+    .line 1669
     const-wide/16 v9, 0xc
 
     invoke-virtual {v3, v9, v10, v1}, Landroid/os/HwBlob;->putBool(JZ)V
 
-    .line 1658
+    .line 1670
     new-instance v5, Landroid/os/HwBlob;
 
     mul-int/lit8 v9, v4, 0x20
 
     invoke-direct {v5, v9}, Landroid/os/HwBlob;-><init>(I)V
 
-    .line 1659
+    .line 1671
     .local v5, "childBlob":Landroid/os/HwBlob;
     nop
 
@@ -620,12 +620,12 @@
     :goto_3
     if-ge v1, v4, :cond_c
 
-    .line 1661
+    .line 1673
     mul-int/lit8 v9, v1, 0x20
 
     int-to-long v9, v9
 
-    .line 1662
+    .line 1674
     .local v9, "_hidl_array_offset_1":J
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -635,35 +635,35 @@
 
     invoke-virtual {v5, v9, v10, v11}, Landroid/os/HwBlob;->putInt8Array(J[B)V
 
-    .line 1663
+    .line 1675
     nop
 
-    .line 1659
+    .line 1671
     .end local v9    # "_hidl_array_offset_1":J
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_3
 
-    .line 1666
+    .line 1678
     .end local v1    # "_hidl_index_0":I
     :cond_c
     const-wide/16 v9, 0x0
 
     invoke-virtual {v3, v9, v10, v5}, Landroid/os/HwBlob;->putBlob(JLandroid/os/HwBlob;)V
 
-    .line 1668
+    .line 1680
     .end local v4    # "_hidl_vec_size":I
     .end local v5    # "childBlob":Landroid/os/HwBlob;
     invoke-virtual {v8, v3}, Landroid/os/HwParcel;->writeBuffer(Landroid/os/HwBlob;)V
 
-    .line 1670
+    .line 1682
     .end local v3    # "_hidl_blob":Landroid/os/HwBlob;
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1671
+    .line 1683
     goto/16 :goto_7
 
-    .line 1627
+    .line 1639
     .end local v0    # "_hidl_out_hashchain":Ljava/util/ArrayList;, "Ljava/util/ArrayList<[B>;"
     .end local v2    # "_hidl_is_oneway":Z
     :sswitch_7
@@ -676,45 +676,45 @@
     :cond_d
     move v2, v1
 
-    .line 1628
+    .line 1640
     .restart local v2    # "_hidl_is_oneway":Z
     :goto_4
     if-eqz v2, :cond_e
 
-    .line 1629
+    .line 1641
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1630
+    .line 1642
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1631
+    .line 1643
     goto/16 :goto_7
 
-    .line 1632
+    .line 1644
     :cond_e
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1634
+    .line 1646
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->interfaceDescriptor()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 1635
+    .line 1647
     .local v0, "_hidl_out_descriptor":Ljava/lang/String;
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1636
+    .line 1648
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeString(Ljava/lang/String;)V
 
-    .line 1637
+    .line 1649
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1638
+    .line 1650
     goto/16 :goto_7
 
-    .line 1613
+    .line 1625
     .end local v0    # "_hidl_out_descriptor":Ljava/lang/String;
     .end local v2    # "_hidl_is_oneway":Z
     :sswitch_8
@@ -727,36 +727,36 @@
     :cond_f
     move v2, v1
 
-    .line 1614
+    .line 1626
     .restart local v2    # "_hidl_is_oneway":Z
     :goto_5
     if-eqz v2, :cond_10
 
-    .line 1615
+    .line 1627
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1616
+    .line 1628
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1617
+    .line 1629
     goto/16 :goto_7
 
-    .line 1618
+    .line 1630
     :cond_10
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1620
+    .line 1632
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1621
+    .line 1633
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1622
+    .line 1634
     goto/16 :goto_7
 
-    .line 1597
+    .line 1609
     .end local v2    # "_hidl_is_oneway":Z
     :sswitch_9
     and-int/lit8 v3, p4, 0x1
@@ -768,45 +768,45 @@
     :cond_11
     move v2, v1
 
-    .line 1598
+    .line 1610
     .restart local v2    # "_hidl_is_oneway":Z
     :goto_6
     if-eqz v2, :cond_12
 
-    .line 1599
+    .line 1611
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1600
+    .line 1612
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1601
+    .line 1613
     goto/16 :goto_7
 
-    .line 1602
+    .line 1614
     :cond_12
     const-string v0, "android.hidl.base@1.0::IBase"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1604
+    .line 1616
     invoke-virtual {v6}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->interfaceChain()Ljava/util/ArrayList;
 
     move-result-object v0
 
-    .line 1605
+    .line 1617
     .local v0, "_hidl_out_descriptors":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     invoke-virtual {v8, v1}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1606
+    .line 1618
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStringVector(Ljava/util/ArrayList;)V
 
-    .line 1607
+    .line 1619
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1608
+    .line 1620
     goto/16 :goto_7
 
-    .line 1580
+    .line 1592
     .end local v0    # "_hidl_out_descriptors":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     .end local v2    # "_hidl_is_oneway":Z
     :pswitch_0
@@ -818,57 +818,57 @@
 
     nop
 
-    .line 1581
+    .line 1593
     .local v1, "_hidl_is_oneway":Z
     :cond_13
     if-eq v1, v2, :cond_14
 
-    .line 1582
+    .line 1594
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1583
+    .line 1595
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1584
+    .line 1596
     goto/16 :goto_7
 
-    .line 1585
+    .line 1597
     :cond_14
     const-string v0, "vendor.qti.hardware.radio.ims@1.2::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1587
+    .line 1599
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1588
+    .line 1600
     .local v0, "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1589
+    .line 1601
     .local v2, "msgeRef":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v3
 
-    .line 1590
+    .line 1602
     .local v3, "smsStatus":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v4
 
-    .line 1591
+    .line 1603
     .local v4, "reason":I
     invoke-virtual {v6, v0, v2, v3, v4}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->sendImsSmsResponse(IIII)V
 
-    .line 1592
+    .line 1604
     goto/16 :goto_7
 
-    .line 1565
+    .line 1577
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "msgeRef":I
@@ -883,45 +883,45 @@
 
     nop
 
-    .line 1566
+    .line 1578
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_15
     if-eq v1, v2, :cond_16
 
-    .line 1567
+    .line 1579
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1568
+    .line 1580
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1569
+    .line 1581
     goto/16 :goto_7
 
-    .line 1570
+    .line 1582
     :cond_16
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1572
+    .line 1584
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1573
+    .line 1585
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1574
+    .line 1586
     .local v2, "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->cancelModifyCallResponse(II)V
 
-    .line 1575
+    .line 1587
     goto/16 :goto_7
 
-    .line 1550
+    .line 1562
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -934,45 +934,45 @@
 
     nop
 
-    .line 1551
+    .line 1563
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_17
     if-eq v1, v2, :cond_18
 
-    .line 1552
+    .line 1564
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1553
+    .line 1565
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1554
+    .line 1566
     goto/16 :goto_7
 
-    .line 1555
+    .line 1567
     :cond_18
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1557
+    .line 1569
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1558
+    .line 1570
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1559
+    .line 1571
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->sendRttMessageResponse(II)V
 
-    .line 1560
+    .line 1572
     goto/16 :goto_7
 
-    .line 1533
+    .line 1545
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -985,54 +985,54 @@
 
     nop
 
-    .line 1534
+    .line 1546
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_19
     if-eq v1, v2, :cond_1a
 
-    .line 1535
+    .line 1547
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1536
+    .line 1548
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1537
+    .line 1549
     goto/16 :goto_7
 
-    .line 1538
+    .line 1550
     :cond_1a
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1540
+    .line 1552
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1541
+    .line 1553
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1542
+    .line 1554
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ImsSubConfigInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ImsSubConfigInfo;-><init>()V
 
-    .line 1543
+    .line 1555
     .local v3, "subConfigInfo":Lvendor/qti/hardware/radio/ims/V1_0/ImsSubConfigInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ImsSubConfigInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1544
+    .line 1556
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getImsSubConfigResponse(IILvendor/qti/hardware/radio/ims/V1_0/ImsSubConfigInfo;)V
 
-    .line 1545
+    .line 1557
     goto/16 :goto_7
 
-    .line 1518
+    .line 1530
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1046,45 +1046,45 @@
 
     nop
 
-    .line 1519
+    .line 1531
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_1b
     if-eq v1, v2, :cond_1c
 
-    .line 1520
+    .line 1532
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1521
+    .line 1533
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1522
+    .line 1534
     goto/16 :goto_7
 
-    .line 1523
+    .line 1535
     :cond_1c
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1525
+    .line 1537
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1526
+    .line 1538
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1527
+    .line 1539
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->sendGeolocationInfoResponse(II)V
 
-    .line 1528
+    .line 1540
     goto/16 :goto_7
 
-    .line 1503
+    .line 1515
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1097,45 +1097,45 @@
 
     nop
 
-    .line 1504
+    .line 1516
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_1d
     if-eq v1, v2, :cond_1e
 
-    .line 1505
+    .line 1517
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1506
+    .line 1518
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1507
+    .line 1519
     goto/16 :goto_7
 
-    .line 1508
+    .line 1520
     :cond_1e
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1510
+    .line 1522
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1511
+    .line 1523
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1512
+    .line 1524
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->deflectCallResponse(II)V
 
-    .line 1513
+    .line 1525
     goto/16 :goto_7
 
-    .line 1488
+    .line 1500
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1148,45 +1148,45 @@
 
     nop
 
-    .line 1489
+    .line 1501
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_1f
     if-eq v1, v2, :cond_20
 
-    .line 1490
+    .line 1502
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1491
+    .line 1503
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1492
+    .line 1504
     goto/16 :goto_7
 
-    .line 1493
+    .line 1505
     :cond_20
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1495
+    .line 1507
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1496
+    .line 1508
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1497
+    .line 1509
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->addParticipantResponse(II)V
 
-    .line 1498
+    .line 1510
     goto/16 :goto_7
 
-    .line 1472
+    .line 1484
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1199,51 +1199,51 @@
 
     nop
 
-    .line 1473
+    .line 1485
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_21
     if-eq v1, v2, :cond_22
 
-    .line 1474
+    .line 1486
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1475
+    .line 1487
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1476
+    .line 1488
     goto/16 :goto_7
 
-    .line 1477
+    .line 1489
     :cond_22
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1479
+    .line 1491
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1480
+    .line 1492
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1481
+    .line 1493
     .restart local v2    # "errorCode":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt64()J
 
     move-result-wide v3
 
-    .line 1482
+    .line 1494
     .local v3, "packetErrorCount":J
     invoke-virtual {v6, v0, v2, v3, v4}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getRtpErrorStatisticsResponse(IIJ)V
 
-    .line 1483
+    .line 1495
     goto/16 :goto_7
 
-    .line 1456
+    .line 1468
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1257,51 +1257,51 @@
 
     nop
 
-    .line 1457
+    .line 1469
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_23
     if-eq v1, v2, :cond_24
 
-    .line 1458
+    .line 1470
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1459
+    .line 1471
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1460
+    .line 1472
     goto/16 :goto_7
 
-    .line 1461
+    .line 1473
     :cond_24
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1463
+    .line 1475
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1464
+    .line 1476
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1465
+    .line 1477
     .restart local v2    # "errorCode":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt64()J
 
     move-result-wide v3
 
-    .line 1466
+    .line 1478
     .local v3, "packetCount":J
     invoke-virtual {v6, v0, v2, v3, v4}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getRtpStatisticsResponse(IIJ)V
 
-    .line 1467
+    .line 1479
     goto/16 :goto_7
 
-    .line 1440
+    .line 1452
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1315,51 +1315,51 @@
 
     nop
 
-    .line 1441
+    .line 1453
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_25
     if-eq v1, v2, :cond_26
 
-    .line 1442
+    .line 1454
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1443
+    .line 1455
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1444
+    .line 1456
     goto/16 :goto_7
 
-    .line 1445
+    .line 1457
     :cond_26
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1447
+    .line 1459
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1448
+    .line 1460
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1449
+    .line 1461
     .restart local v2    # "errorCode":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v3
 
-    .line 1450
+    .line 1462
     .local v3, "serviceStatus":I
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setSuppServiceNotificationResponse(III)V
 
-    .line 1451
+    .line 1463
     goto/16 :goto_7
 
-    .line 1425
+    .line 1437
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1373,45 +1373,45 @@
 
     nop
 
-    .line 1426
+    .line 1438
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_27
     if-eq v1, v2, :cond_28
 
-    .line 1427
+    .line 1439
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1428
+    .line 1440
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1429
+    .line 1441
     goto/16 :goto_7
 
-    .line 1430
+    .line 1442
     :cond_28
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1432
+    .line 1444
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1433
+    .line 1445
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1434
+    .line 1446
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->explicitCallTransferResponse(II)V
 
-    .line 1435
+    .line 1447
     goto/16 :goto_7
 
-    .line 1406
+    .line 1418
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1427,49 +1427,49 @@
     :cond_29
     move v9, v1
 
-    .line 1407
+    .line 1419
     .local v9, "_hidl_is_oneway":Z
     if-eq v9, v2, :cond_2a
 
-    .line 1408
+    .line 1420
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1409
+    .line 1421
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1410
+    .line 1422
     goto/16 :goto_7
 
-    .line 1411
+    .line 1423
     :cond_2a
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1413
+    .line 1425
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v10
 
-    .line 1414
+    .line 1426
     .local v10, "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v11
 
-    .line 1415
+    .line 1427
     .local v11, "errorCode":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v12
 
-    .line 1416
+    .line 1428
     .local v12, "serviceStatus":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v13
 
-    .line 1417
+    .line 1429
     .local v13, "serviceClass":I
     new-instance v0, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
 
@@ -1477,11 +1477,11 @@
 
     move-object v5, v0
 
-    .line 1418
+    .line 1430
     .local v5, "errorDetails":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual {v5, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1419
+    .line 1431
     move-object v0, v6
 
     move v1, v10
@@ -1498,10 +1498,10 @@
     .local v14, "errorDetails":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual/range {v0 .. v5}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getCallWaitingResponse(IIIILvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;)V
 
-    .line 1420
+    .line 1432
     goto/16 :goto_7
 
-    .line 1388
+    .line 1400
     .end local v9    # "_hidl_is_oneway":Z
     .end local v10    # "token":I
     .end local v11    # "errorCode":I
@@ -1517,60 +1517,60 @@
 
     nop
 
-    .line 1389
+    .line 1401
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_2b
     if-eq v1, v2, :cond_2c
 
-    .line 1390
+    .line 1402
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1391
+    .line 1403
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1392
+    .line 1404
     goto/16 :goto_7
 
-    .line 1393
+    .line 1405
     :cond_2c
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1395
+    .line 1407
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1396
+    .line 1408
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1397
+    .line 1409
     .restart local v2    # "errorCode":I
     invoke-static/range {p2 .. p2}, Lvendor/qti/hardware/radio/ims/V1_0/CallForwardInfo;->readVectorFromParcel(Landroid/os/HwParcel;)Ljava/util/ArrayList;
 
     move-result-object v3
 
-    .line 1398
+    .line 1410
     .local v3, "callForwardInfoList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lvendor/qti/hardware/radio/ims/V1_0/CallForwardInfo;>;"
     new-instance v4, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
 
     invoke-direct {v4}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;-><init>()V
 
-    .line 1399
+    .line 1411
     .local v4, "errorDetails":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual {v4, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1400
+    .line 1412
     invoke-virtual {v6, v0, v2, v3, v4}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->queryCallForwardStatusResponse(IILjava/util/ArrayList;Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;)V
 
-    .line 1401
+    .line 1413
     goto/16 :goto_7
 
-    .line 1373
+    .line 1385
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1585,45 +1585,45 @@
 
     nop
 
-    .line 1374
+    .line 1386
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_2d
     if-eq v1, v2, :cond_2e
 
-    .line 1375
+    .line 1387
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1376
+    .line 1388
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1377
+    .line 1389
     goto/16 :goto_7
 
-    .line 1378
+    .line 1390
     :cond_2e
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1380
+    .line 1392
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1381
+    .line 1393
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1382
+    .line 1394
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->modifyCallConfirmResponse(II)V
 
-    .line 1383
+    .line 1395
     goto/16 :goto_7
 
-    .line 1358
+    .line 1370
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1636,45 +1636,45 @@
 
     nop
 
-    .line 1359
+    .line 1371
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_2f
     if-eq v1, v2, :cond_30
 
-    .line 1360
+    .line 1372
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1361
+    .line 1373
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1362
+    .line 1374
     goto/16 :goto_7
 
-    .line 1363
+    .line 1375
     :cond_30
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1365
+    .line 1377
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1366
+    .line 1378
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1367
+    .line 1379
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->modifyCallInitiateResponse(II)V
 
-    .line 1368
+    .line 1380
     goto/16 :goto_7
 
-    .line 1343
+    .line 1355
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1687,45 +1687,45 @@
 
     nop
 
-    .line 1344
+    .line 1356
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_31
     if-eq v1, v2, :cond_32
 
-    .line 1345
+    .line 1357
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1346
+    .line 1358
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1347
+    .line 1359
     goto/16 :goto_7
 
-    .line 1348
+    .line 1360
     :cond_32
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1350
+    .line 1362
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1351
+    .line 1363
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1352
+    .line 1364
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setUiTTYModeResponse(II)V
 
-    .line 1353
+    .line 1365
     goto/16 :goto_7
 
-    .line 1328
+    .line 1340
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1738,45 +1738,45 @@
 
     nop
 
-    .line 1329
+    .line 1341
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_33
     if-eq v1, v2, :cond_34
 
-    .line 1330
+    .line 1342
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1331
+    .line 1343
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1332
+    .line 1344
     goto/16 :goto_7
 
-    .line 1333
+    .line 1345
     :cond_34
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1335
+    .line 1347
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1336
+    .line 1348
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1337
+    .line 1349
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->stopDtmfResponse(II)V
 
-    .line 1338
+    .line 1350
     goto/16 :goto_7
 
-    .line 1313
+    .line 1325
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1789,45 +1789,45 @@
 
     nop
 
-    .line 1314
+    .line 1326
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_35
     if-eq v1, v2, :cond_36
 
-    .line 1315
+    .line 1327
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1316
+    .line 1328
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1317
+    .line 1329
     goto/16 :goto_7
 
-    .line 1318
+    .line 1330
     :cond_36
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1320
+    .line 1332
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1321
+    .line 1333
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1322
+    .line 1334
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->startDtmfResponse(II)V
 
-    .line 1323
+    .line 1335
     goto/16 :goto_7
 
-    .line 1298
+    .line 1310
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1840,45 +1840,45 @@
 
     nop
 
-    .line 1299
+    .line 1311
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_37
     if-eq v1, v2, :cond_38
 
-    .line 1300
+    .line 1312
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1301
+    .line 1313
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1302
+    .line 1314
     goto/16 :goto_7
 
-    .line 1303
+    .line 1315
     :cond_38
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1305
+    .line 1317
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1306
+    .line 1318
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1307
+    .line 1319
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->sendDtmfResponse(II)V
 
-    .line 1308
+    .line 1320
     goto/16 :goto_7
 
-    .line 1283
+    .line 1295
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1891,45 +1891,45 @@
 
     nop
 
-    .line 1284
+    .line 1296
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_39
     if-eq v1, v2, :cond_3a
 
-    .line 1285
+    .line 1297
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1286
+    .line 1298
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1287
+    .line 1299
     goto/16 :goto_7
 
-    .line 1288
+    .line 1300
     :cond_3a
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1290
+    .line 1302
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1291
+    .line 1303
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1292
+    .line 1304
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->exitEmergencyCallbackModeResponse(II)V
 
-    .line 1293
+    .line 1305
     goto/16 :goto_7
 
-    .line 1266
+    .line 1278
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -1942,54 +1942,54 @@
 
     nop
 
-    .line 1267
+    .line 1279
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_3b
     if-eq v1, v2, :cond_3c
 
-    .line 1268
+    .line 1280
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1269
+    .line 1281
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1270
+    .line 1282
     goto/16 :goto_7
 
-    .line 1271
+    .line 1283
     :cond_3c
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1273
+    .line 1285
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1274
+    .line 1286
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1275
+    .line 1287
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ColrInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ColrInfo;-><init>()V
 
-    .line 1276
+    .line 1288
     .local v3, "colrInfo":Lvendor/qti/hardware/radio/ims/V1_0/ColrInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ColrInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1277
+    .line 1289
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getColrResponse(IILvendor/qti/hardware/radio/ims/V1_0/ColrInfo;)V
 
-    .line 1278
+    .line 1290
     goto/16 :goto_7
 
-    .line 1251
+    .line 1263
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2003,45 +2003,45 @@
 
     nop
 
-    .line 1252
+    .line 1264
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_3d
     if-eq v1, v2, :cond_3e
 
-    .line 1253
+    .line 1265
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1254
+    .line 1266
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1255
+    .line 1267
     goto/16 :goto_7
 
-    .line 1256
+    .line 1268
     :cond_3e
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1258
+    .line 1270
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1259
+    .line 1271
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1260
+    .line 1272
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setClirResponse(II)V
 
-    .line 1261
+    .line 1273
     goto/16 :goto_7
 
-    .line 1233
+    .line 1245
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2054,60 +2054,60 @@
 
     nop
 
-    .line 1234
+    .line 1246
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_3f
     if-eq v1, v2, :cond_40
 
-    .line 1235
+    .line 1247
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1236
+    .line 1248
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1237
+    .line 1249
     goto/16 :goto_7
 
-    .line 1238
+    .line 1250
     :cond_40
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1240
+    .line 1252
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1241
+    .line 1253
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1242
+    .line 1254
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ClirInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ClirInfo;-><init>()V
 
-    .line 1243
+    .line 1255
     .local v3, "clirInfo":Lvendor/qti/hardware/radio/ims/V1_0/ClirInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ClirInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1244
+    .line 1256
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readBool()Z
 
     move-result v4
 
-    .line 1245
+    .line 1257
     .local v4, "hasClirInfo":Z
     invoke-virtual {v6, v0, v2, v3, v4}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getClirResponse(IILvendor/qti/hardware/radio/ims/V1_0/ClirInfo;Z)V
 
-    .line 1246
+    .line 1258
     goto/16 :goto_7
 
-    .line 1216
+    .line 1228
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2122,54 +2122,54 @@
 
     nop
 
-    .line 1217
+    .line 1229
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_41
     if-eq v1, v2, :cond_42
 
-    .line 1218
+    .line 1230
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1219
+    .line 1231
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1220
+    .line 1232
     goto/16 :goto_7
 
-    .line 1221
+    .line 1233
     :cond_42
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1223
+    .line 1235
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1224
+    .line 1236
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1225
+    .line 1237
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ClipProvisionStatus;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ClipProvisionStatus;-><init>()V
 
-    .line 1226
+    .line 1238
     .local v3, "clipProvisionStatus":Lvendor/qti/hardware/radio/ims/V1_0/ClipProvisionStatus;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ClipProvisionStatus;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1227
+    .line 1239
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getClipResponse(IILvendor/qti/hardware/radio/ims/V1_0/ClipProvisionStatus;)V
 
-    .line 1228
+    .line 1240
     goto/16 :goto_7
 
-    .line 1199
+    .line 1211
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2183,54 +2183,54 @@
 
     nop
 
-    .line 1200
+    .line 1212
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_43
     if-eq v1, v2, :cond_44
 
-    .line 1201
+    .line 1213
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1202
+    .line 1214
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1203
+    .line 1215
     goto/16 :goto_7
 
-    .line 1204
+    .line 1216
     :cond_44
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1206
+    .line 1218
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1207
+    .line 1219
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1208
+    .line 1220
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;-><init>()V
 
-    .line 1209
+    .line 1221
     .local v3, "errorInfo":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1210
+    .line 1222
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->conferenceResponse(IILvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;)V
 
-    .line 1211
+    .line 1223
     goto/16 :goto_7
 
-    .line 1182
+    .line 1194
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2244,54 +2244,54 @@
 
     nop
 
-    .line 1183
+    .line 1195
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_45
     if-eq v1, v2, :cond_46
 
-    .line 1184
+    .line 1196
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1185
+    .line 1197
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1186
+    .line 1198
     goto/16 :goto_7
 
-    .line 1187
+    .line 1199
     :cond_46
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1189
+    .line 1201
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1190
+    .line 1202
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1191
+    .line 1203
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/SuppServiceStatus;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/SuppServiceStatus;-><init>()V
 
-    .line 1192
+    .line 1204
     .local v3, "suppServiceStatus":Lvendor/qti/hardware/radio/ims/V1_0/SuppServiceStatus;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SuppServiceStatus;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1193
+    .line 1205
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->suppServiceStatusResponse(IILvendor/qti/hardware/radio/ims/V1_0/SuppServiceStatus;)V
 
-    .line 1194
+    .line 1206
     goto/16 :goto_7
 
-    .line 1165
+    .line 1177
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2305,54 +2305,54 @@
 
     nop
 
-    .line 1166
+    .line 1178
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_47
     if-eq v1, v2, :cond_48
 
-    .line 1167
+    .line 1179
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1168
+    .line 1180
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1169
+    .line 1181
     goto/16 :goto_7
 
-    .line 1170
+    .line 1182
     :cond_48
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1172
+    .line 1184
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1173
+    .line 1185
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1174
+    .line 1186
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/RegistrationInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/RegistrationInfo;-><init>()V
 
-    .line 1175
+    .line 1187
     .local v3, "registration":Lvendor/qti/hardware/radio/ims/V1_0/RegistrationInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/RegistrationInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1176
+    .line 1188
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getRegistrationResponse(IILvendor/qti/hardware/radio/ims/V1_0/RegistrationInfo;)V
 
-    .line 1177
+    .line 1189
     goto/16 :goto_7
 
-    .line 1148
+    .line 1160
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2366,54 +2366,54 @@
 
     nop
 
-    .line 1149
+    .line 1161
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_49
     if-eq v1, v2, :cond_4a
 
-    .line 1150
+    .line 1162
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1151
+    .line 1163
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1152
+    .line 1164
     goto/16 :goto_7
 
-    .line 1153
+    .line 1165
     :cond_4a
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1155
+    .line 1167
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1156
+    .line 1168
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1157
+    .line 1169
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;-><init>()V
 
-    .line 1158
+    .line 1170
     .local v3, "config":Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1159
+    .line 1171
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->getConfigResponse(IILvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;)V
 
-    .line 1160
+    .line 1172
     goto/16 :goto_7
 
-    .line 1131
+    .line 1143
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2427,54 +2427,54 @@
 
     nop
 
-    .line 1132
+    .line 1144
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_4b
     if-eq v1, v2, :cond_4c
 
-    .line 1133
+    .line 1145
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1134
+    .line 1146
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1135
+    .line 1147
     goto/16 :goto_7
 
-    .line 1136
+    .line 1148
     :cond_4c
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1138
+    .line 1150
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1139
+    .line 1151
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1140
+    .line 1152
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;-><init>()V
 
-    .line 1141
+    .line 1153
     .restart local v3    # "config":Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1142
+    .line 1154
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setConfigResponse(IILvendor/qti/hardware/radio/ims/V1_0/ConfigInfo;)V
 
-    .line 1143
+    .line 1155
     goto/16 :goto_7
 
-    .line 1114
+    .line 1126
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2488,54 +2488,54 @@
 
     nop
 
-    .line 1115
+    .line 1127
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_4d
     if-eq v1, v2, :cond_4e
 
-    .line 1116
+    .line 1128
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1117
+    .line 1129
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1118
+    .line 1130
     goto/16 :goto_7
 
-    .line 1119
+    .line 1131
     :cond_4e
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1121
+    .line 1133
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1122
+    .line 1134
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1123
+    .line 1135
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;-><init>()V
 
-    .line 1124
+    .line 1136
     .local v3, "sipError":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1125
+    .line 1137
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->resumeResponse(IILvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;)V
 
-    .line 1126
+    .line 1138
     goto/16 :goto_7
 
-    .line 1097
+    .line 1109
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2549,54 +2549,54 @@
 
     nop
 
-    .line 1098
+    .line 1110
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_4f
     if-eq v1, v2, :cond_50
 
-    .line 1099
+    .line 1111
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1100
+    .line 1112
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1101
+    .line 1113
     goto/16 :goto_7
 
-    .line 1102
+    .line 1114
     :cond_50
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1104
+    .line 1116
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1105
+    .line 1117
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1106
+    .line 1118
     .restart local v2    # "errorCode":I
     new-instance v3, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
 
     invoke-direct {v3}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;-><init>()V
 
-    .line 1107
+    .line 1119
     .restart local v3    # "sipError":Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;
     invoke-virtual {v3, v7}, Lvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;->readFromParcel(Landroid/os/HwParcel;)V
 
-    .line 1108
+    .line 1120
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->holdResponse(IILvendor/qti/hardware/radio/ims/V1_0/SipErrorInfo;)V
 
-    .line 1109
+    .line 1121
     goto/16 :goto_7
 
-    .line 1082
+    .line 1094
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2610,45 +2610,45 @@
 
     nop
 
-    .line 1083
+    .line 1095
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_51
     if-eq v1, v2, :cond_52
 
-    .line 1084
+    .line 1096
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1085
+    .line 1097
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1086
+    .line 1098
     goto/16 :goto_7
 
-    .line 1087
+    .line 1099
     :cond_52
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1089
+    .line 1101
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1090
+    .line 1102
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1091
+    .line 1103
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->setServiceStatusResponse(II)V
 
-    .line 1092
+    .line 1104
     goto/16 :goto_7
 
-    .line 1066
+    .line 1078
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2661,51 +2661,51 @@
 
     nop
 
-    .line 1067
+    .line 1079
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_53
     if-eq v1, v2, :cond_54
 
-    .line 1068
+    .line 1080
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1069
+    .line 1081
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1070
+    .line 1082
     goto/16 :goto_7
 
-    .line 1071
+    .line 1083
     :cond_54
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1073
+    .line 1085
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1074
+    .line 1086
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1075
+    .line 1087
     .restart local v2    # "errorCode":I
     invoke-static/range {p2 .. p2}, Lvendor/qti/hardware/radio/ims/V1_0/ServiceStatusInfo;->readVectorFromParcel(Landroid/os/HwParcel;)Ljava/util/ArrayList;
 
     move-result-object v3
 
-    .line 1076
+    .line 1088
     .local v3, "srvStatusList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lvendor/qti/hardware/radio/ims/V1_0/ServiceStatusInfo;>;"
     invoke-virtual {v6, v0, v2, v3}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->queryServiceStatusResponse(IILjava/util/ArrayList;)V
 
-    .line 1077
+    .line 1089
     goto/16 :goto_7
 
-    .line 1051
+    .line 1063
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2719,45 +2719,45 @@
 
     nop
 
-    .line 1052
+    .line 1064
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_55
     if-eq v1, v2, :cond_56
 
-    .line 1053
+    .line 1065
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1054
+    .line 1066
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1055
+    .line 1067
     goto/16 :goto_7
 
-    .line 1056
+    .line 1068
     :cond_56
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1058
+    .line 1070
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1059
+    .line 1071
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1060
+    .line 1072
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->requestRegistrationChangeResponse(II)V
 
-    .line 1061
+    .line 1073
     goto :goto_7
 
-    .line 1036
+    .line 1048
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2770,45 +2770,45 @@
 
     nop
 
-    .line 1037
+    .line 1049
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_57
     if-eq v1, v2, :cond_58
 
-    .line 1038
+    .line 1050
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1039
+    .line 1051
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1040
+    .line 1052
     goto :goto_7
 
-    .line 1041
+    .line 1053
     :cond_58
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1043
+    .line 1055
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1044
+    .line 1056
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1045
+    .line 1057
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->hangupResponse(II)V
 
-    .line 1046
+    .line 1058
     goto :goto_7
 
-    .line 1021
+    .line 1033
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2821,45 +2821,45 @@
 
     nop
 
-    .line 1022
+    .line 1034
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_59
     if-eq v1, v2, :cond_5a
 
-    .line 1023
+    .line 1035
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1024
+    .line 1036
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1025
+    .line 1037
     goto :goto_7
 
-    .line 1026
+    .line 1038
     :cond_5a
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1028
+    .line 1040
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1029
+    .line 1041
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1030
+    .line 1042
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->answerResponse(II)V
 
-    .line 1031
+    .line 1043
     goto :goto_7
 
-    .line 1006
+    .line 1018
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2872,45 +2872,45 @@
 
     nop
 
-    .line 1007
+    .line 1019
     .restart local v1    # "_hidl_is_oneway":Z
     :cond_5b
     if-eq v1, v2, :cond_5c
 
-    .line 1008
+    .line 1020
     invoke-virtual {v8, v0}, Landroid/os/HwParcel;->writeStatus(I)V
 
-    .line 1009
+    .line 1021
     invoke-virtual/range {p3 .. p3}, Landroid/os/HwParcel;->send()V
 
-    .line 1010
+    .line 1022
     goto :goto_7
 
-    .line 1011
+    .line 1023
     :cond_5c
     const-string v0, "vendor.qti.hardware.radio.ims@1.0::IImsRadioResponse"
 
     invoke-virtual {v7, v0}, Landroid/os/HwParcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1013
+    .line 1025
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v0
 
-    .line 1014
+    .line 1026
     .restart local v0    # "token":I
     invoke-virtual/range {p2 .. p2}, Landroid/os/HwParcel;->readInt32()I
 
     move-result v2
 
-    .line 1015
+    .line 1027
     .restart local v2    # "errorCode":I
     invoke-virtual {v6, v0, v2}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->dialResponse(II)V
 
-    .line 1016
+    .line 1028
     nop
 
-    .line 1752
+    .line 1764
     .end local v0    # "token":I
     .end local v1    # "_hidl_is_oneway":Z
     .end local v2    # "errorCode":I
@@ -2977,7 +2977,7 @@
 .method public final ping()V
     .locals 0
 
-    .line 959
+    .line 971
     return-void
 .end method
 
@@ -2985,7 +2985,7 @@
     .locals 1
     .param p1, "descriptor"    # Ljava/lang/String;
 
-    .line 985
+    .line 997
     const-string v0, "vendor.qti.hardware.radio.ims@1.2::IImsRadioResponse"
 
     invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -2994,10 +2994,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 986
+    .line 998
     return-object p0
 
-    .line 988
+    .line 1000
     :cond_0
     const/4 v0, 0x0
 
@@ -3013,24 +3013,24 @@
         }
     .end annotation
 
-    .line 992
+    .line 1004
     invoke-virtual {p0, p1}, Lvendor/qti/hardware/radio/ims/V1_2/IImsRadioResponse$Stub;->registerService(Ljava/lang/String;)V
 
-    .line 993
+    .line 1005
     return-void
 .end method
 
 .method public final setHALInstrumentation()V
     .locals 0
 
-    .line 950
+    .line 962
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 997
+    .line 1009
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -3056,7 +3056,7 @@
     .locals 1
     .param p1, "recipient"    # Landroid/os/IHwBinder$DeathRecipient;
 
-    .line 979
+    .line 991
     const/4 v0, 0x1
 
     return v0

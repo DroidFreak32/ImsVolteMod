@@ -26,16 +26,16 @@
     .param p1, "status"    # I
     .param p2, "lineNumber"    # Ljava/lang/String;
 
-    .line 85
+    .line 87
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 86
+    .line 88
     iput p1, p0, Lorg/codeaurora/ims/SuppSvcResponse$LineStatus;->mStatus:I
 
-    .line 87
+    .line 89
     iput-object p2, p0, Lorg/codeaurora/ims/SuppSvcResponse$LineStatus;->mNumber:Ljava/lang/String;
 
-    .line 88
+    .line 90
     return-void
 .end method
 
@@ -44,7 +44,7 @@
 .method public getNumber()Ljava/lang/String;
     .locals 1
 
-    .line 91
+    .line 93
     iget-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse$LineStatus;->mNumber:Ljava/lang/String;
 
     return-object v0
@@ -53,7 +53,7 @@
 .method public getStatus()I
     .locals 1
 
-    .line 95
+    .line 97
     iget v0, p0, Lorg/codeaurora/ims/SuppSvcResponse$LineStatus;->mStatus:I
 
     return v0

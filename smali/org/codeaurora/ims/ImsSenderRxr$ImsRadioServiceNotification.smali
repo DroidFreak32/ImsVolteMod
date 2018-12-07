@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lorg/codeaurora/ims/ImsSenderRxr;
 
-    .line 394
+    .line 410
     iput-object p1, p0, Lorg/codeaurora/ims/ImsSenderRxr$ImsRadioServiceNotification;->this$0:Lorg/codeaurora/ims/ImsSenderRxr;
 
     invoke-direct {p0}, Landroid/hidl/manager/V1_0/IServiceNotification$Stub;-><init>()V
@@ -39,7 +39,7 @@
     .param p2, "name"    # Ljava/lang/String;
     .param p3, "preexisting"    # Z
 
-    .line 403
+    .line 419
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -68,21 +68,11 @@
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->v(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 405
+    .line 421
     iget-object v0, p0, Lorg/codeaurora/ims/ImsSenderRxr$ImsRadioServiceNotification;->this$0:Lorg/codeaurora/ims/ImsSenderRxr;
 
-    invoke-static {v0}, Lorg/codeaurora/ims/ImsSenderRxr;->access$100(Lorg/codeaurora/ims/ImsSenderRxr;)Z
+    invoke-static {v0}, Lorg/codeaurora/ims/ImsSenderRxr;->access$100(Lorg/codeaurora/ims/ImsSenderRxr;)V
 
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 406
-    iget-object v0, p0, Lorg/codeaurora/ims/ImsSenderRxr$ImsRadioServiceNotification;->this$0:Lorg/codeaurora/ims/ImsSenderRxr;
-
-    invoke-static {v0}, Lorg/codeaurora/ims/ImsSenderRxr;->access$200(Lorg/codeaurora/ims/ImsSenderRxr;)V
-
-    .line 408
-    :cond_0
+    .line 422
     return-void
 .end method

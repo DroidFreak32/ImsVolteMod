@@ -161,21 +161,21 @@
     .locals 1
     .param p0, "imsConfigOpConst"    # I
 
-    .line 368
+    .line 375
     packed-switch p0, :pswitch_data_0
 
-    .line 375
+    .line 382
     const/4 v0, -0x1
 
     return v0
 
-    .line 372
+    .line 379
     :pswitch_0
     const/4 v0, 0x1
 
     return v0
 
-    .line 370
+    .line 377
     :pswitch_1
     const/4 v0, 0x0
 
@@ -976,7 +976,7 @@
     .param p3, "value"    # I
     .param p4, "listener"    # Lorg/codeaurora/ims/ImsConfigImpl$SetCapabilityValueListener;
 
-    .line 333
+    .line 340
     iget-object v0, p0, Lorg/codeaurora/ims/ImsConfigImpl;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.MODIFY_PHONE_STATE"
@@ -985,7 +985,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 334
+    .line 341
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -1014,34 +1014,34 @@
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 336
+    .line 343
     const/4 v0, 0x0
 
-    .line 337
+    .line 344
     .local v0, "srvType":I
     const/4 v1, 0x1
 
     if-ne p1, v1, :cond_0
 
-    .line 338
+    .line 345
     const/4 v0, 0x3
 
-    .line 340
+    .line 347
     :cond_0
     const/4 v2, 0x0
 
-    .line 341
+    .line 348
     .local v2, "enabled":I
     if-ne p3, v1, :cond_1
 
-    .line 342
+    .line 349
     const/4 v1, 0x2
 
     .end local v2    # "enabled":I
     .local v1, "enabled":I
     goto :goto_0
 
-    .line 344
+    .line 351
     .end local v1    # "enabled":I
     .restart local v2    # "enabled":I
     :cond_1
@@ -1052,16 +1052,16 @@
     :goto_0
     const/16 v2, 0xe
 
-    .line 345
+    .line 352
     .local v2, "act":I
     const/16 v3, 0x12
 
     if-ne p2, v3, :cond_2
 
-    .line 346
+    .line 353
     const/16 v2, 0x13
 
-    .line 348
+    .line 355
     .end local v2    # "act":I
     .local v8, "act":I
     :cond_2
@@ -1073,7 +1073,7 @@
 
     if-ne p2, v3, :cond_4
 
-    .line 350
+    .line 357
     :cond_3
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1103,25 +1103,25 @@
 
     invoke-static {p0, v2}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 351
+    .line 358
     invoke-static {}, Lcom/android/internal/os/SomeArgs;->obtain()Lcom/android/internal/os/SomeArgs;
 
     move-result-object v9
 
-    .line 352
+    .line 359
     .local v9, "setCapArgs":Lcom/android/internal/os/SomeArgs;
     iput v0, v9, Lcom/android/internal/os/SomeArgs;->argi1:I
 
-    .line 353
+    .line 360
     iput p2, v9, Lcom/android/internal/os/SomeArgs;->argi2:I
 
-    .line 354
+    .line 361
     iput p3, v9, Lcom/android/internal/os/SomeArgs;->argi3:I
 
-    .line 355
+    .line 362
     iput-object p4, v9, Lcom/android/internal/os/SomeArgs;->arg1:Ljava/lang/Object;
 
-    .line 356
+    .line 363
     iget-object v2, p0, Lorg/codeaurora/ims/ImsConfigImpl;->mCi:Lorg/codeaurora/ims/ImsSenderRxr;
 
     iget-object v3, p0, Lorg/codeaurora/ims/ImsConfigImpl;->mHandler:Landroid/os/Handler;
@@ -1142,7 +1142,7 @@
 
     invoke-virtual/range {v2 .. v7}, Lorg/codeaurora/ims/ImsSenderRxr;->setServiceStatus(Landroid/os/Message;IIII)V
 
-    .line 359
+    .line 366
     .end local v9    # "setCapArgs":Lcom/android/internal/os/SomeArgs;
     :cond_4
     return-void
@@ -1185,25 +1185,39 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 297
+    .line 300
     const/4 v0, 0x1
 
+    const/16 v1, 0x1a
+
+    if-ne p1, v1, :cond_0
+
+    .line 301
+    const-string v1, "VoWiFi Roaming: value can\'t be changed"
+
+    invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->w(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 302
+    return v0
+
+    .line 304
+    :cond_0
     invoke-static {p1, v0}, Lorg/codeaurora/ims/ImsCallUtils;->isConfigRequestValid(II)Z
 
     move-result v1
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_1
 
-    .line 298
+    .line 305
     const-string v1, "Invalid API request for item"
 
     invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 299
+    .line 306
     return v0
 
-    .line 301
-    :cond_0
+    .line 308
+    :cond_1
     const/16 v3, 0x2c
 
     const/4 v5, 0x1
@@ -1224,7 +1238,7 @@
 
     check-cast v0, Lcom/android/internal/os/SomeArgs;
 
-    .line 303
+    .line 310
     .local v0, "result":Lcom/android/internal/os/SomeArgs;
     iget-object v1, v0, Lcom/android/internal/os/SomeArgs;->arg2:Ljava/lang/Object;
 
@@ -1234,11 +1248,11 @@
 
     move-result v1
 
-    .line 304
+    .line 311
     .local v1, "retVal":I
     invoke-virtual {v0}, Lcom/android/internal/os/SomeArgs;->recycle()V
 
-    .line 305
+    .line 312
     invoke-static {v1}, Lorg/codeaurora/ims/ImsConfigImpl;->getImsConfigImplBaseOperationConstant(I)I
 
     move-result v2
@@ -1251,7 +1265,7 @@
     .param p1, "item"    # I
     .param p2, "value"    # Ljava/lang/String;
 
-    .line 318
+    .line 325
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -1274,7 +1288,7 @@
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 319
+    .line 326
     iget-object v0, p0, Lorg/codeaurora/ims/ImsConfigImpl;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.MODIFY_PHONE_STATE"
@@ -1283,7 +1297,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 320
+    .line 327
     const/4 v0, 0x2
 
     invoke-static {p1, v0}, Lorg/codeaurora/ims/ImsCallUtils;->isConfigRequestValid(II)Z
@@ -1292,17 +1306,17 @@
 
     if-nez v0, :cond_0
 
-    .line 321
+    .line 328
     const-string v0, "Invalid API request for item"
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 322
+    .line 329
     const/4 v0, 0x1
 
     return v0
 
-    .line 324
+    .line 331
     :cond_0
     const/16 v2, 0x2c
 
@@ -1324,7 +1338,7 @@
 
     check-cast v0, Lcom/android/internal/os/SomeArgs;
 
-    .line 326
+    .line 333
     .local v0, "result":Lcom/android/internal/os/SomeArgs;
     iget-object v1, v0, Lcom/android/internal/os/SomeArgs;->arg2:Ljava/lang/Object;
 
@@ -1334,11 +1348,11 @@
 
     move-result v1
 
-    .line 327
+    .line 334
     .local v1, "retVal":I
     invoke-virtual {v0}, Lcom/android/internal/os/SomeArgs;->recycle()V
 
-    .line 328
+    .line 335
     invoke-static {v1}, Lorg/codeaurora/ims/ImsConfigImpl;->getImsConfigImplBaseOperationConstant(I)I
 
     move-result v2

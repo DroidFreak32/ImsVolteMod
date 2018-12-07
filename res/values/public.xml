@@ -30,22 +30,18 @@
     <public type="string" name="wifi_calling_enable_dialog_cancel" id="0x7f04000e" />
     <public type="string" name="wifi_calling_enable_dialog_enable" id="0x7f04000f" />
     <public type="string" name="ims_channel_name" id="0x7f040010" />
-    <public type="string" name="rtt_upgrade_received" id="0x7f040011" />
-    <public type="string" name="rtt_modify_response" id="0x7f040012" />
-    <public type="string" name="rtt_upgrade_sent" id="0x7f040013" />
-    <public type="string" name="rtt_downgrade_sent" id="0x7f040014" />
-    <public type="string" name="ims_settings" id="0x7f040015" />
-    <public type="string" name="ims_vt_call_quality_title" id="0x7f040016" />
-    <public type="string" name="ims_vt_call_quality_low" id="0x7f040017" />
-    <public type="string" name="ims_vt_call_quality_high" id="0x7f040018" />
-    <public type="string" name="ims_vt_call_quality_unknown" id="0x7f040019" />
-    <public type="string" name="ims_vt_call_quality_set_failed" id="0x7f04001a" />
-    <public type="string" name="ims_get_packet_count_failed" id="0x7f04001b" />
-    <public type="string" name="ims_get_packet_error_count_failed" id="0x7f04001c" />
-    <public type="string" name="ims_get_packet_count_label" id="0x7f04001d" />
-    <public type="string" name="ims_get_packet_error_count_label" id="0x7f04001e" />
-    <public type="string" name="qti_ims_call_deflect_title" id="0x7f04001f" />
-    <public type="string" name="qti_ims_number_not_set" id="0x7f040020" />
-    <public type="string" name="ims_to_cs_retry_title" id="0x7f040021" />
-    <public type="string" name="ims_to_cs_retry_summary" id="0x7f040022" />
+    <public type="string" name="ims_settings" id="0x7f040011" />
+    <public type="string" name="ims_vt_call_quality_title" id="0x7f040012" />
+    <public type="string" name="ims_vt_call_quality_low" id="0x7f040013" />
+    <public type="string" name="ims_vt_call_quality_high" id="0x7f040014" />
+    <public type="string" name="ims_vt_call_quality_unknown" id="0x7f040015" />
+    <public type="string" name="ims_vt_call_quality_set_failed" id="0x7f040016" />
+    <public type="string" name="ims_get_packet_count_failed" id="0x7f040017" />
+    <public type="string" name="ims_get_packet_error_count_failed" id="0x7f040018" />
+    <public type="string" name="ims_get_packet_count_label" id="0x7f040019" />
+    <public type="string" name="ims_get_packet_error_count_label" id="0x7f04001a" />
+    <public type="string" name="qti_ims_call_deflect_title" id="0x7f04001b" />
+    <public type="string" name="qti_ims_number_not_set" id="0x7f04001c" />
+    <public type="string" name="ims_to_cs_retry_title" id="0x7f04001d" />
+    <public type="string" name="ims_to_cs_retry_summary" id="0x7f04001e" />
 </resources>

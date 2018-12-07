@@ -71,6 +71,8 @@
 
 .field private mFailureCause:Ljava/lang/String;
 
+.field private mProvisionStatus:I
+
 .field private mStatus:I
 
 
@@ -78,37 +80,42 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 131
+    .line 133
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 132
+    .line 134
     const/4 v0, -0x1
 
     iput v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mStatus:I
 
-    .line 133
+    .line 135
+    const/4 v0, 0x2
+
+    iput v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mProvisionStatus:I
+
+    .line 136
     const/4 v0, 0x0
 
     iput v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFacilityType:I
 
-    .line 134
+    .line 137
     const-string v0, ""
 
     iput-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFailureCause:Ljava/lang/String;
 
-    .line 135
+    .line 138
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mBarredLines:Ljava/util/List;
 
-    .line 136
+    .line 139
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 137
+    .line 140
     return-void
 .end method
 
@@ -118,12 +125,12 @@
     .locals 1
     .param p1, "lines"    # Lorg/codeaurora/ims/SuppSvcResponse$BarredLines;
 
-    .line 164
+    .line 175
     iget-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mBarredLines:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 165
+    .line 176
     return-void
 .end method
 
@@ -138,7 +145,7 @@
         }
     .end annotation
 
-    .line 168
+    .line 179
     iget-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mBarredLines:Ljava/util/List;
 
     return-object v0
@@ -147,7 +154,7 @@
 .method public getErrorDetails()Landroid/telephony/ims/ImsReasonInfo;
     .locals 1
 
-    .line 176
+    .line 187
     iget-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
     return-object v0
@@ -156,7 +163,7 @@
 .method public getFacilityType()I
     .locals 1
 
-    .line 152
+    .line 163
     iget v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFacilityType:I
 
     return v0
@@ -165,16 +172,25 @@
 .method public getFailureCause()Ljava/lang/String;
     .locals 1
 
-    .line 160
+    .line 171
     iget-object v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFailureCause:Ljava/lang/String;
 
     return-object v0
 .end method
 
+.method public getProvisionStatus()I
+    .locals 1
+
+    .line 155
+    iget v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mProvisionStatus:I
+
+    return v0
+.end method
+
 .method public getStatus()I
     .locals 1
 
-    .line 144
+    .line 147
     iget v0, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mStatus:I
 
     return v0
@@ -184,10 +200,10 @@
     .locals 0
     .param p1, "value"    # Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 172
+    .line 183
     iput-object p1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mErrorDetails:Landroid/telephony/ims/ImsReasonInfo;
 
-    .line 173
+    .line 184
     return-void
 .end method
 
@@ -195,10 +211,10 @@
     .locals 0
     .param p1, "value"    # I
 
-    .line 148
+    .line 159
     iput p1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFacilityType:I
 
-    .line 149
+    .line 160
     return-void
 .end method
 
@@ -206,10 +222,21 @@
     .locals 0
     .param p1, "value"    # Ljava/lang/String;
 
-    .line 156
+    .line 167
     iput-object p1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFailureCause:Ljava/lang/String;
 
-    .line 157
+    .line 168
+    return-void
+.end method
+
+.method public setProvisionStatus(I)V
+    .locals 0
+    .param p1, "status"    # I
+
+    .line 151
+    iput p1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mProvisionStatus:I
+
+    .line 152
     return-void
 .end method
 
@@ -217,17 +244,17 @@
     .locals 0
     .param p1, "value"    # I
 
-    .line 140
+    .line 143
     iput p1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mStatus:I
 
-    .line 141
+    .line 144
     return-void
 .end method
 
 .method public toString()Ljava/lang/String;
     .locals 2
 
-    .line 180
+    .line 191
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -255,6 +282,14 @@
     iget-object v1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mFailureCause:Ljava/lang/String;
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " provisionStatus: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Lorg/codeaurora/ims/SuppSvcResponse;->mProvisionStatus:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 

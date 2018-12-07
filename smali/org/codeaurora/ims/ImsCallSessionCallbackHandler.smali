@@ -113,30 +113,30 @@
 .method private cleanup()V
     .locals 1
 
-    .line 465
+    .line 479
     const-string v0, "cleanup"
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 466
+    .line 480
     iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mHandlerThread:Landroid/os/HandlerThread;
 
     if-eqz v0, :cond_0
 
-    .line 467
+    .line 481
     iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mHandlerThread:Landroid/os/HandlerThread;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->quitSafely()Z
 
-    .line 468
+    .line 482
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mHandlerThread:Landroid/os/HandlerThread;
 
-    .line 469
+    .line 483
     iput-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mCallbackHandler:Landroid/os/Handler;
 
-    .line 471
+    .line 485
     :cond_0
     return-void
 .end method
@@ -1226,6 +1226,72 @@
     return-void
 .end method
 
+.method public static synthetic lambda$callSessionPropertyChanged$26(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;I)V
+    .locals 3
+    .param p1, "property"    # I
+
+    .line 459
+    iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mListener:Landroid/telephony/ims/ImsCallSessionListener;
+
+    if-eqz v0, :cond_0
+
+    .line 461
+    :try_start_0
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "callSessionPropertyChanged :: property="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 462
+    iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mListener:Landroid/telephony/ims/ImsCallSessionListener;
+
+    invoke-virtual {v0, p1}, Landroid/telephony/ims/ImsCallSessionListener;->callSessionPropertyChanged(I)V
+    :try_end_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 465
+    goto :goto_0
+
+    .line 463
+    :catch_0
+    move-exception v0
+
+    .line 464
+    .local v0, "r":Ljava/lang/RuntimeException;
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "callSessionPropertyChanged :: RuntimeException "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {p0, v1}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 467
+    .end local v0    # "r":Ljava/lang/RuntimeException;
+    :cond_0
+    :goto_0
+    return-void
+.end method
+
 .method public static synthetic lambda$callSessionResumeFailed$12(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;Landroid/telephony/ims/ImsReasonInfo;)V
     .locals 3
     .param p1, "reasonInfo"    # Landroid/telephony/ims/ImsReasonInfo;
@@ -1886,18 +1952,18 @@
     return-void
 .end method
 
-.method public static synthetic lambda$dispose$26(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;)V
+.method public static synthetic lambda$dispose$27(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;)V
     .locals 1
 
-    .line 459
+    .line 473
     const-string v0, "dispose"
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 460
+    .line 474
     invoke-direct {p0}, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->cleanup()V
 
-    .line 461
+    .line 475
     return-void
 .end method
 
@@ -1905,30 +1971,30 @@
     .locals 1
     .param p1, "r"    # Ljava/lang/Runnable;
 
-    .line 474
+    .line 488
     const-string v0, "posting to handler"
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 475
+    .line 489
     iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mCallbackHandler:Landroid/os/Handler;
 
     if-eqz v0, :cond_0
 
-    .line 476
+    .line 490
     iget-object v0, p0, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->mCallbackHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, p1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     goto :goto_0
 
-    .line 478
+    .line 492
     :cond_0
     const-string v0, "Handler is null. Can\'t post runnable!"
 
     invoke-static {p0, v0}, Lcom/qualcomm/ims/utils/Log;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 480
+    .line 494
     :goto_0
     return-void
 .end method
@@ -2180,6 +2246,21 @@
     return-void
 .end method
 
+.method public callSessionPropertyChanged(I)V
+    .locals 1
+    .param p1, "property"    # I
+
+    .line 458
+    new-instance v0, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$ltQN9th8125fS0_QHbsTI7zv4lY;
+
+    invoke-direct {v0, p0, p1}, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$ltQN9th8125fS0_QHbsTI7zv4lY;-><init>(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;I)V
+
+    invoke-direct {p0, v0}, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->postRunnable(Ljava/lang/Runnable;)V
+
+    .line 468
+    return-void
+.end method
+
 .method public callSessionResumeFailed(Landroid/telephony/ims/ImsReasonInfo;)V
     .locals 1
     .param p1, "reasonInfo"    # Landroid/telephony/ims/ImsReasonInfo;
@@ -2333,13 +2414,13 @@
 .method public dispose()V
     .locals 1
 
-    .line 458
-    new-instance v0, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$jYDT8sK35MdW73FxfiCF-P3Q-EQ;
+    .line 472
+    new-instance v0, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$VRapiJkUF852yK9YEKgPyLLj7Eo;
 
-    invoke-direct {v0, p0}, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$jYDT8sK35MdW73FxfiCF-P3Q-EQ;-><init>(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;)V
+    invoke-direct {v0, p0}, Lorg/codeaurora/ims/-$$Lambda$ImsCallSessionCallbackHandler$VRapiJkUF852yK9YEKgPyLLj7Eo;-><init>(Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;)V
 
     invoke-direct {p0, v0}, Lorg/codeaurora/ims/ImsCallSessionCallbackHandler;->postRunnable(Ljava/lang/Runnable;)V
 
-    .line 462
+    .line 476
     return-void
 .end method

@@ -23,6 +23,8 @@
 
 .field public exclusive:Ljava/lang/String;
 
+.field public localIdentity:Ljava/lang/String;
+
 .field public mediaAttributes:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -49,7 +51,7 @@
     .line 47
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 56
+    .line 57
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V

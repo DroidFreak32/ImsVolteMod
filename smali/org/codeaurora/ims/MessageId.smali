@@ -82,7 +82,11 @@
 
 .field public static final REQUEST_QUERY_SERVICE_STATUS:I = 0x1d
 
+.field public static final REQUEST_QUERY_VIRTUAL_LINE_INFO:I = 0x3d
+
 .field public static final REQUEST_QUERY_VT_CALL_QUALITY:I = 0x23
+
+.field public static final REQUEST_REGISTER_MULTI_IDENTITY_LINES:I = 0x3c
 
 .field public static final REQUEST_RESUME:I = 0x26
 
@@ -124,6 +128,8 @@
 
 .field public static final UNKNOWN_REQ:I = 0x0
 
+.field public static final UNSOL_AUTO_CALL_REJECTION_IND:I = 0xe3
+
 .field public static final UNSOL_CALL_RING:I = 0xca
 
 .field public static final UNSOL_ENTER_EMERGENCY_CALLBACK_MODE:I = 0xcd
@@ -137,6 +143,10 @@
 .field public static final UNSOL_INCOMING_IMS_SMS:I = 0xe2
 
 .field public static final UNSOL_MODIFY_CALL:I = 0xcf
+
+.field public static final UNSOL_MULTI_IDENTITY_INFO_PENDING:I = 0xe6
+
+.field public static final UNSOL_MULTI_IDENTITY_REGISTRATION_STATUS_CHANGE:I = 0xe5
 
 .field public static final UNSOL_MWI:I = 0xd6
 
@@ -173,6 +183,8 @@
 .field public static final UNSOL_SUPP_SVC_NOTIFICATION:I = 0xd3
 
 .field public static final UNSOL_TTY_NOTIFICATION:I = 0xd4
+
+.field public static final UNSOL_VOICE_INFO:I = 0xe4
 
 .field public static final UNSOL_VOPS_CHANGED:I = 0xda
 

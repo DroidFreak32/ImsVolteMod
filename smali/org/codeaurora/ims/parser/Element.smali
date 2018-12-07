@@ -162,6 +162,10 @@
 
 .field public static final VICE_NA:Ljava/lang/String; = "NotApplicable"
 
+.field public static final VICE_REMOTE_TARGET:Ljava/lang/String; = "target"
+
+.field public static final VICE_REMOTE_TARGET_URI:Ljava/lang/String; = "uri"
+
 .field public static final VICE_VERSION:Ljava/lang/String; = "version"
 
 .field public static final VICE_XML:Ljava/lang/String; = "xml"
@@ -214,14 +218,14 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 110
+    .line 112
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
 
-    .line 111
+    .line 113
     const-string v0, "Element"
 
     sput-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
@@ -235,7 +239,7 @@
     .line 20
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 112
+    .line 114
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lorg/codeaurora/ims/parser/Element;->mIsUpdateRequire:Z
@@ -248,7 +252,7 @@
     .param p1, "element"    # Lorg/codeaurora/ims/parser/Element;
     .param p2, "Parenttag"    # Ljava/lang/String;
 
-    .line 178
+    .line 180
     iget-object v0, p1, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
     invoke-virtual {v0, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -257,7 +261,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 179
+    .line 181
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -278,7 +282,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 180
+    .line 182
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -297,12 +301,12 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 181
+    .line 183
     const/4 v0, 0x1
 
     return v0
 
-    .line 183
+    .line 185
     :cond_0
     const/4 v0, 0x0
 
@@ -312,12 +316,12 @@
 .method public static clearMatchedElementsList()V
     .locals 1
 
-    .line 187
+    .line 189
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 188
+    .line 190
     return-void
 .end method
 
@@ -339,17 +343,17 @@
         }
     .end annotation
 
-    .line 192
+    .line 194
     if-eqz p2, :cond_4
 
-    .line 193
+    .line 195
     invoke-virtual {p2}, Lorg/codeaurora/ims/parser/Element;->getSubElementList()Ljava/util/List;
 
     move-result-object v0
 
     if-nez v0, :cond_0
 
-    .line 194
+    .line 196
     iget-object v0, p2, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
     if-eqz v0, :cond_5
@@ -364,19 +368,19 @@
 
     iget-object v0, p2, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
-    .line 195
+    .line 197
     invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
     if-eqz v0, :cond_5
 
-    .line 196
+    .line 198
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 197
+    .line 199
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
     const-string v1, "Single node element added to mMatchedElementList"
@@ -385,7 +389,7 @@
 
     goto/16 :goto_2
 
-    .line 200
+    .line 202
     :cond_0
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
@@ -393,7 +397,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 201
+    .line 203
     const/4 v0, 0x0
 
     .local v0, "index":I
@@ -406,7 +410,7 @@
 
     if-ge v0, v1, :cond_5
 
-    .line 203
+    .line 205
     invoke-virtual {p2}, Lorg/codeaurora/ims/parser/Element;->getSubElementList()Ljava/util/List;
 
     move-result-object v1
@@ -417,7 +421,7 @@
 
     check-cast v1, Lorg/codeaurora/ims/parser/Element;
 
-    .line 204
+    .line 206
     .local v1, "currentElement":Lorg/codeaurora/ims/parser/Element;
     iget-object v2, v1, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
@@ -427,12 +431,12 @@
 
     if-eqz v2, :cond_1
 
-    .line 205
+    .line 207
     sget-object v2, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 206
+    .line 208
     sget-object v2, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -457,7 +461,7 @@
 
     goto :goto_1
 
-    .line 207
+    .line 209
     :cond_1
     invoke-virtual {v1}, Lorg/codeaurora/ims/parser/Element;->getMapAttribute()Ljava/util/Map;
 
@@ -465,7 +469,7 @@
 
     if-eqz v2, :cond_3
 
-    .line 208
+    .line 210
     invoke-virtual {v1}, Lorg/codeaurora/ims/parser/Element;->getMapAttribute()Ljava/util/Map;
 
     move-result-object v2
@@ -476,7 +480,7 @@
 
     if-eqz v2, :cond_3
 
-    .line 209
+    .line 211
     iget-object v2, v1, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
     invoke-virtual {v2, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -485,14 +489,14 @@
 
     if-eqz v2, :cond_2
 
-    .line 210
+    .line 212
     sget-object v2, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 212
+    .line 214
     :cond_2
     sget-object v2, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
@@ -518,7 +522,7 @@
 
     goto :goto_1
 
-    .line 216
+    .line 218
     :cond_3
     sget-object v2, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
 
@@ -538,17 +542,17 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 217
+    .line 219
     invoke-static {p0, p1, v1}, Lorg/codeaurora/ims/parser/Element;->getMatchedElements(Ljava/lang/String;Ljava/lang/String;Lorg/codeaurora/ims/parser/Element;)Ljava/util/ArrayList;
 
-    .line 201
+    .line 203
     .end local v1    # "currentElement":Lorg/codeaurora/ims/parser/Element;
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto/16 :goto_0
 
-    .line 222
+    .line 224
     .end local v0    # "index":I
     :cond_4
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->LOGTAG:Ljava/lang/String;
@@ -557,7 +561,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 224
+    .line 226
     :cond_5
     :goto_2
     sget-object v0, Lorg/codeaurora/ims/parser/Element;->mMatchedElementList:Ljava/util/ArrayList;
@@ -570,40 +574,40 @@
 .method public ClearAll()V
     .locals 2
 
-    .line 262
+    .line 264
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
-    .line 263
+    .line 265
     iget-object v1, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     if-eqz v1, :cond_0
 
-    .line 264
+    .line 266
     iget-object v1, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     invoke-interface {v1}, Ljava/util/Map;->clear()V
 
-    .line 265
+    .line 267
     :cond_0
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
-    .line 266
+    .line 268
     iget-object v1, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     if-eqz v1, :cond_1
 
-    .line 267
+    .line 269
     iget-object v1, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->clear()V
 
-    .line 268
+    .line 270
     :cond_1
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
-    .line 269
+    .line 271
     return-void
 .end method
 
@@ -611,7 +615,7 @@
     .locals 2
     .param p1, "element"    # Lorg/codeaurora/ims/parser/Element;
 
-    .line 249
+    .line 251
     iget-object v0, p1, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     const-string v1, "state"
@@ -630,10 +634,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 250
+    .line 252
     invoke-virtual {p0}, Lorg/codeaurora/ims/parser/Element;->ClearAll()V
 
-    .line 252
+    .line 254
     :cond_0
     return-void
 .end method
@@ -641,28 +645,28 @@
 .method public Element()V
     .locals 1
 
-    .line 115
+    .line 117
     const/4 v0, 0x0
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
-    .line 116
+    .line 118
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
-    .line 117
+    .line 119
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
-    .line 118
+    .line 120
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
-    .line 119
+    .line 121
     return-void
 .end method
 
 .method public IsUpdateRequire()Z
     .locals 1
 
-    .line 304
+    .line 306
     iget-boolean v0, p0, Lorg/codeaurora/ims/parser/Element;->mIsUpdateRequire:Z
 
     return v0
@@ -672,12 +676,12 @@
     .locals 1
     .param p1, "child"    # Lorg/codeaurora/ims/parser/Element;
 
-    .line 166
+    .line 168
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 167
+    .line 169
     return-void
 .end method
 
@@ -685,14 +689,14 @@
     .locals 5
     .param p1, "lhs"    # Lorg/codeaurora/ims/parser/Element;
 
-    .line 279
+    .line 281
     const/4 v0, 0x0
 
-    .line 280
+    .line 282
     .local v0, "index":I
     const/4 v1, 0x0
 
-    .line 281
+    .line 283
     .local v1, "lindex":I
     iget-object v2, p1, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
@@ -710,14 +714,14 @@
 
     iget-object v4, p0, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
-    .line 282
+    .line 284
     invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
     if-eqz v2, :cond_3
 
-    .line 283
+    .line 285
     iget-object v2, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     if-eqz v2, :cond_1
@@ -726,28 +730,28 @@
 
     if-eqz v2, :cond_1
 
-    .line 284
+    .line 286
     iget-object v2, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v0
 
-    .line 285
+    .line 287
     iget-object v2, p1, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v1
 
-    .line 286
+    .line 288
     if-ne v0, v1, :cond_0
 
-    .line 287
+    .line 289
     :goto_0
     if-eqz v0, :cond_0
 
-    .line 288
+    .line 290
     iget-object v2, p1, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -758,16 +762,16 @@
 
     invoke-virtual {p0, v2}, Lorg/codeaurora/ims/parser/Element;->compareElements(Lorg/codeaurora/ims/parser/Element;)Z
 
-    .line 289
+    .line 291
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 292
+    .line 294
     :cond_0
     return v3
 
-    .line 293
+    .line 295
     :cond_1
     iget-object v2, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
@@ -779,7 +783,7 @@
 
     if-eqz v2, :cond_2
 
-    .line 294
+    .line 296
     iget-object v2, p1, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     iget-object v4, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
@@ -790,14 +794,14 @@
 
     if-eqz v2, :cond_2
 
-    .line 295
-    return v3
-
     .line 297
-    :cond_2
     return v3
 
     .line 299
+    :cond_2
+    return v3
+
+    .line 301
     :cond_3
     return v3
 .end method
@@ -806,10 +810,10 @@
     .locals 2
     .param p1, "attname"    # Ljava/lang/String;
 
-    .line 150
+    .line 152
     const/4 v0, 0x0
 
-    .line 151
+    .line 153
     .local v0, "ret":Ljava/lang/String;
     if-eqz p1, :cond_0
 
@@ -825,7 +829,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 152
+    .line 154
     iget-object v1, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -836,7 +840,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 154
+    .line 156
     :cond_0
     return-object v0
 .end method
@@ -844,7 +848,7 @@
 .method public getDocVersion()Ljava/lang/String;
     .locals 2
 
-    .line 241
+    .line 243
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     const-string v1, "version"
@@ -862,7 +866,7 @@
     .locals 2
     .param p1, "element"    # Lorg/codeaurora/ims/parser/Element;
 
-    .line 245
+    .line 247
     iget-object v0, p1, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     const-string v1, "state"
@@ -894,22 +898,22 @@
         }
     .end annotation
 
-    .line 229
+    .line 231
     const/4 v0, 0x0
 
-    .line 230
+    .line 232
     .local v0, "index":I
     invoke-static {p1, p2, p0}, Lorg/codeaurora/ims/parser/Element;->getMatchedElements(Ljava/lang/String;Ljava/lang/String;Lorg/codeaurora/ims/parser/Element;)Ljava/util/ArrayList;
 
     move-result-object v1
 
-    .line 231
+    .line 233
     .local v1, "SubElement":Ljava/util/List;, "Ljava/util/List<Lorg/codeaurora/ims/parser/Element;>;"
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
-    .line 232
+    .line 234
     .local v2, "KeyMatchElementList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lorg/codeaurora/ims/parser/Element;>;"
     const/4 v0, 0x0
 
@@ -920,7 +924,7 @@
 
     if-ge v0, v3, :cond_1
 
-    .line 233
+    .line 235
     invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
@@ -935,7 +939,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 234
+    .line 236
     invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v3
@@ -944,13 +948,13 @@
 
     invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 232
+    .line 234
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 237
+    .line 239
     :cond_1
     return-object v2
 .end method
@@ -967,7 +971,7 @@
         }
     .end annotation
 
-    .line 130
+    .line 132
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     return-object v0
@@ -976,7 +980,7 @@
 .method public getParentTag()Ljava/lang/String;
     .locals 1
 
-    .line 142
+    .line 144
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
     return-object v0
@@ -993,7 +997,7 @@
         }
     .end annotation
 
-    .line 162
+    .line 164
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
     return-object v0
@@ -1002,7 +1006,7 @@
 .method public getTagName()Ljava/lang/String;
     .locals 1
 
-    .line 138
+    .line 140
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
     return-object v0
@@ -1013,26 +1017,26 @@
     .param p1, "key"    # Ljava/lang/String;
     .param p2, "value"    # Ljava/lang/String;
 
-    .line 158
+    .line 160
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 159
+    .line 161
     return-void
 .end method
 
 .method public setMapAttribute()V
     .locals 1
 
-    .line 126
+    .line 128
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
-    .line 127
+    .line 129
     return-void
 .end method
 
@@ -1048,11 +1052,11 @@
         }
     .end annotation
 
-    .line 134
+    .line 136
     .local p1, "marg":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     iput-object p1, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
-    .line 135
+    .line 137
     return-void
 .end method
 
@@ -1060,10 +1064,10 @@
     .locals 0
     .param p1, "parenttag"    # Ljava/lang/String;
 
-    .line 146
+    .line 148
     iput-object p1, p0, Lorg/codeaurora/ims/parser/Element;->mParentTag:Ljava/lang/String;
 
-    .line 147
+    .line 149
     return-void
 .end method
 
@@ -1078,11 +1082,11 @@
         }
     .end annotation
 
-    .line 174
+    .line 176
     .local p1, "list":Ljava/util/List;, "Ljava/util/List<Lorg/codeaurora/ims/parser/Element;>;"
     iput-object p1, p0, Lorg/codeaurora/ims/parser/Element;->mSubElement:Ljava/util/List;
 
-    .line 175
+    .line 177
     return-void
 .end method
 
@@ -1090,10 +1094,10 @@
     .locals 0
     .param p1, "tag"    # Ljava/lang/String;
 
-    .line 122
+    .line 124
     iput-object p1, p0, Lorg/codeaurora/ims/parser/Element;->mTagName:Ljava/lang/String;
 
-    .line 123
+    .line 125
     return-void
 .end method
 
@@ -1102,11 +1106,11 @@
     .param p1, "attname"    # Ljava/lang/String;
     .param p2, "value"    # Ljava/lang/String;
 
-    .line 170
+    .line 172
     iget-object v0, p0, Lorg/codeaurora/ims/parser/Element;->mAttribute:Ljava/util/Map;
 
     invoke-interface {v0, p1, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 171
+    .line 173
     return-void
 .end method

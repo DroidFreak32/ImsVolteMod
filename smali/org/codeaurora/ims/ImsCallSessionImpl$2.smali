@@ -23,7 +23,7 @@
     .locals 0
     .param p1, "this$0"    # Lorg/codeaurora/ims/ImsCallSessionImpl;
 
-    .line 2467
+    .line 2633
     iput-object p1, p0, Lorg/codeaurora/ims/ImsCallSessionImpl$2;->this$0:Lorg/codeaurora/ims/ImsCallSessionImpl;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
@@ -36,7 +36,7 @@
 .method public run()V
     .locals 4
 
-    .line 2470
+    .line 2636
     new-instance v0, Landroid/media/ToneGenerator;
 
     const/4 v1, 0x0
@@ -45,44 +45,44 @@
 
     invoke-direct {v0, v1, v2}, Landroid/media/ToneGenerator;-><init>(II)V
 
-    .line 2473
+    .line 2639
     .local v0, "mTone":Landroid/media/ToneGenerator;
     const/16 v1, 0x19
 
     :try_start_0
     invoke-virtual {v0, v1}, Landroid/media/ToneGenerator;->startTone(I)Z
 
-    .line 2474
+    .line 2640
     const-wide/16 v1, 0x3e8
 
     invoke-static {v1, v2}, Ljava/lang/Thread;->sleep(J)V
 
-    .line 2475
+    .line 2641
     invoke-virtual {v0}, Landroid/media/ToneGenerator;->stopTone()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2479
+    .line 2645
     :goto_0
     nop
 
-    .line 2480
+    .line 2646
     invoke-virtual {v0}, Landroid/media/ToneGenerator;->release()V
 
     goto :goto_1
 
-    .line 2479
+    .line 2645
     :catchall_0
     move-exception v1
 
     goto :goto_2
 
-    .line 2476
+    .line 2642
     :catch_0
     move-exception v1
 
-    .line 2477
+    .line 2643
     .local v1, "e":Ljava/lang/Exception;
     :try_start_1
     new-instance v2, Ljava/lang/StringBuilder;
@@ -106,15 +106,15 @@
     .end local v1    # "e":Ljava/lang/Exception;
     goto :goto_0
 
-    .line 2483
+    .line 2649
     :goto_1
     return-void
 
-    .line 2479
+    .line 2645
     :goto_2
     nop
 
-    .line 2480
+    .line 2646
     invoke-virtual {v0}, Landroid/media/ToneGenerator;->release()V
 
     throw v1

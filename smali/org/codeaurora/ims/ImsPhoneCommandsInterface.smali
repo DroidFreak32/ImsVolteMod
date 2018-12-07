@@ -90,6 +90,9 @@
 .method public abstract deregisterForRttMessage(Landroid/os/Handler;)V
 .end method
 
+.method public abstract deregisterForVoiceInfo(Landroid/os/Handler;)V
+.end method
+
 .method public abstract exitEmergencyCallbackMode(Landroid/os/Message;)V
 .end method
 
@@ -193,6 +196,9 @@
 .end method
 
 .method public abstract registerForViceRefreshInfo(Landroid/os/Handler;ILjava/lang/Object;)V
+.end method
+
+.method public abstract registerForVoiceInfo(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
 .method public abstract rejectCall(Landroid/os/Message;)V

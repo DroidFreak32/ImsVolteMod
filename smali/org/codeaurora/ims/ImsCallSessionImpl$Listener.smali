@@ -15,6 +15,12 @@
 
 
 # virtual methods
+.method public abstract onCallModifyInitiated(Lorg/codeaurora/ims/ImsCallSessionImpl;Lorg/codeaurora/ims/CallModify;)V
+.end method
+
+.method public abstract onCallTypeChanging(Lorg/codeaurora/ims/ImsCallSessionImpl;I)V
+.end method
+
 .method public abstract onClosed(Lorg/codeaurora/ims/ImsCallSessionImpl;)V
 .end method
 

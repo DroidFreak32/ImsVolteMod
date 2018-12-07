@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="incoming_call_failed_low_battery">由于电量过低，无法接听来电。</string>
-    <string name="device_is_hd_capable" />
-    <string name="device_is_volte_capable">设备支持高清</string>
+    <string name="device_is_hd_capable">SIM %1$d支持高清</string>
+    <string name="device_is_volte_capable">SIM %1$d支持高清</string>
     <string name="call_hold_label">保持通话：</string>
     <string name="call_resume_label">恢复通话：</string>
     <string name="error_msg_failed">" 已失败"</string>
